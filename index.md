@@ -12,10 +12,11 @@ description: >
   <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
 
     <!-- Head-shot lives right next to this file. -->
-    <img src="{{ '/headshot.jpg' | relative_url }}"
-  alt="William Farlessyost smiling in a yellow shirt"
-  width="40"  height="40"          <!-- 40 px ≈ Tailwind’s w-10/h-10 -->
-  style="object-fit:cover;border-radius:9999px;box-shadow:0 2px 4px rgba(0,0,0,.15);" />
+    <img 
+      src="{{ '/headshot.jpg' | relative_url }}"
+      alt="William Farlessyost smiling in a yellow shirt"
+      width="40"  height="40"          <!-- 40 px ≈ Tailwind’s w-10/h-10 -->
+      style="object-fit:cover;border-radius:9999px;box-shadow:0 2px 4px rgba(0,0,0,.15);" />
 
 
     <div>
