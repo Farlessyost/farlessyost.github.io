@@ -15,7 +15,7 @@ description: >
     <img
       src="{{ '/headshot.jpg' | relative_url }}"
       alt="William Farlessyost smiling in a yellow shirt"
-      class="w-40 h-40 rounded-full shadow-lg shrink-0 object-cover"
+      class="w-10 h-10 rounded-full shadow-lg shrink-0 object-cover"
       loading="lazy" />
 
     <div>
