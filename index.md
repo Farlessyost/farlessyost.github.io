@@ -15,7 +15,7 @@ description: >
     <img 
       src="{{ '/headshot.jpg' | relative_url }}"
       alt="William Farlessyost smiling in a yellow shirt"
-      width="40"  height="40"          <!-- 40 px ≈ Tailwind’s w-10/h-10 -->
+      width="10"  height="10"          <!-- 40 px ≈ Tailwind’s w-10/h-10 -->
       style="object-fit:cover;border-radius:9999px;box-shadow:0 2px 4px rgba(0,0,0,.15);" />
 
 
