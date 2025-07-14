@@ -11,14 +11,6 @@ description: >
 <section class="hero-wrapper py-16 md:py-24 bg-blue-light/10">
   <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
 
-{::nomarkdown}
-    <!-- Head-shot lives right next to this file. -->
-    <img 
-    src="{{ '/headshot.jpg' | relative_url }}"
-    alt="William Farlessyost smiling in a yellow shirt"
-    width="10"  height="10"          <!-- 40 px ≈ Tailwind’s w-10/h-10 -->
-    style="object-fit:cover;border-radius:9999px;box-shadow:0 2px 4px rgba(0,0,0,.15);" />
-{:/nomarkdown}
 
     <div>
       <h1 class="text-3xl md:text-4xl font-bold mb-4">
