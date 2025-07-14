@@ -13,10 +13,11 @@ description: >
 
     <!-- Head-shot lives right next to this file. -->
     <img
-      src="{{ '/headshot.jpg' | relative_url }}"
-      alt="William Farlessyost smiling in a yellow shirt"
-      class="w-10 h-10 rounded-full shadow-lg shrink-0 object-cover"
-      loading="lazy" />
+  src="{{ '/headshot.jpg' | relative_url }}"
+  alt="William Farlessyost smiling in a yellow shirt"
+  width="40"  height="40"          <!-- 40 px ≈ Tailwind’s w-10/h-10 -->
+  style="object-fit:cover;border-radius:9999px;box-shadow:0 2px 4px rgba(0,0,0,.15);" />
+
 
     <div>
       <h1 class="text-3xl md:text-4xl font-bold mb-4">
