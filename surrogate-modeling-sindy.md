@@ -69,7 +69,7 @@ Key steps common to both case studies:
 *(Table values reproduced from paper Table 2.)*
 
 <p align="center">
-  <img src="/A4.png" alt="Plant test trajectories (200 h)" width="720" />
+  <img src="/A5.png" alt="Plant test trajectories (200 h)" width="720" />
 </p>
 
 *Red = standard SINDy Blue = SQP-refined Black = ASPEN reference.*
@@ -92,7 +92,7 @@ Key steps common to both case studies:
 ## 2 Natural system: North Fork Vermilion watershed
 
 <p align="center">
-  <img src="/A5.png" alt="Watershed map and climate inputs" width="550" />
+  <img src="/A4.png" alt="Watershed map and climate inputs" width="550" />
 </p>
 
 *5589 daily records (1988-2005) — stream-flow **Q** and five climate drivers (P, R<sub>solar</sub>, T<sub>max</sub>, T<sub>min</sub>, VPD).*
@@ -113,7 +113,7 @@ Key steps common to both case studies:
 <!-- 3  TAKE-AWAYS ------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
 
-## 3 Take-aways (verbatim from paper conclusions)
+## 3 Take-aways 
 
 * Linear library was sufficient for the process-plant surrogates; chaotic watershed needed non-linear and history terms.  
 * SQP post-processing improves long-horizon stability without harming cross-validated MAE.  
@@ -122,5 +122,5 @@ Key steps common to both case studies:
 ---
 
 <small>
-Source — W. Farlessyost & S. Singh (2021): *Reduced-Order Dynamical Models for Complex Dynamics in Manufacturing and Natural Systems Using Machine Learning*, arXiv:2110.08313.  
+Source — Farlessyost, William, and Shweta Singh. "Reduced order dynamical models for complex dynamics in manufacturing and natural systems using machine learning." Nonlinear Dynamics 110.2 (2022): 1613-1631. 
 </small>
