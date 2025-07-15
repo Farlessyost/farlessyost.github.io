@@ -9,24 +9,93 @@ excerpt: >
 domain: [ml, control]
 roles: [sensor-design, causality]
 tags: [LTC-NN, Spring–Mass–Damper, CSTR, Predator-Prey]
-thumbnail: ""
-slides: "/Defense.pptx"
+thumbnail: "C0.png"
 ---
 
-### Systems Evaluated  
+### Overview
+<p align="center">
+  <img src="/C0.png" width="720"
+       alt="Concept schematic: causal pruning of Liquid-Time-Constant observers" />
+</p>
+
+---
+
+### Benchmarks
+<p align="center">
+  <img src="/C2.png" width="720"
+       alt="Three mechanistic systems exercised: mechanical, ecological, chemical" />
+</p>
+
 * **Mechanical:** Spring–Mass–Damper  
 * **Chemical:** Continuous Stirred-Tank Reactor (CSTR)  
-* **Ecological:** Predator–Prey model
+* **Ecological:** Predator–Prey model  
 
-### Method  
-1. Train full-state **Liquid Time-Constant (LTC) networks**.  
-2. Quantify *dynamic causal influence* of each input via perturbation analysis.  
-3. Iteratively prune the least-causal inputs until accuracy degrades.
+---
 
-### Results  
-* Noise channels pruned first; interaction terms kept only when essential.  
-* Achieved **minimal sensor sets** that still met accuracy targets across all testbeds.  
-* Final selections aligned with known physics, boosting interpretability.
+### Liquid Time-Constant (LTC) observer
+<p align="center">
+  <img src="/C3.png" width="540"
+       alt="Differential equation and MSE loss for the LTC recurrent block" />
+</p>
 
-### Value Proposition  
-Reduces hardware costs and computational load for soft-sensor deployment in manufacturing and environmental monitoring.
+---
+
+### Causality-guided pruning loop
+<p align="center">
+  <img src="/C4.png" width="380"
+       alt="Iterative perturb-score-prune procedure to drop weakly causal inputs" />
+</p>
+
+---
+
+### Network architecture
+<p align="center">
+  <img src="/C5.png" width="540"
+       alt="Full vs. pruned observer layouts and resulting signal channels" />
+</p>
+
+---
+
+### Results – Mechanical
+<p align="center">
+  <img src="/C6.png" width="720"
+       alt="Velocity tracking plots before/after pruning—spring–mass–damper" />
+</p>
+
+---
+
+### Results – Ecological
+<p align="center">
+  <img src="/C7.png" width="420"
+       alt="Predator–prey tracking and causal-score ranking" />
+</p>
+
+---
+
+### Results – Chemical
+<p align="center">
+  <img src="/C8.png" width="720"
+       alt="Concentration tracking in CSTR across four scenarios" />
+</p>
+
+---
+
+#### Key takeaways
+* Noise-only channels are discarded first; physics-critical signals persist.  
+* **Accuracy maintained** within target RMSE for all three domains after pruning.  
+* Selected sensors line up with textbook observability arguments—helping adoption by controls engineers.
+
+---
+
+#### Value proposition
+* Cuts hardware & I/O costs for soft-sensor deployments.  
+* Lowers inference load for embedded edge controllers.  
+* Delivers a **transparent causal rationale** instead of opaque feature ranking.
+
+---
+
+#### Where next
+* Extend to systems with time delays and >100 candidate inputs.  
+* Stress-test under real sensor dropouts and drift.  
+* Benchmark against traditional observability-rank and QR pivoting schemes.
+
