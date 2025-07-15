@@ -17,7 +17,7 @@ thumbnail: "1a44eb4d-0048-479b-9a96-20a253842e89.png"
 <!-- 0  METHOD OVERVIEW ------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
 
-### 0 Method overview
+### Method overview
 
 <p align="center">
   <img src="/A0.png"
@@ -40,7 +40,7 @@ thumbnail: "1a44eb4d-0048-479b-9a96-20a253842e89.png"
 <!-- 1  INDUSTRIAL SYSTEM ------------------------------------------------ -->
 <!-- ------------------------------------------------------------------- -->
 
-## 1 Industrial system: soybean-diesel plant
+## Industrial system: soybean-diesel plant
 
 <p align="center">
   <img src="/A3.png" alt="ASPEN Dynamics flowsheet" width="600" />
@@ -60,7 +60,7 @@ thumbnail: "1a44eb4d-0048-479b-9a96-20a253842e89.png"
 <!-- 2  NATURAL SYSTEM --------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
 
-## 2 Natural system: North Fork Vermilion watershed
+## Natural system: North Fork Vermilion watershed
 
 <p align="center">
   <img src="/A4.png" alt="Watershed map and climate inputs" width="550" />
@@ -79,7 +79,7 @@ thumbnail: "1a44eb4d-0048-479b-9a96-20a253842e89.png"
 <!-- 3  TAKE-AWAYS ------------------------------------------------------- -->
 <!-- ------------------------------------------------------------------- -->
 
-## 3 Take-aways 
+## Take-aways 
 
 * Linear library was sufficient for the process-plant surrogates; chaotic watershed needed non-linear and history terms.  
 * SQP post-processing improves long-horizon stability without harming cross-validated MAE.  
