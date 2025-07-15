@@ -48,32 +48,11 @@ thumbnail: "1a44eb4d-0048-479b-9a96-20a253842e89.png"
 
 *ASPEN Dynamics flowsheet showing six retained flows (x₁–x₆) and two PRBS-excited feeds (u₁ = soybean-oil, u₂ = water).*
 
-**Training data** – 200 h simulation, Δt = 0.02 h  
-**Test data**   – 50 h continuation + independent 200 h run (different PRBS seed)
-
-### 1.1 50 h hold-out results
-
-| Model | λ |  MAE (avg x₁–x₆) | MAE (x₁) |
-|-------|---|-----------------|----------|
-| SINDy | 0.01 | **0.152** | 0.167 |
-| SINDy+SQP | 0.025 | 0.537 | **0.757** |
-
-*(Table values reproduced from paper Table 2.)*
-
 <p align="center">
   <img src="/A5.png" alt="Plant test trajectories (200 h)" width="720" />
 </p>
 
 *Red = standard SINDy Blue = SQP-refined Black = ASPEN reference.*
-
-### 1.2 200 h hold-out results
-
-| Model | λ | MAE (avg x₁–x₆) | MAE (x₁) |
-|-------|---|-----------------|----------|
-| SINDy+SQP | 0.025  | **0.252** | **0.295** |
-| SINDy     | 0.01   | 5.324 | 8.556 |
-
-*SQP tuning suppresses long-horizon drift (paper §3.2.2).*
 
 ---
 
