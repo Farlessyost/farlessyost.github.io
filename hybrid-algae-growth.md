@@ -4,26 +4,92 @@ title: "Hybrid Mechanistic + ML Model for *Chlorella vulgaris* Growth"
 date: 2025-04-23
 slug: hybrid-algae-growth
 excerpt: >
-  Integrating SINDy-derived error terms with a Cardinal Temperature Model
-  to boost prediction accuracy for industrial-scale microalgae cultivation.
+  Mechanistic CTMI kinetics corrected by a SINDy-learned error term
+  delivers higher-fidelity algae-growth predictions without losing
+  physical interpretability.
 domain: [ml, control, ecology]
 roles: [modeling, hybrid-ml]
 tags: [SINDy, CTMI, Biology]
-thumbnail: ""
-slides: "/Defense.pptx"
+thumbnail: "B3.png"
 ---
 
-### Objective  
-Preserve mechanistic interpretability while **capturing complex growth behaviours** of *C. vulgaris* in batch reactors.
+<!-- overview -->
+<p align="center">
+  <img src="/B0.png" width="720"
+       alt="Concept: update low-order mechanistic models with sparse-regression error terms" />
+</p>
 
-### Approach  
-* Base model: Haldane + CTMI kinetics  
-* Additive **SINDy correction term** trained on residuals  
-* 20-fold sequential cross-validation for robustness
+## Why a hybrid model?
 
-### Highlights  
-* Hybrid model consistently out-performed the original, especially on oscillatory regimes.  
-* Exposed data-sparsity limits and suggested richer experimental design.
+A traditional Cardinal-Temperature/Light equation is fast but misses
+multi-day oscillations and pH effects.  
+An additive SINDy error ODE restores accuracy **without turning the whole
+model into a black box.**
 
-### Why It Matters  
-Accurate growth prediction unlocks **process optimization** and **energy balancing** for algae-based bioproducts without black-box loss of insight.
+---
+
+<!-- methodology -->
+<p align="center">
+  <img src="/B1.png" width="460"
+       alt="Four-step workflow: fit mech model → compute error → learn error ODE → update" />
+</p>
+
+20-fold sequential cross-validation was run on a single 41 000 min batch.
+
+---
+
+<!-- error definition -->
+<p align="center">
+  <img src="/B2.png" width="670"
+       alt="Mechanistic prediction vs data and definition of the error signal" />
+</p>
+
+---
+
+<!-- reactor photo -->
+<p align="center">
+  <img src="/B3.png" width="380"
+       alt="60 L photobioreactor used for data collection" />
+</p>
+
+---
+
+<!-- SINDy control-only block -->
+<p align="center">
+  <img src="/B4.png" width="540"
+       alt="Control-only SINDy block—error ODE driven by T, light, pH" />
+</p>
+
+---
+
+<!-- library functions -->
+<p align="center">
+  <img src="/B5.png" width="340"
+       alt="Domain-specific functions added to the SINDy library" />
+</p>
+
+---
+
+<!-- results -->
+<p align="center">
+  <img src="/B6.png" width="720"
+       alt="Error ODE and validation-fold improvements" />
+</p>
+
+### At a glance
+
+* Hybrid curve (green/black in slides) hugs observed density far better than the blue baseline.  
+* Retains clear physical drivers—temperature, light, and pH appear explicitly.  
+
+---
+
+### Where next
+
+* Broader data sets (different strains, reactors).  
+* Online adaptation for continuous cultivation.  
+* Try ensemble error models to smooth early-batch noise sensitivity.
+
+<small> Source - Farlessyost W., Singh S. (2024) *Improving Mechanistic Model Accuracy with Machine-Learning-Informed Physics.*  
+In: **Foundations of Computer Aided Process Design (FOCAPD 2024)**, Breckenridge CO, July 14-18.  
+Peer-reviewed proceedings, PSEcommunity LAPSE:2024.1538, Syst Control Trans 3:275-282.  
+<https://PSEcommunity.org/LAPSE:2024.1538></small>
