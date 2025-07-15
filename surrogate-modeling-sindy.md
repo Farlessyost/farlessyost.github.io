@@ -10,87 +10,117 @@ excerpt: >
 domain: [complex, sysid, ml]
 roles: [modeling, system-id]
 tags: [SINDy, Python, ODEs]
-thumbnail: "soybean_flowsheet.png"
+thumbnail: "1a44eb4d-0048-479b-9a96-20a253842e89.png"
 ---
 
-![Soybean-oil → biodiesel process flowsheet](/soybean_flowsheet.png)
+<!-- ------------------------------------------------------------------- -->
+<!-- 0  METHOD OVERVIEW ------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 
-## 1 Systems & data
+### 0 Method overview
 
-| System | Data source | States / inputs used | Purpose |
-|--------|-------------|----------------------|---------|
-| **Soybean-diesel plant** | 200 h ASPEN Plus Dynamics run with PRBS on soybean-oil (u₁) and water (u₂) feeds | 6 material-flow states (x₁–x₆) | Build a fast twin for scenario + MPC studies |
-| **North Fork Vermilion River** | Daily climate drivers (1950-2005) + USGS stream-flow gauge (1988-2005) | Q (stream-flow) \| P, R\_solar, T\_max, T\_min, VPD | Obtain a tractable stream-flow equation |
+<p align="center">
+  <img src="/A0.png"
+       alt="Overview: sparse-regression surrogates for industrial & natural nodes"
+       width="720" />
+</p>
 
----
+<p align="center">
+  <img src="/A1.png" alt="Classic SINDy workflow schematic" width="700" />
+</p>
 
-## 2 Modelling workflow (identical for both cases)
+<p align="center">
+  <img src="/A2.png" alt="Extended SINDy with input-derivative terms" width="700" />
+</p>
+ 
+Key steps common to both case studies:
 
-1. Numerical derivatives → \( \dot{x},\;\dot{u} \)  
-2. Polynomial library (order ≤ 2); watershed variant also includes \( \dot{u} \) to capture hysteresis  
+1. Time-series → finite-difference \( \dot x,\;\dot u \)  
+2. Build polynomial library Θ (order ≤ 2; watershed also uses \( \dot u \))  
 3. Sparse regression across λ values  
-4. SQP refinement of retained coefficients (MATLAB `fmincon`, MAE objective)  
-5. 5-fold CV → choose λ*  
-6. Hold-out tests (plant: 50 h + 200 h)
+4. Sequential Quadratic Programming (SQP) on retained coefficients (paper §2.2)  
+5. Five-fold cross-validation → select λ*  
+6. Hold-out tests (50 h + 200 h for the plant)
 
 ---
 
-## 3 Soybean-diesel plant test results
+<!-- ------------------------------------------------------------------- -->
+<!-- 1  INDUSTRIAL SYSTEM ------------------------------------------------ -->
+<!-- ------------------------------------------------------------------- -->
 
-### 3.1 50 h hold-out
+## 1 Industrial system: soybean-diesel plant
 
-![50 h plant test](/plant_test_50h.png)
+<p align="center">
+  <img src="/A3.png" alt="ASPEN Dynamics flowsheet" width="600" />
+</p>
 
-| Model | λ | Optimized? | MAE (avg x₁–x₆) | MAE (x₁ only) |
-|-------|---|-----------|------------------|---------------|
+*ASPEN Dynamics flowsheet showing six retained flows (x₁–x₆) and two PRBS-excited feeds (u₁ = soybean-oil, u₂ = water).*
+
+**Training data** – 200 h simulation, Δt = 0.02 h  
+**Test data**   – 50 h continuation + independent 200 h run (different PRBS seed)
+
+### 1.1 50 h hold-out results
+
+| Model | λ | SQP? | MAE (avg x₁–x₆) | MAE (x₁) |
+|-------|---|------|-----------------|----------|
 | SINDy | 0.01 | ✖ | **0.152** | 0.167 |
-| SINDy | 0.025 | ✖ | 0.473 | 0.662 |
-| SINDy | 0.08 | ✖ | 0.268 | 0.392 |
-| SINDy+SQP | 0.01 | ✔ | 0.604 | 0.885 |
-| **SINDy+SQP** | **0.025** | **✔** | 0.537 | **0.757** |
-| SINDy+SQP | 0.08 | ✔ | 0.295 | 0.442 |
+| SINDy+SQP | 0.025 | ✔ | 0.537 | **0.757** |
 
-*(values reproduced from Table 2, first block)*  
+*(Table values reproduced from paper Table 2.)*
 
-*Take-away: plain SINDy with λ = 0.01 is best on short unseen data.*
+<p align="center">
+  <img src="/A4.png" alt="Plant test trajectories (200 h)" width="720" />
+</p>
 
----
+*Red = standard SINDy Blue = SQP-refined Black = ASPEN reference.*
 
-### 3.2 200 h hold-out
+### 1.2 200 h hold-out results
 
-![200 h plant test](/plant_test_200h.png)
+| Model | λ | SQP? | MAE (avg x₁–x₆) | MAE (x₁) |
+|-------|---|------|-----------------|----------|
+| SINDy+SQP | 0.025 | ✔ | **0.252** | **0.295** |
+| SINDy     | 0.01  | ✖ | 5.324 | 8.556 |
 
-| Model | λ | Optimized? | MAE (avg x₁–x₆) | MAE (x₁ only) |
-|-------|---|-----------|------------------|---------------|
-| SINDy | 0.01 | ✖ | 5.324 | 8.556 |
-| SINDy | 0.025 | ✖ | 2.193 | 3.366 |
-| SINDy | 0.08 | ✖ | 1.344 | 0.723 |
-| **SINDy+SQP** | **0.025** | **✔** | **0.252** | **0.295** |
-| SINDy+SQP | 0.01 | ✔ | 0.526 | 0.752 |
-| SINDy+SQP | 0.08 | ✔ | 1.266 | 0.592 |
-
-*Optimization slashes long-horizon drift; λ = 0.025 + SQP gives lowest error.*
+*SQP tuning suppresses long-horizon drift (paper §3.2.2).*
 
 ---
 
-## 4 Watershed surrogate (single CV fold)
+<!-- ------------------------------------------------------------------- -->
+<!-- 2  NATURAL SYSTEM --------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 
-<!-- Optional image; comment out if not needed -->
-<!-- ![Watershed validation plot](/watershed_validation.png) -->
+## 2 Natural system: North Fork Vermilion watershed
 
-*Best model (second-order + \( \dot{u} \), λ ≈ 0.00175) tracks seasonal peaks but under-predicts short spikes.  
-Further work: spline up-sampling or higher-order terms.*
+<p align="center">
+  <img src="/A5.png" alt="Watershed map and climate inputs" width="550" />
+</p>
+
+*5589 daily records (1988-2005) — stream-flow **Q** and five climate drivers (P, R<sub>solar</sub>, T<sub>max</sub>, T<sub>min</sub>, VPD).*
+
+*Best CV performance*: λ ≈ 0.00175, second-order library + \( \dot u \) terms.
+
+<p align="center">
+  <img src="/A6.png" alt="Stream-flow surrogate equations and validation plot" width="720" />
+</p>
+
+*Blue = SQP-refined surrogate Red = standard SINDy Black = validation data.*
+
+*Observation (paper §3.5): model captures seasonal peaks but under-predicts short spikes; limited data length is a key bottleneck.*
 
 ---
 
-## 5 Key observations
+<!-- ------------------------------------------------------------------- -->
+<!-- 3  TAKE-AWAYS ------------------------------------------------------- -->
+<!-- ------------------------------------------------------------------- -->
 
-* Linear library suffices for stoichiometric plant flows; watershed needs nonlinear + history terms.  
-* SQP tuning improves stability without harming cross-validated MAE.  
-* Data sparsity (5 589 points) limits watershed accuracy; more observations or synthetic augmentation required.
+## 3 Take-aways (verbatim from paper conclusions)
+
+* Linear library was sufficient for the process-plant surrogates; chaotic watershed needed non-linear and history terms.  
+* SQP post-processing improves long-horizon stability without harming cross-validated MAE.  
+* Additional data or spline up-sampling is required to raise watershed accuracy.
 
 ---
 
-### Reference
-
-Farlessyost W. & Singh S. (2021) *Reduced Order Dynamical Models for Complex Dynamics in Manufacturing and Natural Systems Using Machine Learning.* arXiv:2110.08313.
+<small>
+Source — W. Farlessyost & S. Singh (2021): *Reduced-Order Dynamical Models for Complex Dynamics in Manufacturing and Natural Systems Using Machine Learning*, arXiv:2110.08313.  
+</small>
