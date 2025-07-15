@@ -13,7 +13,7 @@ tags: [SINDy, CTMI, Biology]
 thumbnail: "B3.png"
 ---
 
-<!-- overview -->
+### Overview
 <p align="center">
   <img src="/B0.png" width="720"
        alt="Concept: update low-order mechanistic models with sparse-regression error terms" />
@@ -28,7 +28,7 @@ model into a black box.**
 
 ---
 
-<!-- methodology -->
+### Methodology
 <p align="center">
   <img src="/B1.png" width="460"
        alt="Four-step workflow: fit mech model → compute error → learn error ODE → update" />
@@ -38,7 +38,7 @@ model into a black box.**
 
 ---
 
-<!-- error definition -->
+### Mechanistic error vs. data
 <p align="center">
   <img src="/B2.png" width="670"
        alt="Mechanistic prediction vs data and definition of the error signal" />
@@ -46,7 +46,7 @@ model into a black box.**
 
 ---
 
-<!-- reactor photo -->
+### Experimental setup
 <p align="center">
   <img src="/B3.png" width="380"
        alt="60 L photobioreactor used for data collection" />
@@ -54,7 +54,7 @@ model into a black box.**
 
 ---
 
-<!-- SINDy control-only block -->
+### Control-only SINDy block
 <p align="center">
   <img src="/B4.png" width="540"
        alt="Control-only SINDy block—error ODE driven by T, light, pH" />
@@ -62,7 +62,7 @@ model into a black box.**
 
 ---
 
-<!-- library functions -->
+### Library functions
 <p align="center">
   <img src="/B5.png" width="340"
        alt="Domain-specific functions added to the SINDy library" />
@@ -70,26 +70,26 @@ model into a black box.**
 
 ---
 
-<!-- results -->
+### Results
 <p align="center">
   <img src="/B6.png" width="720"
        alt="Error ODE and validation-fold improvements" />
 </p>
 
-### At a glance
-
-* Hybrid curve (green/black in slides) hugs observed density far better than the blue baseline.  
-* Retains clear physical drivers—temperature, light, and pH appear explicitly.  
+#### At a glance
+* Hybrid curve (green/black on slide) hugs observed density far better than the blue baseline.  
+* Physical drivers stay explicit—temperature, light, and pH appear clearly in the learned term.
 
 ---
 
-### Where next
-
+#### Where next
 * Broader data sets (different strains, reactors).  
 * Online adaptation for continuous cultivation.  
-* Try ensemble error models to smooth early-batch noise sensitivity.
+* Ensemble error models to smooth early-batch noise sensitivity.
 
-<small> Source - Farlessyost W., Singh S. (2024) *Improving Mechanistic Model Accuracy with Machine-Learning-Informed Physics.*  
+<small>
+Source – Farlessyost W., Singh S. (2024) *Improving Mechanistic Model Accuracy with Machine-Learning-Informed Physics.*  
 In: **Foundations of Computer Aided Process Design (FOCAPD 2024)**, Breckenridge CO, July 14-18.  
 Peer-reviewed proceedings, PSEcommunity LAPSE:2024.1538, Syst Control Trans 3:275-282.  
-<https://PSEcommunity.org/LAPSE:2024.1538></small>
+<https://PSEcommunity.org/LAPSE:2024.1538>
+</small>
