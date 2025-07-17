@@ -1,34 +1,84 @@
 ---
 layout: project
-title: "Network-Level Simulation for Climate Resilience in Illinois Soybean Biodiesel MFN"
+title: "Network-Level Simulation for Climate Resilience in Illinois Soybean-Biodiesel MFN"
 date: 2025-04-23
 slug: climate-resilience-mfn
 excerpt: >
-  Node-specific LTC surrogates power a bottom-up material-flow simulation,
-  revealing tipping points and recovery dynamics under RCP 4.5 vs 8.5.
+  Node-specific LTC surrogates drive a bottom-up material-flow simulation that
+  reveals tipping points and recovery dynamics for the region’s biodiesel
+  network under RCP 4.5 vs 8.5.
 domain: [ecology, complex]
 roles: [simulation, resilience]
 tags: [LTC-NN, Industrial Ecology, Climate Scenarios]
-thumbnail: ""
+thumbnail: "D5.png"
 slides: "/Defense.pptx"
 ---
 
-### Scenario & Scope  
-Coupled natural-industrial system around **Champaign County, IL** comprising:
+### Methodological flow
+<p align="center">
+  <img src="/D1.png" width="540"
+       alt="Three-step workflow: build node surrogates → couple flows & controllers → analyze resilience" />
+</p>
 
-* Soybean growth (agricultural node)  
-* Oil extraction plant  
-* Biodiesel processing plant
+---
 
-### Method  
-* Train LTC models for each node using ASPEN Plus & BioCro data.  
-* Run Monte-Carlo simulations under **RCP 4.5 and 8.5** climate projections.  
-* Evaluate resilience metrics: production failures, recovery time, import dependency.
+### System boundary & data pipeline
+<p align="center">
+  <img src="/D2.png" width="720"
+       alt="MFN nodes (soy growth, oil plant, diesel plant) with exogenous climate drivers and controllers" />
+</p>
 
-### Findings  
-* RCP 8.5 caused **earlier & more frequent failures**; 500-ha farms hit stock tipping points ≈ 2050.  
-* Smaller farms (450 ha) showed highest import dependency; larger farms buffered but still vulnerable.  
-* Non-linear waste accumulation patterns uncovered hidden dependencies.
+---
 
-### Takeaway  
-Combining **ML surrogates with network simulation** offers actionable insight for climate-adaptation strategies in bio-industrial supply chains.
+### Algorithmic controllers for coupled plants
+<p align="center">
+  <img src="/D3.png" width="540"
+       alt="Controller LTC nets wrapped around frozen plant surrogates" />
+</p>
+
+---
+
+### LTC network architectures (oil vs. diesel nodes)
+<p align="center">
+  <img src="/D4.png" width="600"
+       alt="Liquid-time-constant neuron graphs for the two industrial nodes" />
+</p>
+
+---
+
+## Verification – LTC vs. ASPEN/BioCro trajectories
+<p align="center">
+  <img src="/D5.png" width="640"
+       alt="Surrogate predictions match test trajectories for diesel, oil, and soybean growth" />
+</p>
+
+---
+
+## Climate-scenario results
+
+| Metric block | RCP 4.5  |  RCP 8.5 |
+|--------------|----------|----------|
+| **Industrial throughput** | <img src="/D6.png" width="420" alt="Oil & diesel hourly output over 100 yr"> | <img src="/D6.png#right" width="420" alt=""> |
+| **Stock & waste accumulation** | <img src="/D7.png" width="420" alt="Cumulative waste and seasonal stock trends"> | <img src="/D7.png#right" width="420" alt=""> |
+| **Import needed for continuity** | <img src="/D8.png" width="420" alt="Soy imports required to keep plants running"> | <img src="/D8.png#right" width="420" alt=""> |
+
+*Blue = 450 ha, Green = 500 ha, Red = 550 ha farm size.*
+
+---
+
+### Key insights
+* **Earlier & more frequent production shortfalls** under RCP 8.5; first outages appear ~2040 for 500 ha farms.  
+* 450 ha configuration relies on imports after ~2025 in both scenarios; 550 ha buffers longer but eventually stalls under extreme heat years.  
+* Waste build-up (red series) exposes hidden storage bottlenecks that accelerate shutdown cascades.  
+
+### Why it matters
+A **node-level hybrid (physics + ML) approach** surfaces nonlinear resilience thresholds that would be obscured in aggregate IAMs.  
+Findings guide acreage strategy, storage sizing, and climate-adaptation road-maps for Midwestern biofuels.
+
+---
+
+### Next on the roadmap
+* Extend boundary to rail transport & glycerol co-product valorisation.  
+* Couple to watershed & groundwater models for water-stress feedbacks.  
+* Embed agent-based economic layer to test policy levers (RFS credits, crop insurance).
+
