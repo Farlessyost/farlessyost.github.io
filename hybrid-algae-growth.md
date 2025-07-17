@@ -10,7 +10,7 @@ excerpt: >
 domain: [ml, control, ecology]
 roles: [modeling, hybrid-ml]
 tags: [SINDy, CTMI, Biology]
-thumbnail: "B3.png"
+thumbnail: "B0.png"
 ---
 
 ### Overview
