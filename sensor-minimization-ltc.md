@@ -12,90 +12,88 @@ tags: [LTC-NN, Spring–Mass–Damper, CSTR, Predator-Prey]
 thumbnail: "C0.png"
 ---
 
-### Overview
+### Concept
 <p align="center">
   <img src="/C0.png" width="720"
-       alt="Concept schematic: causal pruning of Liquid-Time-Constant observers" />
+       alt="Overall workflow: train full LTC observer, score inputs, prune, deploy minimal set" />
 </p>
 
 ---
 
-### Benchmarks
+### From equations to data
+<p align="center">
+  <img src="/C1.png" width="540"
+       alt="ODE templates used to generate synthetic trajectories for testing" />
+</p>
+
+---
+
+### Testbeds
 <p align="center">
   <img src="/C2.png" width="720"
-       alt="Three mechanistic systems exercised: mechanical, ecological, chemical" />
+       alt="Mechanical, ecological, chemical systems and their candidate sensors" />
 </p>
 
 * **Mechanical:** Spring–Mass–Damper  
 * **Chemical:** Continuous Stirred-Tank Reactor (CSTR)  
-* **Ecological:** Predator–Prey model  
+* **Ecological:** Predator–Prey population dynamics  
 
 ---
 
-### Liquid Time-Constant (LTC) observer
+### Liquid-Time-Constant observer core
 <p align="center">
   <img src="/C3.png" width="540"
-       alt="Differential equation and MSE loss for the LTC recurrent block" />
+       alt="LTC differential neuron and MSE training loss" />
 </p>
 
 ---
 
-### Causality-guided pruning loop
+### Causal-score pruning loop
 <p align="center">
   <img src="/C4.png" width="380"
-       alt="Iterative perturb-score-prune procedure to drop weakly causal inputs" />
+       alt="Iterative perturb–score–prune algorithm to drop weak inputs" />
 </p>
 
 ---
 
-### Network architecture
+### Network layouts before & after pruning
 <p align="center">
   <img src="/C5.png" width="540"
-       alt="Full vs. pruned observer layouts and resulting signal channels" />
+       alt="Full observer, single-channel lasso, and final minimal designs" />
 </p>
 
 ---
 
-### Results – Mechanical
-<p align="center">
-  <img src="/C6.png" width="720"
-       alt="Velocity tracking plots before/after pruning—spring–mass–damper" />
-</p>
+## Results – Causal rankings (perturbation tests)
+
+| Domain | Perturbed-input plots |
+|--------|----------------------|
+| Mechanical | <img src="/C6.png" width="720" alt="Velocity response to input perturbations"> |
+| Ecological | <img src="/C7.png" width="420" alt="Predator–prey response to input perturbations"> |
+| Chemical | <img src="/C8.png" width="720" alt="Concentration response to input perturbations"> |
 
 ---
 
-### Results – Ecological
-<p align="center">
-  <img src="/C7.png" width="420"
-       alt="Predator–prey tracking and causal-score ranking" />
-</p>
+## Results – Prediction quality with pruned sensors
+
+| Domain | LTC output vs. ground-truth |
+|--------|-----------------------------|
+| Mechanical | <img src="/C9.png" width="720" alt="Predicted vs actual velocity after pruning"> |
+| Ecological | <img src="/C10.png" width="420" alt="Predicted vs actual predator count after pruning"> |
+| Chemical | <img src="/C11.png" width="720" alt="Predicted vs actual concentration after pruning"> |
 
 ---
 
-### Results – Chemical
-<p align="center">
-  <img src="/C8.png" width="720"
-       alt="Concentration tracking in CSTR across four scenarios" />
-</p>
+### Key takeaways
+* **Noise-only channels** vanish first; physics-critical signals survive.  
+* Accuracy stays within target RMSE across all domains after pruning.  
+* Final sensor sets match classical observability intuition — easy to justify on the plant floor.
 
----
+### Value proposition
+* Fewer transmitters, lower I/O cost, lighter edge inference.  
+* Transparent causal rationale instead of opaque feature importance.
 
-#### Key takeaways
-* Noise-only channels are discarded first; physics-critical signals persist.  
-* **Accuracy maintained** within target RMSE for all three domains after pruning.  
-* Selected sensors line up with textbook observability arguments—helping adoption by controls engineers.
-
----
-
-#### Value proposition
-* Cuts hardware & I/O costs for soft-sensor deployments.  
-* Lowers inference load for embedded edge controllers.  
-* Delivers a **transparent causal rationale** instead of opaque feature ranking.
-
----
-
-#### Where next
-* Extend to systems with time delays and >100 candidate inputs.  
-* Stress-test under real sensor dropouts and drift.  
-* Benchmark against traditional observability-rank and QR pivoting schemes.
-
+### Next steps
+* Handle time-delay and >100-input systems.  
+* Stress-test under real sensor dropout & drift.  
+* Benchmark against QR-pivot & observability-rank placement methods.
