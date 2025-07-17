@@ -10,7 +10,7 @@ excerpt: >
 domain: [complex, sysid, ml]
 roles: [modeling, system-id]
 tags: [SINDy, Python, ODEs]
-thumbnail: "1a44eb4d-0048-479b-9a96-20a253842e89.png"
+thumbnail: "A0.png"
 ---
 
 <!-- ------------------------------------------------------------------- -->
