@@ -10,8 +10,7 @@ excerpt: >
 domain: [ecology, complex]
 roles: [simulation, resilience]
 tags: [LTC-NN, Industrial Ecology, Climate Scenarios]
-thumbnail: "D5.png"
-slides: "/Defense.pptx"
+thumbnail: "D0.png"
 ---
 
 <!-- overview -->
