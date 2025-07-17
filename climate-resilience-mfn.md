@@ -14,6 +14,14 @@ thumbnail: "D5.png"
 slides: "/Defense.pptx"
 ---
 
+<!-- overview -->
+<p align="center">
+  <img src="/D0.png" width="720"
+       alt="Coupled agricultural–industrial material-flow network with climate and demand drivers" />
+</p>
+
+---
+
 ### Methodological flow
 <p align="center">
   <img src="/D1.png" width="540"
@@ -56,23 +64,23 @@ slides: "/Defense.pptx"
 
 ## Climate-scenario results
 
-| Metric block | RCP 4.5  |  RCP 8.5 |
-|--------------|----------|----------|
-| **Industrial throughput** | <img src="/D6.png" width="420" alt="Oil & diesel hourly output over 100 yr"> | <img src="/D6.png#right" width="420" alt=""> |
-| **Stock & waste accumulation** | <img src="/D7.png" width="420" alt="Cumulative waste and seasonal stock trends"> | <img src="/D7.png#right" width="420" alt=""> |
-| **Import needed for continuity** | <img src="/D8.png" width="420" alt="Soy imports required to keep plants running"> | <img src="/D8.png#right" width="420" alt=""> |
+| Metric block | RCP 4.5  | RCP 8.5 |
+|--------------|----------|---------|
+| **Industrial throughput** | <img src="/D6.png" width="420" alt="Oil & diesel hourly output (4.5)"> | <img src="/D6.png#right" width="420" alt="Oil & diesel hourly output (8.5)"> |
+| **Stock & waste accumulation** | <img src="/D7.png" width="420" alt="Cumulative waste and seasonal stock trends (4.5)"> | <img src="/D7.png#right" width="420" alt="Cumulative waste and seasonal stock trends (8.5)"> |
+| **Import to sustain operation** | <img src="/D8.png" width="420" alt="Soy imports required (4.5)"> | <img src="/D8.png#right" width="420" alt="Soy imports required (8.5)"> |
 
-*Blue = 450 ha, Green = 500 ha, Red = 550 ha farm size.*
+<small>*Blue = 450 ha, Green = 500 ha, Red = 550 ha farm size*</small>
 
 ---
 
 ### Key insights
-* **Earlier & more frequent production shortfalls** under RCP 8.5; first outages appear ~2040 for 500 ha farms.  
-* 450 ha configuration relies on imports after ~2025 in both scenarios; 550 ha buffers longer but eventually stalls under extreme heat years.  
-* Waste build-up (red series) exposes hidden storage bottlenecks that accelerate shutdown cascades.  
+* **Earlier & more frequent production shortfalls** under RCP 8.5; first outages appear ≈ 2040 for 500 ha farms.  
+* 450 ha configuration relies on imports after ≈ 2025 in both scenarios; 550 ha buffers longer but eventually stalls under extreme-heat years.  
+* Waste build-up (red curves) exposes hidden storage bottlenecks that accelerate shutdown cascades.  
 
 ### Why it matters
-A **node-level hybrid (physics + ML) approach** surfaces nonlinear resilience thresholds that would be obscured in aggregate IAMs.  
+A **node-level hybrid (physics + ML) approach** surfaces nonlinear resilience thresholds that aggregated IAMs miss.  
 Findings guide acreage strategy, storage sizing, and climate-adaptation road-maps for Midwestern biofuels.
 
 ---
