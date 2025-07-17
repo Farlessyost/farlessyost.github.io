@@ -46,7 +46,7 @@ slides: "/Defense.pptx"
 
 ---
 
-### LTC network architectures (oil vs. diesel nodes)
+### LTC network architectures
 <p align="center">
   <img src="/D4.png" width="600"
        alt="Liquid-time-constant neuron graphs for the two industrial nodes" />
@@ -64,11 +64,23 @@ slides: "/Defense.pptx"
 
 ## Climate-scenario results
 
-| Metric block | RCP 4.5  | RCP 8.5 |
-|--------------|----------|---------|
-| **Industrial throughput** | <img src="/D6.png" width="420" alt="Oil & diesel hourly output (4.5)"> | <img src="/D6.png#right" width="420" alt="Oil & diesel hourly output (8.5)"> |
-| **Stock & waste accumulation** | <img src="/D7.png" width="420" alt="Cumulative waste and seasonal stock trends (4.5)"> | <img src="/D7.png#right" width="420" alt="Cumulative waste and seasonal stock trends (8.5)"> |
-| **Import to sustain operation** | <img src="/D8.png" width="420" alt="Soy imports required (4.5)"> | <img src="/D8.png#right" width="420" alt="Soy imports required (8.5)"> |
+### Industrial throughput
+<p align="center">
+  <img src="/D6.png" width="720"
+       alt="Hourly oil & diesel output under RCP 4.5 (left) and 8.5 (right)" />
+</p>
+
+### Stock & waste accumulation
+<p align="center">
+  <img src="/D7.png" width="720"
+       alt="Cumulative waste and seasonal stock trends for RCP 4.5 (left) and 8.5 (right)" />
+</p>
+
+### Import requirements for continuous operation
+<p align="center">
+  <img src="/D8.png" width="720"
+       alt="Soy import demand under RCP 4.5 (left) and 8.5 (right)" />
+</p>
 
 <small>*Blue = 450 ha, Green = 500 ha, Red = 550 ha farm size*</small>
 
@@ -89,4 +101,3 @@ Findings guide acreage strategy, storage sizing, and climate-adaptation road-map
 * Extend boundary to rail transport & glycerol co-product valorisation.  
 * Couple to watershed & groundwater models for water-stress feedbacks.  
 * Embed agent-based economic layer to test policy levers (RFS credits, crop insurance).
-
