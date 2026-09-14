@@ -45,11 +45,15 @@ XYZ uses four cables to move a carriage inside a frame. I’m developing the mec
 
 Four motor-driven cables position the carriage with three translational degrees of freedom, expressed in Cartesian coordinates (x, y, z). Inverse kinematics maps a target carriage position to cable lengths. Because cables only pull, tension allocation must satisfy force equilibrium with positive cable tensions. The wrist adds two rotational degrees of freedom to orient the tool for scanning or marking.
 
+Cable positioning reduces dependence on long precision rails, concentrating precision components into smaller assemblies. This shifts the design challenge toward cable-length calibration, cable compliance, and tension management.
+
 {% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the XYZ cable-driven robot" caption="Complete robot assembly." %}
 
 ## Tool wrist
 
 Two servos control pitch and roll about orthogonal axes, giving the wrist two rotational degrees of freedom. Each drives an antagonistic tendon pair: one tendon pulls while the other pays out. The drum radii set the transmission ratio between servo rotation and joint rotation. Bearing-supported joints carry the tool holder and stereo-camera mount, setting their orientation relative to the working surface.
+
+Local pitch and roll control lets the tool follow changes in the surface normal without requiring the entire carriage to rotate. Independently supported capstans carry tendon loads through bearings, reducing radial loading on the servo shafts.
 
 {% include figure.html src="/assets/images/xyz-wrist-sequence.gif" poster="/assets/images/xyz-wrist-sequence.png" alt="Two-servo wrist, bearing-supported capstans, tool holder, and stereo-camera mount" caption="Wrist assembly with two SG90-style servos, bearing-supported capstans, and the stereo-camera mount." %}
 
@@ -57,10 +61,14 @@ Two servos control pitch and roll about orthogonal axes, giving the wrist two ro
 
 Two orthogonal revolute joints provide yaw and pitch so the head can follow the cable’s direction vector as the carriage moves. During homing, a bead fixed to the cable catches the orange paddle and actuates a microswitch. This discrete switching event is intended to establish a cable-length reference for position calibration.
 
+Following the cable angle is intended to limit rubbing and off-axis paddle loading. The mechanical homing reference provides a way to re-establish the cable-length zero after setup or loss of position.
+
 {% include figure.html src="/assets/images/xyz-corner-sequence.gif" poster="/assets/images/xyz-corner-sequence.png" alt="Exploded view and rotation of the gimballed corner receiver, mounting bracket, switch, and fasteners" caption="Corner receiver with its gimbal, switch, and mounting hardware." %}
 
 ## Rod and counterweight
 
 The guide combines a prismatic joint for axial translation with a two-axis gimbal for angular motion. A square sleeve and fitted liners constrain rotation about the rod’s axis. The counterweight applies gravitational preload through the rope and pulleys, helping maintain positive cable tensions. Sizing uses quasi-static force and moment equilibrium; the pulley geometry determines mechanical advantage and how the load varies with carriage position.
+
+The keyed guide constrains an unwanted rotational degree of freedom, making tool orientation better defined. Gravity provides passive preload without an additional force actuator, at the cost of added moving inertia and position-dependent loading.
 
 {% include figure.html src="/assets/images/xyz-rod-weight-sequence.gif" poster="/assets/images/xyz-rod-weight-sequence.png" alt="Exploded view and rotation of the keyed rod, guide, pulleys, and counterweight assembly" caption="Keyed rod, guide, pulleys, and counterweight assembly." %}
