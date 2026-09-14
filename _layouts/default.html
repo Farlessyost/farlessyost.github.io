@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if page.url != '/' %}{{ page.title | escape }} — {% endif %}{{ site.title }}</title>
+  <title>{% if page.url != '/' %}{{ page.title | escape }} | {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ page.description | default: site.description | escape }}">
   <meta name="theme-color" content="#132fdf">
   <meta property="og:type" content="{% if page.layout == 'project' %}article{% else %}website{% endif %}">
-  <meta property="og:title" content="{{ page.title | escape }} — {{ site.title }}">
+  <meta property="og:title" content="{{ page.title | escape }} | {{ site.title }}">
   <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
@@ -19,15 +19,15 @@
   <header class="site-header shell">
     <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="William Farlessyost, home"><span class="monogram" aria-hidden="true">wf.</span><span>William<br>Farlessyost</span></a>
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="{{ '/projects/' | relative_url }}" {% if page.layout == 'project' or page.url == '/projects/' %}aria-current="page"{% endif %}>Work</a>
-      <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>About</a>
+      <a href="{{ '/projects/' | relative_url }}" {% if page.layout == 'project' or page.url == '/projects/' %}aria-current="page"{% endif %}>Projects</a>
+      <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>Background</a>
       <a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}aria-current="page"{% endif %}>Contact</a>
       <a class="nav-resume" href="{{ '/resume.pdf' | relative_url }}">Résumé <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a>
     </nav>
   </header>
   <main id="main" tabindex="-1">{{ content }}</main>
   <footer class="site-footer shell">
-    <div><a class="footer-name" href="{{ '/' | relative_url }}">William Farlessyost</a><p>Understanding systems. Building what’s next.</p></div>
+    <div><a class="footer-name" href="{{ '/' | relative_url }}">William Farlessyost</a><p>Robotics, embedded systems, and machine learning.</p></div>
     <nav aria-label="Footer navigation"><a href="{{ site.linkedin }}">LinkedIn</a>{% if site.email and site.email != '' %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}</nav>
     <p class="copyright">© {{ site.time | date: '%Y' }} William Farlessyost</p>
   </footer>

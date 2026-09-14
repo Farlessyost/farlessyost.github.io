@@ -1,14 +1,14 @@
 ---
 layout: page
-title: Work
+title: Projects
 permalink: /projects/
-description: Explore William Farlessyost’s engineering projects and research, including Peepin on Papaw, the XYZ robot, and scientific machine learning.
+description: Robotics, embedded systems, and machine learning projects by William Farlessyost.
 ---
 <div class="shell">
-  <header class="page-header"><p class="eyebrow">Engineering + research</p><h1>Things I build.<br><em>Questions I explore.</em></h1><p class="page-deck">Connected devices, cable-driven robotics, and models of complex dynamics. A selection of independent projects and doctoral research.</p></header>
+  <header class="page-header"><h1>Projects</h1><p class="page-deck">Engineering prototypes and doctoral research.</p></header>
   <section class="page-work" aria-label="Project portfolio">
     {% include featured-builds.html %}
-    <div class="research-heading"><p class="eyebrow">Research / Models, dynamics &amp; discovery</p></div>
+    <div class="research-heading"><h2>Research</h2></div>
     {% include work-list.html %}
   </section>
 </div>
