@@ -15,12 +15,13 @@ from pathlib import Path
 
 import FreeCAD as App
 import vtk
+import papaw_components as hardware
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--papaw-cad', type=Path, required=True)
 parser.add_argument('--xyz-cad', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
-parser.add_argument('--only', help='Render just this output filename')
+parser.add_argument('--only', help='Render this output filename, or all papaw views')
 parser.add_argument('--ffmpeg', required=True, type=Path)
 parser.add_argument('--review-dir', required=True, type=Path)
 args = parser.parse_args()
@@ -67,9 +68,11 @@ def actor_for(shape, color, opacity=1, offset=None):
 
 
 def render(name, parts, direction, up=(0, 0, 1)):
-    if args.only and args.only != name:
+    if args.only and args.only != name and not (args.only == 'papaw' and name.startswith('papaw-')):
         return
     width, height, frames, fps = 960, 640, 120, 12.5
+    if name == 'papaw-family-current.png':
+        width, height, frames, fps = 720, 480, 96, 10
     renderer = vtk.vtkRenderer()
     # Match the owner's FreeCAD viewport color (#1f1f1f).
     renderer.SetBackground(31 / 255, 31 / 255, 31 / 255)
@@ -152,33 +155,72 @@ def render(name, parts, direction, up=(0, 0, 1)):
 
 def battery_color(name):
     if 'frame' in name.lower(): return (.09, .52, .52)
-    if 'cells' in name.lower(): return (.23, .39, .62)
+    if 'cells' in name.lower(): return (.09, .11, .14)
     if 'leaves' in name.lower(): return (.76, .65, .39)
     if 'Positive' in name: return (.76, .12, .10)
     if 'Joint' in name: return (.60, .64, .68)
     return (.12, .16, .20)
 
 
-retrofit = args.papaw_cad / 'aaa_retrofit' / 'output'
-pir = open_model(retrofit / 'PIR_installed_fit_REFERENCE.FCStd')
-original = open_model(args.papaw_cad / 'output' / 'compact_pir_node.FCStd')
-parts = []
-for obj in pir.Objects:
-    if not hasattr(obj, 'Shape') or obj.Shape.isNull(): continue
-    color, opacity = battery_color(obj.Name), 1
-    if obj.Name == 'ExistingRearShell': color, opacity = (.57, .64, .70), .22
-    if obj.Name == 'ExistingElectronics': color = (.12, .32, .24)
-    parts.append((obj.Shape, color, opacity, None))
-parts.append((original.getObject('PIRFrontCover').Shape, (.72, .77, .81), 1, (0, 30, 0)))
-render('papaw-sensor-current.png', parts, (1.1, 1.6, 1.0))
-App.closeDocument(pir.Name)
-App.closeDocument(original.Name)
+def papaw_scene(module, exploded):
+    filenames = {'sensor': 'compact_pir_node.FCStd',
+                 'door': 'compact_magnetic_node.FCStd',
+                 'receiver': 'compact_oled_base.FCStd'}
+    covers = {'sensor': 'PIRFrontCover', 'door': 'MagneticFrontCover',
+              'receiver': 'BaseFrontCover'}
+    doc = open_model(args.papaw_cad / 'output' / filenames[module])
+    parts = []
+    # Use printed parts from the current source document, not group compounds.
+    for obj in doc.getObject('PrintableParts').Group:
+        if obj.TypeId != 'Part::Feature' or obj.Shape.isNull(): continue
+        is_cover = obj.Name == covers[module]
+        offset = (-65 if module != 'receiver' else -43, 0, 0) if is_cover and exploded else None
+        opacity = 1 if is_cover and exploded else (.18 if is_cover else .26)
+        if 'MagnetPod' in obj.Name:
+            opacity = .3
+            offset = None
+        parts.append((obj.Shape.copy(), (.68, .73, .77), opacity, offset))
+    if module != 'receiver':
+        prefix = 'PIR' if module == 'sensor' else 'MAG'
+        retrofit = open_model(args.papaw_cad / 'aaa_retrofit' / 'output' /
+                              f'{prefix}_installed_fit_REFERENCE.FCStd')
+        for obj in retrofit.Objects:
+            if obj.TypeId != 'Part::Feature' or obj.Name.startswith('Existing'): continue
+            if obj.Shape.isNull(): continue
+            parts.append((obj.Shape.copy(), battery_color(obj.Name), 1, None))
+        parts += hardware.battery_details(6.75 if module == 'sensor' else 4.75)
+        App.closeDocument(retrofit.Name)
+    if module == 'sensor':
+        parts += hardware.placed(hardware.esp32(), 37, 4, 42, quarter_turn=True)
+        parts += hardware.placed(hardware.regulator(), 14, 17, 14)
+        parts += hardware.placed(hardware.pir(), 3, 9, 43)
+        wire_colors = {'PIR_VCC_Wire': (.7,.06,.04), 'PIR_OUT_Wire': (.8,.6,.08),
+                       'PIR_GND_Wire': (.04,.045,.05)}
+    elif module == 'door':
+        parts += hardware.placed(hardware.esp32(), 3, 9.2, 41)
+        parts += hardware.placed(hardware.regulator(), 3, 3, 42)
+        parts += hardware.reed(50,17,41)
+        parts.append((doc.getObject('MAG_Magnet').Shape.copy(), (.6,.64,.68), 1, None))
+        wire_colors = {}
+    else:
+        parts += hardware.placed(hardware.esp32(), 5.25, 3.2, 3.4)
+        parts += hardware.placed(hardware.oled(), 3.45, 10.3, 23.4)
+        wire_colors = {'OLEDVCCWire': (.7,.06,.04), 'OLEDGNDWire': (.04,.045,.05),
+                       'OLEDSDAWire': (.05,.3,.65), 'OLEDSCLWire': (.8,.6,.08)}
+    for name, color in wire_colors.items():
+        parts.append((doc.getObject(name).Shape.copy(), color, 1, None))
+    App.closeDocument(doc.Name)
+    return parts
 
-battery = open_model(retrofit / 'AAA_thin_frame_assembly_REFERENCE.FCStd')
-parts = [(o.Shape, battery_color(o.Name), 1, None) for o in battery.Objects
-         if hasattr(o, 'Shape') and not o.Shape.isNull()]
-render('papaw-battery-current.png', parts, (1.1, 1.8, 1.3))
-App.closeDocument(battery.Name)
+
+if not args.only or args.only.startswith('papaw'):
+    family = []
+    for module, x in (('sensor', -85), ('door', 0), ('receiver', 85)):
+        render(f'papaw-{module}-current.png', papaw_scene(module, True), (.9, 2.7, 1.15))
+        family += [(s,c,o,(x,0,0)) for s,c,o,_ in papaw_scene(module, False)]
+    render('papaw-family-current.png', family, (.4, 2.7, .9))
+    provenance['papaw_components.py'] = hashlib.sha256(
+        Path(hardware.__file__).read_bytes()).hexdigest()
 
 robot = open_model(args.xyz_cad / 'output' / 'XYZ_V34_Whole_Robot.FCStd')
 parts, wrist_parts = [], []
@@ -193,5 +235,7 @@ for obj in robot.Objects:
 render('xyz-robot-current.png', parts, (1.0, 1.5, .85))
 render('xyz-wrist-current.png', wrist_parts, (1.2, 1.7, .9))
 App.closeDocument(robot.Name)
-(args.output.parent.parent / 'scripts' / 'render-sources.json').write_text(
-    json.dumps(provenance, indent=2) + '\n', encoding='utf-8', newline='\n')
+manifest = Path(__file__).with_name('render-sources.json')
+previous = json.loads(manifest.read_text(encoding='utf-8')) if manifest.exists() else {}
+previous.update(provenance)
+manifest.write_text(json.dumps(previous, indent=2) + '\n', encoding='utf-8', newline='\n')

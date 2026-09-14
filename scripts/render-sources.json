@@ -1,6 +1,9 @@
 {
   "PIR_installed_fit_REFERENCE.FCStd": "780664cfa40346502410bb71fd0bd17b71097f5378dd49b988754f62b6428781",
   "compact_pir_node.FCStd": "7c533c2e146909168365707d85e25d4af7e3e19109d3caa4e171769f82dca30d",
-  "AAA_thin_frame_assembly_REFERENCE.FCStd": "7355173586c8b3ccc31dcf5a19abb30b506b2ef8ca423f12b17405e266500e87",
-  "XYZ_V34_Whole_Robot.FCStd": "23e00e1b9902457fd23aa2a3002ae0788361ea45df8c448e91baebb6595a7115"
+  "XYZ_V34_Whole_Robot.FCStd": "23e00e1b9902457fd23aa2a3002ae0788361ea45df8c448e91baebb6595a7115",
+  "compact_magnetic_node.FCStd": "bc669156c03d5749e325521e18ab78e5cee7b7d64f0d4186bff4bd82483b86b7",
+  "MAG_installed_fit_REFERENCE.FCStd": "c8e47acc9bbcc228a717768720615bd018ab1c3baa9a892cf519cb2aa24c852b",
+  "compact_oled_base.FCStd": "1580015a51d4152fd302ee1336c0c9410c1d6edb7b88894c299e0cfd631d34b9",
+  "papaw_components.py": "a63a031a2cb7ab0dc88898e294a2b3cf269ebe56342d45b4fcb0534984555d2d"
 }

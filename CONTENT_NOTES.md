@@ -20,7 +20,7 @@ The original research presentation figures are preserved; wording avoids precise
 
 ## Independent projects
 
-Peepin on Papaw sources: `doorway-monitor/README.md`, Android pilot documentation, ultracompact enclosure documentation and AAA retrofit notes. Images are fresh exports from the September 12 installed-fit and battery-reference models, using the September 11 front cover for the exploded view. No activity logs, household telemetry, private addresses, or credentials are included.
+Peepin on Papaw sources: `doorway-monitor/README.md`, Android pilot documentation, ultracompact enclosure documentation and AAA retrofit notes. Images show the motion sensor, magnetic door sensor with separate magnet pod, and OLED receiver. Current enclosure and battery-frame geometry is preserved. Electronic components use representative geometry based on the selected Amazon product photographs, with approximate small details as requested. These visualizations do not establish verified manufacturing fit. Source notes are in `scripts/papaw-hardware-audit.md`. No activity logs, household telemetry, private addresses, or credentials are included.
 
 XYZ sources: MuJoCo/ROS simulation README, ESP32 Super Mini firmware README, active assembly metadata, and the V34 wrist README. Images are fresh exports from the September 14 active V34 whole-robot document, showing the complete machine and the wrist. The older simulation image and annotated review sheet have been replaced. Main-cable firmware and the unimplemented current wrist hardware driver are distinguished.
 
@@ -32,4 +32,4 @@ The supplied `whoolookatmeimamedicalscanner.mp4` is a 5:43 simulation recording.
 
 ## Assembly animations
 
-The four assembly views are full-rotation GIFs rendered directly from the same current CAD models. Their charcoal background matches the owner’s FreeCAD preference. Still frames are retained for pause controls and reduced-motion preferences. The Status subsections were removed from both independent project pages at the owner’s request.
+The six assembly animations comprise three individual Papaw modules, a Papaw family view, and two XYZ views. Their charcoal background matches the owner’s FreeCAD preference. Still frames are retained for pause controls and reduced-motion preferences. The Status subsections were removed from both independent project pages at the owner’s request.
