@@ -1,138 +1,36 @@
 ---
 layout: page
-title: "About"
+title: About
 permalink: /about/
-description: "PhD-trained complex–systems modeler with expertise in system identification, ML-enhanced control, and industrial ecology."
+description: William Farlessyost’s background in mechatronics, applied mathematics, and doctoral research at Purdue University.
 ---
-
-<!-- Header -->
-<section class="py-12 md:py-16 bg-blue-light/5">
-  <div class="container mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
-    <img
-      src="{{ '/headshot.jpg' | relative_url }}"
-      alt="Head-shot of William Farlessyost"
-      class="w-44 h-44 rounded-full shadow-lg shrink-0 object-cover"
-      loading="lazy" />
-
-    <div>
-      <h1 class="text-3xl md:text-4xl font-bold mb-3">
-        William Farlessyost, Ph.D.
-      </h1>
-
-      <p class="text-lg leading-relaxed">
-        Complex-systems scientist focusing on data-driven modeling, machine-learning–enhanced
-        control, and sustainability analysis for coupled industrial-natural systems.
-      </p>
-
-      <div class="flex flex-wrap gap-3 mt-6">
-        <a href="{{ '/resume.pdf' | relative_url }}" class="btn-primary">
-          Download Résumé
-        </a>
-        <a href="{{ '/consulting/' | relative_url }}" class="btn-outline">
-          Consulting Site
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Education -->
-<section class="py-12 md:py-16 bg-white">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title">Education</h2>
-
-    <ul class="space-y-4 mt-8 list-disc list-inside">
-      <li>
-        <strong>Purdue University (Ph.D., 2025)</strong> — Agricultural &amp; Biological Engineering;  
-        majors in Computational Science &amp; Engineering and Ecological Sciences &amp; Engineering. :contentReference[oaicite:0]{index=0}
-      </li>
-      <li>
-        <strong>University of North Carolina Asheville (2020)</strong> — B.S.E. Mechatronics Engineering (summa cum laude) and  
-        B.A. Applied Mathematics (summa cum laude). :contentReference[oaicite:1]{index=1}
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- Research & Professional Experience -->
-<section class="py-12 md:py-16 bg-blue-light/10">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title">Research&nbsp;&amp;&nbsp;Professional Experience</h2>
-
-    <ul class="space-y-4 mt-8 list-disc list-inside">
-      <li>
-        <strong>Graduate Research Assistant, Purdue University (Aug 2020 – Present)</strong><br />
-        • Applied SINDy for system identification and hybrid mechanistic–ML models.<br />
-        • Built liquid-time-constant (LTC) neural-network surrogates for material-flow networks and conducted sensitivity analyses under climate scenarios.<br />
-        • Led sensor-minimization studies for dynamic systems. :contentReference[oaicite:2]{index=2}
-      </li>
-      <li>
-        <strong>Undergraduate Research &amp; Design Projects (2017 – 2020)</strong><br />
-        • Quadrotor UAV soft-landing controller using ROS &amp; Simulink.<br />
-        • Apprenticeship-learning UR3e robot sorter (NSF-funded).<br />
-        • NASA Lunabotics double-Ackermann mining robots (SLAM &amp; path-planning). :contentReference[oaicite:3]{index=3}
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- Technical Skills -->
-<section class="py-12 md:py-16 bg-white">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title">Technical Skills</h2>
-
-    <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-8 list-disc list-inside">
-      <li><strong>Programming:</strong> C/C++, Python, MATLAB, R, Bash/Shell.</li>
-      <li><strong>ML Frameworks:</strong> TensorFlow, PyTorch, Scikit-learn, LTC-NN, SINDy.</li>
-      <li><strong>Modeling Tools:</strong> ASPEN Plus/Dynamics, Simulink, BioCro, ROS, Gazebo.</li>
-      <li><strong>Methods:</strong> Statistical process control, multivariate stats, time-series analysis, traditional system ID.</li>
-      <li><strong>Domain Expertise:</strong> Dynamic material-flow analysis, life-cycle assessment, climate-impact modeling. :contentReference[oaicite:4]{index=4}
-    </ul>
-  </div>
-</section>
-
-<!-- Selected Publications -->
-<section class="py-12 md:py-16 bg-blue-light/10">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title">Selected Publications</h2>
-
-    <ul class="space-y-4 mt-8 list-disc list-inside">
-      <li>
-        “Reduced-Order Dynamical Models for Complex Dynamics in Manufacturing and Natural Systems Using Machine Learning,” <em>Nonlinear Dynamics</em>, 2022. :contentReference[oaicite:5]{index=5}
-      </li>
-      <li>
-        “Resilience Dynamics in Coupled Natural-Industrial Systems: A Surrogate Modeling Approach for Assessing Climate-Change Impacts on Industrial Ecosystems,” manuscript in review, <em>Journal of Industrial Ecology</em>. :contentReference[oaicite:6]{index=6}
-      </li>
-      <li>
-        “Improving Mechanistic Model Accuracy with Machine-Learning-Informed Physics,” poster, <em>Foundations of Computer Aided Process Design</em>, 2024. :contentReference[oaicite:7]{index=7}
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- Awards -->
-<section class="py-12 md:py-16 bg-white">
-  <div class="container mx-auto px-6">
-    <h2 class="section-title">Honors&nbsp;&amp;&nbsp;Awards</h2>
-
-    <ul class="space-y-4 mt-8 list-disc list-inside">
-      <li>NSF Graduate Research Fellowship Program (2022 – 2025). :contentReference[oaicite:8]{index=8}</li>
-      <li>Departmental Professionalism &amp; Academic Excellence Award (Mechatronics, 2020). :contentReference[oaicite:9]{index=9}</li>
-      <li>Top Mathematics Student Award (UNCA, 2020). :contentReference[oaicite:10]{index=10}</li>
-      <li>SIMIODE Differential Equations Modeling Meritorious Award (2019). :contentReference[oaicite:11]{index=11}</li>
-    </ul>
-  </div>
-</section>
-
-<!-- Contact CTA -->
-<section class="py-14 bg-orange text-white text-center">
-  <h2 class="text-2xl md:text-3xl font-semibold">
-    Have a project that needs rigorous modeling?
-  </h2>
-  <p class="mt-2 mb-6 text-lg">
-    Let’s discuss how data-driven dynamics can accelerate your goals.
-  </p>
-  <a href="{{ '/contact/' | relative_url }}" class="btn-primary-inverse">
-    Get&nbsp;in&nbsp;Touch
-  </a>
-</section>
+<div class="shell">
+  <section class="about-intro">
+    <div><p class="eyebrow">A little about me</p><h1>Curiosity,<br>with an<br><em>engineering mindset.</em></h1><p class="page-deck">I’m William Farlessyost, an engineer and researcher interested in the connections between physical systems, computation, and the world around us.</p><p>My background spans mechatronics, applied mathematics, and a Ph.D. in Agricultural and Biological Engineering from Purdue. I work across disciplines because the problems that interest me rarely fit neatly inside one.</p><p>Alongside my research, I build embedded sensing systems and explore cable-driven robotics. These projects bring modeling and software into contact with the practical details of electronics, mechanical design, and physical prototypes.</p><div class="actions"><a class="button" href="{{ '/resume.pdf' | relative_url }}">Read my résumé <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a></div></div>
+    <figure class="about-photo"><div class="portrait-frame"><img src="{{ '/headshot.jpg' | relative_url }}" alt="William Farlessyost" width="1492" height="2892"></div><figcaption>William Farlessyost, Ph.D.</figcaption></figure>
+  </section>
+  <section class="bio-section" aria-labelledby="education"><h2 id="education">Education</h2><div>
+    <div class="entry"><p class="meta">Purdue University / 2025</p><h3>Ph.D., Agricultural &amp; Biological Engineering</h3><p>Majors in Computational Science &amp; Engineering and Ecological Sciences &amp; Engineering.</p><p>My dissertation investigated machine learning and causal analysis for material-flow dynamics, resilience evaluation, and sensor minimization.</p></div>
+    <div class="entry"><p class="meta">UNC Asheville + NC State / 2020</p><h3>B.S.E., Mechatronics Engineering</h3><p>Joint engineering program; summa cum laude.</p></div>
+    <div class="entry"><p class="meta">UNC Asheville / 2020</p><h3>B.A., Applied Mathematics</h3><p>Summa cum laude.</p></div>
+  </div></section>
+  <section class="bio-section" aria-labelledby="experience"><h2 id="experience">Research &amp;<br>engineering</h2><div>
+    <div class="entry"><p class="meta">Doctoral research / Purdue University</p><h3>Models of industrial and natural systems</h3><p>Developed sparse dynamical models, hybrid mechanistic–ML models, and continuous-time neural surrogates. Investigated sensor selection and the propagation of climate stress through coupled material-flow networks.</p></div>
+    <div class="entry"><p class="meta">Independent projects</p><h3>Embedded sensing and cable-driven robotics</h3><p>Peepin on Papaw connects sensor firmware, local event processing, and enclosure design. The XYZ robot combines simulation, control interfaces, embedded electronics, and iterative mechanical CAD.</p></div>
+    <div class="entry"><p class="meta">Earlier engineering work</p><h3>Robotics, autonomy, and control</h3><p>Projects included a quadrotor landing controller using ROS and Simulink, apprenticeship learning for a UR3e robot sorter, and autonomous mining-robot development for NASA Lunabotics.</p></div>
+  </div></section>
+  <section class="bio-section" aria-labelledby="toolkit"><h2 id="toolkit">Technical toolkit</h2><div class="skill-grid">
+    <div><h3>Modeling &amp; machine learning</h3><p>System identification, SINDy, liquid-time-constant networks, TensorFlow, PyTorch, scikit-learn.</p></div>
+    <div><h3>Programming &amp; data</h3><p>Python, C/C++, MATLAB, R, Bash, SQLite, time-series analysis.</p></div>
+    <div><h3>Robotics &amp; prototyping</h3><p>ROS / ROS 2, MuJoCo, Gazebo, FreeCAD, ESP32, embedded firmware, 3D-printed enclosures.</p></div>
+    <div><h3>Process &amp; ecological systems</h3><p>ASPEN Plus/Dynamics, Simulink, BioCro, dynamic material-flow analysis, life-cycle assessment.</p></div>
+  </div></section>
+  <section class="bio-section" aria-labelledby="publications"><h2 id="publications">Selected<br>publications</h2><ol class="publications">
+    <li><p class="pub-year">2025 / Journal of Industrial Ecology</p><a href="https://doi.org/10.1111/jiec.70087">Resilience dynamics in coupled natural-industrial systems: A surrogate modeling approach for assessing climate-change impacts on industrial ecosystems <span aria-hidden="true">↗</span></a></li>
+    <li><p class="pub-year">2025 / Research preprint</p><a href="https://arxiv.org/abs/2509.11336">The power of dynamic causality in observer-based design for soft sensor applications <span aria-hidden="true">↗</span></a><p>William Farlessyost, Sebastian Oberst, and Shweta Singh. Preprint version.</p></li>
+    <li><p class="pub-year">2024 / FOCAPD · Systems and Control Transactions</p><a href="https://doi.org/10.69997/sct.121371">Improving Mechanistic Model Accuracy with Machine-Learning-Informed Physics <span aria-hidden="true">↗</span></a><p>William Farlessyost and Shweta Singh.</p></li>
+    <li><p class="pub-year">2022 / Nonlinear Dynamics</p><a href="https://doi.org/10.1007/s11071-022-07695-x">Reduced order dynamical models for complex dynamics in manufacturing and natural systems using machine learning <span aria-hidden="true">↗</span></a><p>William Farlessyost and Shweta Singh.</p></li>
+  </ol></section>
+  <section class="bio-section" aria-labelledby="recognition"><h2 id="recognition">Recognition</h2><div><div class="entry"><p class="meta">2022–2025</p><h3>NSF Graduate Research Fellowship</h3><p>Additional recognition includes the Mechatronics Professionalism &amp; Academic Excellence Award, UNC Asheville’s Top Mathematics Student Award, and a SIMIODE Differential Equations Modeling Meritorious Award.</p></div></div></section>
+</div>
+<section class="contact-band shell"><p class="eyebrow">Get in touch</p><h2>Let’s compare<br><em>notes.</em></h2><div><p>I welcome conversations about research, engineering, and interesting problems.</p><a class="button" href="{{ '/contact/' | relative_url }}">Connect with me <span aria-hidden="true">↗</span></a></div></section>

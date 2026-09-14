@@ -1,0 +1,36 @@
+title: William Farlessyost
+description: Engineering, robotics, and research at the intersection of physical systems and machine learning.
+url: https://farlessyost.github.io
+baseurl: ""
+lang: en
+markdown: kramdown
+permalink: pretty
+email: wbfarlessyost@gmail.com
+linkedin: https://www.linkedin.com/in/farlessyost
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CONTENT_NOTES.md
+  - vendor
+  - scripts
+  - .bundle
+  - .gitignore
+  - A0.png
+  - A4.png
+  - A7.png
+  - B0.png
+  - B2.png
+  - B5.png
+  - C0.png
+  - C1.png
+  - C3.png
+  - C6.png
+  - C7.png
+  - C8.png
+  - D0.png
+  - D1.png
+  - D2.png
+  - D3.png
+  - D4.png
+  - icon.png

@@ -1,99 +1,47 @@
 ---
 layout: project
-title: "Sensor Minimization via Causality-Guided LTC Networks"
-date: 2025-04-23
-slug: sensor-minimization-ltc
-excerpt: >
-  A perturbation-based pruning algorithm that shrinks sensor sets for mechanical,
-  chemical, and ecological systems—without sacrificing accuracy.
-domain: [ml, control]
-roles: [sensor-design, causality]
-tags: [LTC-NN, Spring–Mass–Damper, CSTR, Predator-Prey]
-thumbnail: "C0.png"
+title: Learning which sensors matter
+permalink: /sensor-minimization-ltc.html
+group: research
+order: 3
+category: Sensing & machine learning
+status: Research preprint · 2025
+description: Using continuous-time neural observers and controlled input perturbations to investigate smaller measurement sets for dynamic systems.
+summary: Exploring how a model can retain useful state estimates with fewer inputs across mechanical, chemical, and ecological testbeds.
+card_methods: Liquid-time-constant networks · Observers · Causal analysis
+focus: Sensor selection for state estimation
+methods: Neural observers and perturbation-based pruning
+context: Doctoral research, Purdue University
+next_url: /climate-resilience-mfn.html
+next_title: Climate resilience across an industrial network
 ---
+## The question
 
-### Concept
-<p align="center">
-  <img src="/C0.png" width="720"
-       alt="Overall workflow: train full LTC observer, score inputs, prune, deploy minimal set" />
-</p>
+A system can have many available measurements without needing all of them to estimate the state of interest. Which signals carry essential information, and which can be removed?
 
----
+I investigated that question with liquid-time-constant (LTC) neural networks, using mechanical, chemical, and ecological test systems.
 
-### From equations to data
-<p align="center">
-  <img src="/C1.png" width="540"
-       alt="ODE templates used to generate synthetic trajectories for testing" />
-</p>
+## The approach
 
----
+An LTC observer first learns to estimate a target state from the full set of candidate inputs. Controlled perturbations then test how changes to individual inputs affect its predictions. Those responses guide an iterative pruning process, with the reduced input set evaluated against a prediction-error target.
 
-### Testbeds
-<p align="center">
-  <img src="/C2.png" width="720"
-       alt="Mechanical, ecological, chemical systems and their candidate sensors" />
-</p>
+The testbeds include a spring–mass–damper system, a continuous stirred-tank reactor, and predator–prey population dynamics.
 
-* **Mechanical:** Spring–Mass–Damper  
-* **Chemical:** Continuous Stirred-Tank Reactor (CSTR)  
-* **Ecological:** Predator–Prey population dynamics  
+{% include figure.html src="/C2.png" alt="Mechanical, ecological, and chemical testbeds with candidate measurements" caption="Three different kinds of dynamics provide test cases for the sensor-selection approach." %}
 
----
+## What the experiments showed
 
-### Liquid-Time-Constant observer core
-<p align="center">
-  <img src="/C3.png" width="540"
-       alt="LTC differential neuron and MSE training loss" />
-</p>
+The reported synthetic test cases supported smaller input sets while meeting their prediction-error targets. Inputs containing only noise could be removed, while signals important to the modeled dynamics remained.
 
----
+The useful result is a more inspectable basis for deciding which measurements support an observer. It does not establish field performance, hardware cost savings, or behavior under real sensor drift.
 
-### Causal-score pruning loop
-<p align="center">
-  <img src="/C4.png" width="380"
-       alt="Iterative perturb–score–prune algorithm to drop weak inputs" />
-</p>
+{% include figure.html src="/C5.png" alt="Comparison of the full observer and reduced sensor-network designs" caption="Observer designs before and after input selection." %}
 
----
+<details class="figure-details"><summary>Explore the pruning method and prediction results</summary>
+{% include figure.html src="/C4.png" alt="Iterative perturbation, scoring, and input-pruning algorithm" caption="The input-pruning loop." %}
+{% include figure.html src="/C9.png" alt="Mechanical-system state predictions after sensor pruning compared with ground truth" caption="Mechanical-system prediction results using the reduced input set." %}
+{% include figure.html src="/C10.png" alt="Predator-prey prediction results after sensor pruning" caption="Ecological-system prediction results." %}
+{% include figure.html src="/C11.png" alt="Chemical concentration predictions after sensor pruning" caption="Chemical-system prediction results." %}
+</details>
 
-### Network layouts before & after pruning
-<p align="center">
-  <img src="/C5.png" width="540"
-       alt="Full observer, single-channel lasso, and final minimal designs" />
-</p>
-
----
-
-## Results – Causal rankings (perturbation tests)
-
-| Domain | Perturbed-input plots |
-|--------|----------------------|
-| Mechanical | <img src="/C6.png" width="720" alt="Velocity response to input perturbations"> |
-| Ecological | <img src="/C7.png" width="420" alt="Predator–prey response to input perturbations"> |
-| Chemical | <img src="/C8.png" width="720" alt="Concentration response to input perturbations"> |
-
----
-
-## Results – Prediction quality with pruned sensors
-
-| Domain | LTC output vs. ground-truth |
-|--------|-----------------------------|
-| Mechanical | <img src="/C9.png" width="720" alt="Predicted vs actual velocity after pruning"> |
-| Ecological | <img src="/C10.png" width="420" alt="Predicted vs actual predator count after pruning"> |
-| Chemical | <img src="/C11.png" width="720" alt="Predicted vs actual concentration after pruning"> |
-
----
-
-### Key takeaways
-* **Noise-only channels** vanish first; physics-critical signals survive.  
-* Accuracy stays within target RMSE across all domains after pruning.  
-* Final sensor sets match classical observability intuition — easy to justify on the plant floor.
-
-### Value proposition
-* Fewer transmitters, lower I/O cost, lighter edge inference.  
-* Transparent causal rationale instead of opaque feature importance.
-
-### Next steps
-* Handle time-delay and >100-input systems.  
-* Stress-test under real sensor dropout & drift.  
-* Benchmark against QR-pivot & observability-rank placement methods.
+<p class="source-note">Research with Sebastian Oberst and Shweta Singh. <a href="https://arxiv.org/abs/2509.11336">Read the 2025 preprint</a>. This link identifies the preprint version of the work.</p>

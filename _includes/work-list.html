@@ -1,0 +1,11 @@
+<div class="work-list">
+  {% assign projects = site.pages | where: 'layout', 'project' | where: 'group', 'research' | sort: 'order' %}
+  {% for project in projects %}
+  <a class="work-item" href="{{ project.url | relative_url }}">
+    <span class="work-number">0{{ forloop.index }}</span>
+    <div class="work-title"><p class="eyebrow">{{ project.category }}</p><h3>{{ project.title }}</h3></div>
+    <div class="work-summary"><p>{{ project.summary }}</p><span class="work-methods">{{ project.card_methods }}</span></div>
+    <span class="work-arrow" aria-hidden="true">↗</span>
+  </a>
+  {% endfor %}
+</div>

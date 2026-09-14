@@ -1,0 +1,9 @@
+<div class="featured-builds">
+  {% assign builds = site.pages | where: 'layout', 'project' | where: 'group', 'build' | sort: 'order' %}
+  {% for project in builds %}
+  <a class="build-card" href="{{ project.url | relative_url }}">
+    {% if project.cover %}<div class="build-image"><img src="{{ project.cover | relative_url }}" alt="{{ project.cover_alt }}" loading="lazy" width="1200" height="800"></div>{% endif %}
+    <div class="build-copy"><p class="eyebrow">{{ project.category }} / In development</p><h3>{{ project.title }} <span aria-hidden="true">↗</span></h3><p>{{ project.summary }}</p><span class="work-methods">{{ project.card_methods }}</span></div>
+  </a>
+  {% endfor %}
+</div>
