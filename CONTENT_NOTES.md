@@ -32,4 +32,10 @@ The supplied `whoolookatmeimamedicalscanner.mp4` is a 5:43 simulation recording.
 
 ## Assembly animations
 
-The six assembly animations comprise three individual Papaw modules, a Papaw family view, and two XYZ views. Their charcoal background matches the owner’s FreeCAD preference. Still frames are retained for pause controls and reduced-motion preferences. The Status subsections were removed from both independent project pages at the owner’s request.
+Eight FreeCAD/LuxCore studio animations show the complete XYZ machine, wrist, corner receiver, rod and counterweight assembly, Papaw family, and three individual Papaw modules. Each 720 × 480 GIF rotates for 4.8 seconds, pauses, separates into components, holds the exploded view, and reassembles before rotation resumes. The complete loop is 9.3 seconds. The Papaw covers start fitted and lift away during separation. Purchased electronic modules remain intact while their surrounding parts separate.
+
+The two XYZ close-ups use the active V34 geometry. Timber supports are cropped only in presentation copies to show the local mounting interfaces. The rod view includes its actual saved pulley and rope routes. Engineering source documents are unchanged. These are presentation animations, not validated assembly instructions.
+
+Posters match the first assembled frame and support pause controls and reduced motion. The Status subsections remain removed. All three individual Papaw views are available in an expandable section.
+
+Source hashes, rendering parameters, and animation phase checks are recorded in `scripts/photoreal-render-sources.json`. The local scene files, `build_sequence_scenes.py`, `render_assembly_sequences.py`, and `embed_sequences.py` are saved in `C:/Users/wbfar/Portfolio Renders/2026-09-14`. The wood material is Poly Haven's Coated Pine by Charlotte Baglioni and Rico Cilliers, under CC0: https://polyhaven.com/a/coated_pine and https://polyhaven.com/license.

@@ -12,7 +12,7 @@
     }
     for (const button of buttons) {
       button.hidden = false;
-      button.textContent = paused ? 'Play rotations' : 'Pause rotations';
+      button.textContent = paused ? 'Play animations' : 'Pause animations';
       button.setAttribute('aria-pressed', String(paused));
     }
   }
