@@ -57,7 +57,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--blue); outline
 .section-heading>p { max-width: 385px; justify-self: end; color: var(--muted); }
 .featured-builds { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .build-card { background: var(--soft); min-width: 0; }
-.build-image { aspect-ratio: 3/2; background: #e8edf3; overflow: hidden; }
+.build-image { aspect-ratio: 3/2; background: #1f1f1f; overflow: hidden; }
 .build-image img { width: 100%; height: 100%; object-fit: contain; }
 .build-copy { padding: 28px 30px 30px; }
 .build-copy .eyebrow { font-size: .75rem; }
@@ -148,6 +148,13 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--blue); outline
 .research-figure>a { display: block; background: #f7f8fa; padding: 24px; border: 1px solid var(--line); }
 .research-figure img { margin-inline: auto; max-height: 650px; width: auto; }
 .research-figure figcaption { font-size: .875rem; color: var(--muted); padding: 13px 0; max-width: 850px; }
+.turntable-picture { display: block; }
+.turntable-controls { max-width: 960px; margin: 0 auto 16px; text-align: right; }
+.turntable-toggle { font: inherit; font-size: .875rem; color: var(--muted); background: transparent; border: 1px solid var(--line); padding: 7px 12px; cursor: pointer; }
+.turntable-toggle:hover { color: var(--blue); border-color: var(--blue); }
+.turntable-toggle:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.assembly-figure>a { padding: 0; background: #1f1f1f; border-color: #1f1f1f; }
+.assembly-figure img { width: 100%; max-height: none; }
 .project-video { width: 100%; max-width: 1120px; margin: 28px auto 45px; }
 .project-video video { display: block; width: 100%; height: auto; aspect-ratio: 16/9; background: #080b10; }
 .project-video video:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
@@ -301,6 +308,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--blue); outline
   .case-body>h2 { font-size: 1.7rem; margin-top: 30px; }
   .case-body>p { font-size: 1rem; }
   .research-figure>a { padding: 12px; }
+  .assembly-figure>a { padding: 0; }
   .research-figure { margin-block: 25px; }
   .research-figure figcaption { font-size: .8125rem; }
   .case-body .callout { padding: 20px; }

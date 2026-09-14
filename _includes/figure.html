@@ -1,4 +1,4 @@
-<figure class="research-figure">
-  <a class="figure-link" href="{{ include.src | relative_url }}" aria-label="View full-size figure: {{ include.alt | escape }}"><img src="{{ include.src | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy"></a>
+<figure class="research-figure{% if include.poster %} assembly-figure{% endif %}">
+  <a class="figure-link" href="{{ include.src | relative_url }}" aria-label="View full-size figure: {{ include.alt | escape }}">{% if include.poster %}<picture class="turntable-picture"><source media="(prefers-reduced-motion: reduce)" srcset="{{ include.poster | relative_url }}"><img src="{{ include.src | relative_url }}" data-turntable="{{ include.src | relative_url }}" data-still="{{ include.poster | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy" width="960" height="640"></picture>{% else %}<img src="{{ include.src | relative_url }}" alt="{{ include.alt | escape }}" loading="lazy">{% endif %}</a>
   <figcaption>{{ include.caption }} <a href="{{ include.src | relative_url }}">View full size</a></figcaption>
 </figure>

@@ -29,3 +29,7 @@ Both projects are described as in development. Update prototype status and publi
 ## Scanner video
 
 The supplied `whoolookatmeimamedicalscanner.mp4` is a 5:43 simulation recording. The website keeps its full duration, 1080p resolution, 30 fps, and audio in a compressed H.264/AAC MP4 with progressive playback. The original file remains outside the repository. The poster is a frame from 00:30. The video is labeled as a simulation and contains the mechanism and stereo demonstration views.
+
+## Assembly animations
+
+The four assembly views are full-rotation GIFs rendered directly from the same current CAD models. Their charcoal background matches the owner’s FreeCAD preference. Still frames are retained for pause controls and reduced-motion preferences. The Status subsections were removed from both independent project pages at the owner’s request.

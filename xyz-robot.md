@@ -9,7 +9,8 @@ status: In development
 description: A four-cable robot prototype for tool positioning, with a servo wrist and stereo-camera mount.
 summary: Cable-driven robot with motion simulation, embedded controls, and a two-servo wrist.
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
-cover: /assets/images/xyz-robot-current.png
+cover: /assets/images/xyz-robot-current.gif
+cover_poster: /assets/images/xyz-robot-current.png
 cover_alt: Current XYZ robot CAD assembly with timber frame, cable mechanism, and servo wrist
 focus: Cable-driven motion and tool positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
@@ -38,10 +39,8 @@ XYZ uses four cables to move a carriage inside a frame. I’m developing the mec
 - **Controls:** ESP32-C3 firmware with motor-driver interfaces, acceleration limits, arming logic, and a watchdog.
 - **Verification:** CAD interference checks, fit gauges, load calculations, and trajectory studies.
 
-{% include figure.html src="/assets/images/xyz-robot-current.png" alt="Complete V34 CAD assembly of the XYZ cable-driven robot" caption="Complete robot assembly, V34. September 2026 CAD design." %}
+{% include turntable-controls.html %}
 
-{% include figure.html src="/assets/images/xyz-wrist-current.png" alt="V34 two-servo wrist, bearing-supported capstans, tool holder, and stereo-camera mount" caption="V34 wrist assembly with two SG90-style servos, bearing-supported capstans, and the stereo-camera mount." %}
+{% include figure.html src="/assets/images/xyz-robot-current.gif" poster="/assets/images/xyz-robot-current.png" alt="Complete V34 CAD assembly of the XYZ cable-driven robot" caption="Complete robot assembly, V34. September 2026 CAD design." %}
 
-## Status
-
-The V34 assembly and motion simulation are in development. The wrist still needs hardware integration. Physical fit, loaded performance, and positioning accuracy remain to be tested.
+{% include figure.html src="/assets/images/xyz-wrist-current.gif" poster="/assets/images/xyz-wrist-current.png" alt="V34 two-servo wrist, bearing-supported capstans, tool holder, and stereo-camera mount" caption="V34 wrist assembly with two SG90-style servos, bearing-supported capstans, and the stereo-camera mount." %}

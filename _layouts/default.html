@@ -31,5 +31,6 @@
     <nav aria-label="Footer navigation"><a href="{{ site.linkedin }}">LinkedIn</a>{% if site.email and site.email != '' %}<a href="mailto:{{ site.email }}">Email</a>{% endif %}</nav>
     <p class="copyright">© {{ site.time | date: '%Y' }} William Farlessyost</p>
   </footer>
+  {% if page.url == '/' or page.url == '/projects/' or page.group == 'build' %}<script src="{{ '/assets/js/turntables.js' | relative_url }}" defer></script>{% endif %}
 </body>
 </html>

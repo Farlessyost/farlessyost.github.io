@@ -1,6 +1,6 @@
 # William Farlessyost’s portfolio
 
-A responsive Jekyll website for GitHub Pages, with engineering projects, research case studies, background, publications, and contact information. No JavaScript or external font/CDN dependency is required.
+A responsive Jekyll website for GitHub Pages, with engineering projects, research case studies, background, publications, and contact information. No external font or CDN is required. A small optional script controls assembly rotation; the content and GIFs also work without JavaScript.
 
 ## Preview
 
@@ -21,7 +21,7 @@ Open http://127.0.0.1:4000. To build without a server, use `bundle exec jekyll b
 - `_layouts/` and `_includes/`: shared page structure.
 - `assets/css/site.css`: typography, layout, responsive styles, and print styles.
 - `_config.yml`: contact links and site metadata.
-- `assets/images/`: clean views exported from the current engineering CAD models.
+- `assets/images/`: turntable GIFs and still frames exported from the current engineering CAD models.
 - Existing root research figures, headshot, and résumé are retained.
 
 The four pre-existing research `.html` URLs, `/about/`, and `/projects/` are preserved. New pages include `/contact/`, `/projects/peepin-on-papaw/`, and `/projects/xyz-robot/`.
@@ -34,4 +34,6 @@ See `CONTENT_NOTES.md` for source provenance and items to revisit when personal 
 
 ## Engineering imagery
 
-`scripts/render-portfolio.py` renders saved FreeCAD geometry through VTK, without screenshots, review annotations, or interface overlays. The current sources are Papaw’s installed AAA retrofit model and XYZ’s active V34 whole-robot assembly. Source SHA-256 hashes are recorded in `scripts/render-sources.json`. Neither the renderer nor its manifest is included in the public build.
+`scripts/render-portfolio.py` renders saved FreeCAD geometry through VTK, without screenshots, review annotations, or interface overlays. The current sources are Papaw’s installed AAA retrofit model and XYZ’s active V34 whole-robot assembly. Each GIF completes a full rotation in 9.6 seconds at 960 × 640 pixels, with the owner’s charcoal FreeCAD background. Static frames support pausing and reduced-motion preferences. Source SHA-256 hashes are recorded in `scripts/render-sources.json`. Neither the renderer nor its manifest is included in the public build.
+
+To regenerate the turntables, run the renderer with FreeCAD’s Python runtime and supply `--papaw-cad`, `--xyz-cad`, `--output`, `--ffmpeg`, and a temporary `--review-dir`. The CAD arguments point to the ultracompact sensor and V34 wrist directories; output goes to `assets/images/`.
