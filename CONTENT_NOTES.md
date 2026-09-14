@@ -39,3 +39,7 @@ The two XYZ close-ups use the active V34 geometry. Timber supports are cropped o
 Posters match the first assembled frame and support pause controls and reduced motion. The Status subsections remain removed. All three individual Papaw views are available in an expandable section.
 
 Source hashes, rendering parameters, and animation phase checks are recorded in `scripts/photoreal-render-sources.json`. The local scene files, `build_sequence_scenes.py`, `render_assembly_sequences.py`, and `embed_sequences.py` are saved in `C:/Users/wbfar/Portfolio Renders/2026-09-14`. The wood material is Poly Haven's Coated Pine by Charlotte Baglioni and Rico Cilliers, under CC0: https://polyhaven.com/a/coated_pine and https://polyhaven.com/license.
+
+## App prototype screenshots
+
+The Papaw app screenshots capture the existing `doorway-monitor/dashboard` interface through a separate local preview server with synthetic SQLite events. No household database, real device identifiers, or activity logs were used. The scenario and room-estimation explanations follow the dashboard implementation and README; duty cycling, debouncing, queueing, and duplicate suppression follow the sensor and receiver firmware. The original prototype files remain unchanged. Screenshot preparation is saved in `C:/Users/wbfar/Portfolio Renders/papaw-app-preview`.
