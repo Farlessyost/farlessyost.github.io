@@ -1,9 +1,13 @@
 {% include turntable-controls.html %}
+{% assign asset_version = site.time | date: '%Y%m%d%H%M%S' %}
 <div class="featured-builds">
   {% assign builds = site.pages | where: 'layout', 'project' | where: 'group', 'build' | sort: 'order' %}
   {% for project in builds %}
   <a class="build-card" href="{{ project.url | relative_url }}">
-    {% if project.cover %}<div class="build-image"><picture class="turntable-picture"><source media="(prefers-reduced-motion: reduce)" srcset="{{ project.cover_poster | relative_url }}"><img src="{{ project.cover | relative_url }}" data-turntable="{{ project.cover | relative_url }}" data-still="{{ project.cover_poster | relative_url }}" alt="{{ project.cover_alt }}" loading="lazy" width="960" height="640"></picture></div>{% endif %}
+    {% if project.cover %}
+    {% assign cover_src = project.cover | relative_url | append: '?v=' | append: asset_version %}
+    {% assign cover_poster = project.cover_poster | relative_url | append: '?v=' | append: asset_version %}
+    <div class="build-image"><picture class="turntable-picture"><source media="(prefers-reduced-motion: reduce)" srcset="{{ cover_poster }}"><img src="{{ cover_src }}" data-turntable="{{ cover_src }}" data-still="{{ cover_poster }}" alt="{{ project.cover_alt }}" loading="lazy" width="960" height="640"></picture></div>{% endif %}
     <div class="build-copy"><p class="eyebrow">{{ project.category }} / In development</p><h3>{{ project.title }} <span aria-hidden="true">↗</span></h3><p>{{ project.summary }}</p><span class="work-methods">{{ project.card_methods }}</span></div>
   </a>
   {% endfor %}

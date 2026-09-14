@@ -137,13 +137,17 @@ def render(name, parts, direction, up=(0, 0, 1)):
     capture.SetInputBufferTypeToRGB()
     capture.ReadFrontBufferOff()
     gif = args.output / name.replace('.png', '.gif')
+    # Jekyll ignores hidden files. Publish each completed file with an atomic
+    # rename so its watcher cannot copy an animation while it is being encoded.
+    staged_gif = gif.with_name('.' + gif.name)
+    staged_poster = args.output / ('.' + name)
     log_path = args.review_dir / (gif.stem + '.log')
     command = [str(args.ffmpeg), '-y', '-loglevel', 'error', '-f', 'rawvideo',
                '-pixel_format', 'rgb24', '-video_size', f'{width}x{height}',
                '-framerate', str(fps), '-i', 'pipe:0', '-filter_complex',
                '[0:v]split[a][b];[a]palettegen=stats_mode=full[p];'
                '[b][p]paletteuse=dither=bayer:bayer_scale=3:diff_mode=rectangle',
-               '-loop', '0', str(gif)]
+               '-loop', '0', str(staged_gif)]
     with log_path.open('wb') as log:
         encoder = subprocess.Popen(command, stdin=subprocess.PIPE, stderr=log)
         try:
@@ -155,7 +159,7 @@ def render(name, parts, direction, up=(0, 0, 1)):
                 pixels = vtk_to_numpy(capture.GetOutput().GetPointData().GetScalars())
                 pixels = pixels.reshape(height, width, 3)[::-1].copy()
                 if i == 0:
-                    Image.fromarray(pixels).save(args.output / name)
+                    Image.fromarray(pixels).save(staged_poster)
                 if i % (frames // 4) == 0:
                     Image.fromarray(pixels).save(args.review_dir / f'{gif.stem}-{i:03d}.png')
                 encoder.stdin.write(pixels.tobytes())
@@ -165,9 +169,14 @@ def render(name, parts, direction, up=(0, 0, 1)):
             encoder.stdin.close()
             if encoder.wait() != 0:
                 raise RuntimeError(log_path.read_text())
+            staged_gif.replace(gif)
+            staged_poster.replace(args.output / name)
         finally:
             if encoder.poll() is None:
                 encoder.kill()
+                encoder.wait()
+            staged_gif.unlink(missing_ok=True)
+            staged_poster.unlink(missing_ok=True)
             window.Finalize()
     print(f'Rendered {gif.name}: {gif.stat().st_size:,} bytes', flush=True)
 
