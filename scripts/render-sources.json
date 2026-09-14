@@ -5,5 +5,8 @@
   "compact_magnetic_node.FCStd": "bc669156c03d5749e325521e18ab78e5cee7b7d64f0d4186bff4bd82483b86b7",
   "MAG_installed_fit_REFERENCE.FCStd": "c8e47acc9bbcc228a717768720615bd018ab1c3baa9a892cf519cb2aa24c852b",
   "compact_oled_base.FCStd": "1580015a51d4152fd302ee1336c0c9410c1d6edb7b88894c299e0cfd631d34b9",
-  "papaw_components.py": "a63a031a2cb7ab0dc88898e294a2b3cf269ebe56342d45b4fcb0534984555d2d"
+  "papaw_components.py": "a63a031a2cb7ab0dc88898e294a2b3cf269ebe56342d45b4fcb0534984555d2d",
+  "XYZ_V34_Integrated_Wrist.FCStd": "26250f5bf7066c4c11611fb6ffe847ab448b965a5d4098e6562273f76e602c6d",
+  "AITRIP_Stereo_15mm_V33.FCStd": "cf8cdb3c4b74dd3da619cff55299bc4fd78ae69c7b9d1ffabeb19051d15c8681",
+  "xyz_appearance.py": "0a8842151caf7ad2c4f0ae3f210b7536279389c5c56e044adb5fc1193e679983"
 }

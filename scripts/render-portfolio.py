@@ -16,12 +16,13 @@ from pathlib import Path
 import FreeCAD as App
 import vtk
 import papaw_components as hardware
+import xyz_appearance
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--papaw-cad', type=Path, required=True)
 parser.add_argument('--xyz-cad', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
-parser.add_argument('--only', help='Render this output filename, or all papaw views')
+parser.add_argument('--only', help='Render this output filename, or all papaw/xyz views')
 parser.add_argument('--ffmpeg', required=True, type=Path)
 parser.add_argument('--review-dir', required=True, type=Path)
 args = parser.parse_args()
@@ -35,7 +36,7 @@ def open_model(path):
     return App.openDocument(str(path))
 
 
-def actor_for(shape, color, opacity=1, offset=None):
+def actor_for(shape, color, opacity=1, offset=None, finish=None):
     vertices, faces = shape.tessellate(.15)
     points = vtk.vtkPoints()
     for p in vertices:
@@ -48,6 +49,8 @@ def actor_for(shape, color, opacity=1, offset=None):
     mesh = vtk.vtkPolyData()
     mesh.SetPoints(points)
     mesh.SetPolys(triangles)
+    if finish == 'wood':
+        mesh = xyz_appearance.wood_mesh(vertices, faces)
     normals = vtk.vtkPolyDataNormals()
     normals.SetInputData(mesh)
     normals.SetFeatureAngle(45)
@@ -62,13 +65,29 @@ def actor_for(shape, color, opacity=1, offset=None):
     prop.SetDiffuse(.65)
     prop.SetSpecular(.18)
     prop.SetSpecularPower(35)
+    finishes = {
+        'metal': (.22, .68, .85, 80),
+        'plastic': (.30, .70, .24, 35),
+        'rubber': (.32, .75, .06, 20),
+        'glass': (.22, .40, .95, 100),
+        'wood': (.35, .70, .04, 15),
+    }
+    if finish in finishes:
+        ambient, diffuse, specular, power = finishes[finish]
+        prop.SetAmbient(ambient)
+        prop.SetDiffuse(diffuse)
+        prop.SetSpecular(specular)
+        prop.SetSpecularPower(power)
+    if finish == 'wood':
+        actor.SetTexture(xyz_appearance.wood_texture())
     if offset:
         actor.SetPosition(*offset)
     return actor
 
 
 def render(name, parts, direction, up=(0, 0, 1)):
-    if args.only and args.only != name and not (args.only == 'papaw' and name.startswith('papaw-')):
+    if args.only and args.only != name and not (
+            args.only in ('papaw', 'xyz') and name.startswith(args.only + '-')):
         return
     width, height, frames, fps = 960, 640, 120, 12.5
     if name == 'papaw-family-current.png':
@@ -80,8 +99,8 @@ def render(name, parts, direction, up=(0, 0, 1)):
     renderer.SetMaximumNumberOfPeels(100)
     renderer.SetUseFXAA(True)
     corners = []
-    for shape, color, opacity, offset in parts:
-        actor = actor_for(shape, color, opacity, offset)
+    for part in parts:
+        actor = actor_for(*part)
         renderer.AddActor(actor)
         bounds = actor.GetBounds()
         corners.extend((x, y, z) for x in bounds[:2]
@@ -222,19 +241,27 @@ if not args.only or args.only.startswith('papaw'):
     provenance['papaw_components.py'] = hashlib.sha256(
         Path(hardware.__file__).read_bytes()).hexdigest()
 
-robot = open_model(args.xyz_cad / 'output' / 'XYZ_V34_Whole_Robot.FCStd')
-parts, wrist_parts = [], []
-for obj in robot.Objects:
-    if not hasattr(obj, 'Package') or not hasattr(obj, 'Shape') or obj.Shape.isNull(): continue
-    color = tuple(obj.RenderColor)[:3]
-    part = (obj.Shape, color, 1, None)
-    if obj.Package != 'routes' or obj.SourceKey.startswith('Upper_Braid_'):
-        parts.append(part)
-    if obj.Package in ('wrist', 'camera', 'pen'):
-        wrist_parts.append(part)
-render('xyz-robot-current.png', parts, (1.0, 1.5, .85))
-render('xyz-wrist-current.png', wrist_parts, (1.2, 1.7, .9))
-App.closeDocument(robot.Name)
+if not args.only or args.only.startswith('xyz'):
+    robot = open_model(args.xyz_cad / 'output' / 'XYZ_V34_Whole_Robot.FCStd')
+    appearance = xyz_appearance.Appearance(args.xyz_cad, open_model)
+    parts, wrist_parts = [], []
+    for obj in robot.Objects:
+        if not hasattr(obj, 'Package') or not hasattr(obj, 'Shape') or obj.Shape.isNull(): continue
+        detailed = appearance.parts(obj)
+        if obj.Package != 'routes' or obj.SourceKey.startswith('Upper_Braid_'):
+            parts.extend(detailed)
+        if obj.Package in ('wrist', 'camera', 'pen'):
+            wrist_parts.extend(detailed)
+    (args.review_dir / 'xyz-registration.json').write_text(
+        json.dumps(appearance.errors, indent=2) + '\n', encoding='utf-8', newline='\n')
+    print(f'XYZ: {len(parts)} render parts; {len(appearance.errors)} registered components; '
+          f'maximum registration error {max(appearance.errors.values()):.3g} mm', flush=True)
+    render('xyz-robot-current.png', parts, (1.0, 1.5, .85))
+    render('xyz-wrist-current.png', wrist_parts, (1.2, 1.7, .9))
+    appearance.close()
+    App.closeDocument(robot.Name)
+    provenance['xyz_appearance.py'] = hashlib.sha256(
+        Path(xyz_appearance.__file__).read_bytes()).hexdigest()
 manifest = Path(__file__).with_name('render-sources.json')
 previous = json.loads(manifest.read_text(encoding='utf-8')) if manifest.exists() else {}
 previous.update(provenance)
