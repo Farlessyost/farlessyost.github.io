@@ -18,11 +18,15 @@ next_title: Hybrid algae-growth modeling
 ---
 ## Overview
 
-I used Sparse Identification of Nonlinear Dynamics (SINDy) to build compact models of biodiesel production and watershed streamflow.[^paper]
+I developed compact dynamical models of biodiesel production and watershed streamflow using Sparse Identification of Nonlinear Dynamics (SINDy). The models learn a small set of differential equations from time-series data, describing how process outputs or streamflow change as inputs vary.[^paper]
+
+The two cases tested the same idea in different settings: an industrial process with well-defined operating conditions, and a natural system whose response depends on weather and past conditions. My work covered equation discovery, coefficient refinement, and comparison of the resulting trajectories with process and watershed data.
 
 ## Why this approach
 
-A detailed process model is useful for studying a plant, but cumbersome to run as one part of a larger production network. I wanted a smaller model that still captured how outputs respond over time. SINDy makes that model explicit: a set of differential equations whose terms and coefficients can be inspected.
+A detailed plant model describes individual reactors, separators, and recycle streams. When the question is how that plant responds to a change in supply, running every unit operation can make a wider network study cumbersome. I wanted to retain the dynamics that matter at the plant boundary in a model small enough to connect to other processes.[^dissertation]
+
+SINDy provides explicit equations whose terms and coefficients can be inspected. That makes it possible to examine which inputs drive a response and where the model misses important behavior. The watershed case tested whether the same approach could capture changing water availability, where the timing and magnitude of streamflow matter as well as its average. Together, these studies addressed the first part of my dissertation: building useful models of the individual processes within a larger material-flow network.[^dissertation]
 
 {% include research-walkthrough.html project="sindy" %}
 
@@ -59,4 +63,4 @@ The difference matters. Rainfall alone does not describe a watershed’s conditi
 
 [^paper]: William Farlessyost and Shweta Singh. [“Reduced order dynamical models for complex dynamics in manufacturing and natural systems using machine learning.”](https://doi.org/10.1007/s11071-022-07695-x) *Nonlinear Dynamics* 110, 1613 to 1631 (2022). Source for the methods and results summarized on this page.
 
-[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapter 2. Includes the function libraries, coefficient refinement, and industrial and watershed validation.
+[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapters 1 and 2. Covers the research motivation and includes the function libraries, coefficient refinement, and industrial and watershed validation.

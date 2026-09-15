@@ -18,11 +18,15 @@ next_title: Sensor selection
 ---
 ## Overview
 
-I combined a mechanistic model of *Chlorella vulgaris* growth with a learned correction for missing dynamics.[^paper]
+I developed a hybrid model of *Chlorella vulgaris* growth that combines a mechanistic growth equation with a correction learned from cultivation data. The base model describes temperature and light effects; the learned term uses temperature, light, and pH to account for the growth dynamics it misses.[^paper]
+
+I compared predicted culture density with measurements, identified an equation for the changing error, and added that correction to the growth rate. This made the correction part of the model’s dynamics, so it changes the predicted growth trajectory over time.
 
 ## Why a hybrid model
 
-The mechanistic model already describes how temperature and light affect growth. Replacing it entirely would discard that useful structure. I instead asked whether a small learned correction could account for the dynamics it missed, including changes associated with pH.
+Growth predictions inform how a cultivation process is sized and operated. A model that captures the general biological response can still miss the behavior of a particular culture or reactor, especially when moving between operating scales. Those errors affect estimates of how much biomass will be available and when.[^dissertation]
+
+The existing model already contained useful knowledge about temperature and light. I wanted to keep that structure and use measurements to identify what was missing. A sparse correction gives an explicit equation that can be examined alongside the mechanistic model. In my dissertation, this addressed a different problem from building a surrogate from scratch: how to improve an existing process model with the data available from its operation.[^dissertation]
 
 {% include research-walkthrough.html project="algae" %}
 
@@ -57,4 +61,4 @@ The dissertation results also show why validation matters here. Some learned cor
 
 [^paper]: William Farlessyost and Shweta Singh. [“Improving Mechanistic Model Accuracy with Machine Learning Informed Physics.”](https://doi.org/10.69997/sct.121371) *Systems and Control Transactions* 3, 275 to 282, FOCAPD (2024). Source for the hybrid model, growth measurements, and validation results.
 
-[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapter 3, especially Sections 3.3.3 to 3.3.5 and 3.4.4. Describes the rate correction, sequential validation, and unstable prediction trajectories.
+[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapters 1 and 3, especially Sections 3.3.3 to 3.3.5 and 3.4.4. Describes the rate correction, sequential validation, and unstable prediction trajectories.

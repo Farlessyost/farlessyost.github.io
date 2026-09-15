@@ -18,11 +18,15 @@ next_title: Climate resilience modeling
 ---
 ## Overview
 
-I studied which measurements a neural observer needs to estimate a system’s state, using liquid-time-constant (LTC) networks.[^paper]
+I developed a method for selecting the measurement inputs a neural observer needs to estimate a system’s state. An observer acts as a soft sensor: it uses the history of available signals to estimate a quantity that is difficult to measure directly. I used liquid-time-constant (LTC) networks to learn those time-dependent relationships.[^paper]
+
+The method trains an observer, perturbs each candidate input, and measures how its predicted trajectory changes. Inputs with little influence are removed, then the observer is retrained and checked against an error target. I applied the method to velocity estimation in a mechanical system, concentration estimation in a reactor, and population estimation in an ecological system.
 
 ## Why select the inputs
 
-An observer estimates a quantity that is not directly measured, such as velocity from force and displacement histories. Feeding it every available signal adds complexity without necessarily adding useful information. I wanted to find which inputs actually affected the estimate and test whether the observer could work with fewer of them.
+Every physical measurement adds installation, calibration, maintenance, and data-handling work. In a distributed agricultural or industrial system, measuring every variable may be impractical. The design question is which measurements provide enough information to reconstruct the states needed for monitoring and control.[^dissertation]
+
+Two signals can be strongly correlated yet contribute different information about how a system evolves. I therefore examined the observer’s response to changes in each input over time, then tested the reduced input set through retraining. The aim was to give measurement selection a clear connection to estimation performance. Within my dissertation, this addressed the information needed to operate the models: which signals to collect, and which states to estimate from them.[^dissertation]
 
 {% include research-walkthrough.html project="sensors" %}
 
@@ -62,4 +66,4 @@ The selected set is specific to the trained observer and the data used to evalua
 
 [^paper]: William Farlessyost, Sebastian Oberst, and Shweta Singh. [“The power of dynamic causality in observer-based design for soft sensor applications.”](https://arxiv.org/abs/2509.11336) arXiv:2509.11336 (2025), preprint. Source for the perturbation-based pruning procedure and the three simulation testbeds.
 
-[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapter 4. Describes the mechanical, chemical, and ecological state-estimation examples shown in the research presentation.
+[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapters 1 and 4. Explains the measurement-cost motivation and describes the mechanical, chemical, and ecological state-estimation examples shown in the research presentation.

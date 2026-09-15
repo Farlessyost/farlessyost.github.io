@@ -18,11 +18,17 @@ next_title: Peepin on Papaw
 ---
 ## Overview
 
-I modeled how changes in crop growth affect supply and production across a soybean-to-biodiesel network.[^paper]
+I built a dynamic model of a soybean-to-biodiesel production network, connecting crop growth, processing, material inventories, and production controls. The model follows how changes in agricultural supply affect downstream oil and biodiesel production, stored material, waste, and import requirements.[^paper]
+
+I trained neural surrogate models using BioCro crop-growth and ASPEN process models, then connected them through material balances. Comparing climate scenarios and farm-area configurations made it possible to follow a disturbance from the agricultural part of the network through the industrial processes that depend on it.
 
 ## Why model the whole network
 
-A crop shortfall does not necessarily stop a plant immediately. Stored material can cover the gap, and imports can replace part of the missing supply. Looking only at annual production hides those dependencies. I wanted to follow the material through the network and see when inventories, processing capacity, and external supply became limiting.
+A processing plant depends on both the amount and timing of its feedstock supply. Changes in crop growth can therefore affect industrial production well beyond the farm. I wanted to understand how those disturbances propagate, and which parts of the network absorb them or become bottlenecks.[^dissertation]
+
+A crop shortfall does not necessarily stop a plant immediately. Stored material can cover the gap, and imports can replace part of the missing supply. Annual production totals can hide that dependence: the same output may come from a steady harvest, depleted reserves, or increased imports. Tracking stocks and flows over time makes those differences visible and supports comparisons of land area, supply dependence, and production continuity.
+
+This was the network-level application of my doctoral research. It brought the emphasis on compact process models into a coupled system, where resilience depends on the interactions between agriculture, storage, and manufacturing.[^dissertation]
 
 {% include research-walkthrough.html project="climate" %}
 
@@ -57,4 +63,4 @@ Read the output curves alongside the stock and import plots. Maintaining product
 
 [^paper]: William Farlessyost and Shweta Singh. [“Modeling material flow dynamics in coupled natural-industrial ecosystems for resilience to climate change: A case study on a soybean-based industrial ecosystem.”](https://doi.org/10.1111/jiec.70087) *Journal of Industrial Ecology* 29, 1882 to 1896 (2025). Figures shown here come from the original research presentation.
 
-[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapter 5. Describes the process surrogates, material-flow coupling, and production controllers. The stock equation above summarizes one inventory balance; it is not the full network model.
+[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapters 1 and 5. Explains the resilience motivation and describes the process surrogates, material-flow coupling, and production controllers. The stock equation above summarizes one inventory balance; it is not the full network model.
