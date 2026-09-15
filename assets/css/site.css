@@ -27,7 +27,7 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outli
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-block: 24px; border-bottom: 1px solid var(--line); }
 .wordmark { display: flex; align-items: center; gap: 13px; font-size: .875rem; font-weight: 600; line-height: 1.25; letter-spacing: -.02em; }
 .monogram { font-family: var(--serif); color: var(--accent); font-size: 2.75rem; font-weight: 500; letter-spacing: -.08em; padding-right: 12px; border-right: 1px solid var(--line); }
-.main-nav { display: flex; align-items: center; gap: 32px; font-size: .9375rem; }
+.main-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; font-size: .9375rem; }
 .main-nav a { padding-block: 8px; text-underline-offset: 7px; text-decoration-thickness: 1px; }
 .main-nav a[aria-current], .main-nav a:hover { color: var(--accent); }
 .nav-resume { margin-left: 12px; border-bottom: 1px solid currentColor; }
@@ -103,6 +103,16 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outli
 .page-header { padding-block: 50px; max-width: 900px; }
 .page-header h1 { font-size: clamp(3rem,5vw,4.5rem); margin-block: 18px; }
 .page-deck { font-size: 1.25rem; color: var(--muted); max-width: 710px; line-height: 1.65; }
+.personal-gallery { display: grid; grid-template-columns: minmax(0,2fr) minmax(0,1fr); gap: 48px; padding-bottom: 80px; align-items: start; }
+.personal-gallery h2 { font-size: 2rem; margin-bottom: 22px; }
+.personal-gallery video { display: block; width: 100%; height: auto; border-radius: 6px; background: #1f1f1f; }
+.personal-photo { max-width: 354px; }
+.personal-photo img { width: 100%; height: auto; border-radius: 6px; }
+.personal-gallery figcaption { color: var(--muted); font-size: .875rem; padding-top: 12px; }
+.personal-gallery figcaption a { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 800px) {
+  .personal-gallery { grid-template-columns: 1fr; gap: 42px; padding-bottom: 55px; }
+}
 .page-work { padding-bottom: 95px; }
 .page-work .work-item { padding-block: 42px; }
 .about-intro { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; padding-block: 40px; align-items: start; }
@@ -266,7 +276,8 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outli
   .site-header { align-items: flex-start; flex-wrap: wrap; gap: 18px; }
   .wordmark { font-size: .8125rem; gap: 11px; }
   .monogram { font-size: 2.5rem; }
-  .main-nav { width: 100%; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 11px; }
+  .main-nav { width: 100%; justify-content: space-between; gap: 8px 12px; font-size: .8125rem; border-top: 1px solid var(--line); padding-top: 11px; }
+  .nav-resume { margin-left: 0; }
   .main-nav a { padding-block: 5px; }
   .nav-resume span[aria-hidden] { margin-left: 6px; }
   .hero { grid-template-columns: 1fr; gap: 38px; padding-block: 38px; }

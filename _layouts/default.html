@@ -25,6 +25,7 @@
     <nav class="main-nav" aria-label="Main navigation">
       <a href="{{ '/projects/' | relative_url }}" {% if page.layout == 'project' or page.url == '/projects/' %}aria-current="page"{% endif %}>Projects</a>
       <a href="{{ '/about/' | relative_url }}" {% if page.url == '/about/' %}aria-current="page"{% endif %}>Background</a>
+      <a href="{{ '/personal/' | relative_url }}" {% if page.url == '/personal/' %}aria-current="page"{% endif %}>Personal</a>
       <a href="{{ '/contact/' | relative_url }}" {% if page.url == '/contact/' %}aria-current="page"{% endif %}>Contact</a>
       <a class="nav-resume" href="{{ '/resume.pdf' | relative_url }}?v={{ site.resume_version }}">Résumé <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a>
     </nav>
