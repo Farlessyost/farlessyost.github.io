@@ -4,7 +4,7 @@ The redesign uses the existing résumé and project material, plus publication r
 
 ## Personal details
 
-- Education and fellowship history are supported by `resume.pdf`. Its contact email has been updated to the owner’s current address; other content is unchanged.
+- The owner selected the July 2026 Controls & Applied R&D résumé from `Downloads/William_Farlessyost_Three_Targeted_Resumes_PDF.zip` to replace the older public résumé. `resume.pdf` preserves that two-page document, with its email updated to wbfarlessyost@gmail.com and made clickable. Header font and layout are preserved. All résumé links use a content-hash query parameter to avoid stale cached copies.
 - Current employment is not inferred from the old résumé’s “Aug. 2020–Present” research-assistant entry. Website copy says “doctoral research at Purdue.”
 - The email is maintained from the owner’s direct updates. LinkedIn comes from the résumé.
 - The former business and GitHub profile links have been removed at the owner’s request.

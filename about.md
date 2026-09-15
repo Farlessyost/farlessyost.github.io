@@ -6,7 +6,7 @@ description: William Farlessyost’s skills, engineering experience, education, 
 ---
 <div class="shell">
   <section class="about-intro">
-    <div><h1>Background</h1><p class="page-deck">I’m William Farlessyost, an engineer with experience in robotics, embedded systems, and machine learning.</p><p>I earned my Ph.D. at Purdue in 2025. My work includes system identification, simulation, robot control, sensor firmware, and mechanical design.</p><div class="actions"><a class="button" href="{{ '/resume.pdf' | relative_url }}">View résumé <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a></div></div>
+    <div><h1>Background</h1><p class="page-deck">I’m William Farlessyost, an engineer with experience in robotics, embedded systems, and machine learning.</p><p>I earned my Ph.D. at Purdue in 2025. My work includes system identification, simulation, robot control, sensor firmware, and mechanical design.</p><div class="actions"><a class="button" href="{{ '/resume.pdf' | relative_url }}?v={{ site.resume_version }}">View résumé <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a></div></div>
     <figure class="about-photo"><div class="portrait-frame"><img src="{{ '/headshot.jpg' | relative_url }}" alt="William Farlessyost" width="1492" height="2892"></div><figcaption>William Farlessyost, Ph.D.</figcaption></figure>
   </section>
   <section class="bio-section" aria-labelledby="toolkit"><h2 id="toolkit">Skills</h2><div class="skill-grid">
