@@ -1,0 +1,22 @@
+{% assign walkthrough = site.data.research_walkthroughs[include.project] %}
+<figure class="research-walkthrough" data-walkthrough aria-labelledby="walkthrough-title">
+  <div class="walkthrough-heading">
+    <div><p class="eyebrow">How it works</p><h3 id="walkthrough-title">{{ walkthrough.title }}</h3></div>
+    <button class="walkthrough-play" type="button" hidden>Play walkthrough</button>
+  </div>
+  <ol class="walkthrough-stages">
+    {% for step in walkthrough.steps %}
+    <li class="walkthrough-stage" data-stage="{{ forloop.index0 }}">
+      <button type="button" class="walkthrough-select" aria-pressed="false" disabled><span class="walkthrough-number">{{ forloop.index }}</span>{{ step.title }}</button>
+      <div class="walkthrough-art" aria-hidden="true">{% include research-art.html project=include.project stage=forloop.index %}</div>
+      <p>{{ step.summary }}</p>
+      <p class="walkthrough-detail">{{ step.detail }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+  <div class="walkthrough-reading" hidden>
+    <p class="walkthrough-current" role="status" aria-live="polite" aria-atomic="true"></p>
+    <div class="walkthrough-navigation"><button type="button" data-previous aria-label="Previous step">←</button><span data-step-count></span><button type="button" data-next aria-label="Next step">→</button></div>
+  </div>
+  <figcaption>Method diagram. <span data-controls-help hidden>Select a step or play the sequence. </span>The study’s result plots are shown below.</figcaption>
+</figure>

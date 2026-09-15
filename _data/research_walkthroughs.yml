@@ -1,0 +1,60 @@
+sindy:
+  title: From time series to differential equations
+  steps:
+    - title: Record the dynamics
+      summary: Collect states and inputs as they change over time.
+      detail: The biodiesel case starts with ASPEN process simulations. The watershed case uses streamflow and weather data. Both provide time series for identifying a dynamical model.
+    - title: Build candidate terms
+      summary: Assemble a function library, Θ, from the recorded variables.
+      detail: The library contains possible terms in the differential equations. I tested linear terms for the plant and nonlinear terms for streamflow, including input derivatives to represent changing forcing.
+    - title: Select and refine
+      summary: Sparse regression removes terms; optimization refines coefficients.
+      detail: SINDy selects a sparse coefficient matrix, Ξ. I then used constrained nonlinear optimization to refine the industrial model’s nonzero coefficients against integrated trajectories.
+    - title: Test the trajectory
+      summary: Integrate the equations and compare with reference data.
+      detail: Matching derivatives during fitting is only part of the problem. I also checked how prediction errors accumulated when the learned equations were integrated over a longer test period.
+algae:
+  title: Correct the missing growth dynamics
+  steps:
+    - title: Start with physics
+      summary: Predict growth from temperature and light response.
+      detail: The base model combines Haldane light-response kinetics with a cardinal temperature model. It gives a compact starting point, but does not reproduce every change in the measured culture density.
+    - title: Measure the residual
+      summary: Subtract the model’s density prediction from observations.
+      detail: The residual is e(t) = x measured(t) − x model(t). Its rate of change identifies where the original growth-rate model is missing part of the observed dynamics.
+    - title: Learn a correction
+      summary: Fit residual dynamics using temperature, light, and pH.
+      detail: SINDy fits a sparse function g(T, I, pH) to the residual’s time derivative. This keeps the learned correction tied to named environmental inputs that can be inspected.
+    - title: Combine and test
+      summary: Add the rate correction, integrate, and evaluate later data.
+      detail: The correction is added to the mechanistic growth rate before integration. Sequential validation shows when this improves the density prediction and when the learned dynamics become unstable.
+sensors:
+  title: Which inputs does the observer need?
+  steps:
+    - title: Train an observer
+      summary: Use available signals to estimate an unmeasured state.
+      detail: A liquid-time-constant network carries information through its internal dynamical state. In the mechanical example, force and displacement histories help it estimate velocity.
+    - title: Perturb one input
+      summary: Change a channel and watch the estimated trajectory respond.
+      detail: Apply an offset to one input sequence while holding the fitted observer fixed. Compare its output trajectory with the unperturbed prediction to measure that channel’s influence on the model.
+    - title: Rank the influence
+      summary: Identify channels with little effect on the estimated state.
+      detail: Score the trajectory changes across candidate inputs. A low score suggests a channel may be removable; it does not yet establish that a newly trained reduced observer will work.
+    - title: Retrain and check
+      summary: Accept a removal only if validation error stays acceptable.
+      detail: Retrain with fewer inputs and compare validation performance. Continue when the error criterion is met; otherwise keep the previously accepted input set. Evaluate the reduced observer separately.
+climate:
+  title: Follow the material through the network
+  steps:
+    - title: Change the crop input
+      summary: Climate and farm area affect the supply of soybeans.
+      detail: The crop model connects environmental inputs to agricultural production. Changing the climate scenario or cultivated area changes the feedstock available to the industrial network.
+    - title: Track the stock
+      summary: Harvest and imports add material; processing draws it down.
+      detail: Inventory carries the effect of past production into the present. If incoming soybeans fall below withdrawals, the stock can temporarily cover the shortfall while its level decreases.
+    - title: Run the plants
+      summary: Oil extraction supplies the biodiesel process downstream.
+      detail: Neural surrogates approximate the time-dependent behavior of the process models. Material leaving one node becomes an input to the next, linking crop supply to industrial throughput.
+    - title: Check resilience
+      summary: Compare output, stock, waste, and import requirements.
+      detail: Production alone does not describe the whole response. Similar output can depend on different inventory drawdowns or import requirements, so the study follows these quantities together over time.

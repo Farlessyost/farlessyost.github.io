@@ -18,6 +18,14 @@ The redesign uses the existing résumé and project material, plus publication r
 
 The original research presentation figures are preserved; wording avoids precise climate milestone dates that differ between presentation and publication. Quantitative performance and hardware-savings claims were not invented.
 
+## Research method walkthroughs
+
+Four interactive SVG walkthroughs explain the doctoral research methods. They were checked against the owner's `Downloads/Defense.pdf` (methodology pages 9, 20, 24, 30, and 43), `Downloads/Farlessyost_Thesis_5_6_compressed.pdf` (chapters 2 through 5), and the cited publications. The defense PDF contains presentation slides, not a spoken transcript. No defense transcript was located in the relevant folders. Academic records, private discussions, and manuscript review correspondence are not public website assets.
+
+The diagrams illustrate the method, not reconstructed experimental data. Candidate-function tiles, sparse matrix positions, and sensitivity-bar lengths are schematic, without numerical results or claims that particular illustrated coefficients/channels were selected. Existing original presentation plots remain the source of displayed results. The algae correction is added at the derivative level before integration, as specified in the thesis. Copy acknowledges unstable folds rather than implying every correction improved validation. The sensor explanation distinguishes fitted-model sensitivity, derived features, and physical sensor counts. The stock equation is a simplified single-stock mass balance explaining the network, not a claim to reproduce its full set of governing equations. Original source files remain unchanged.
+
+Walkthroughs use local HTML, SVG, CSS, and JavaScript. Playback is user-initiated, can be paused or stepped manually, stops at the end or when offscreen, and respects reduced-motion preferences. The full step explanations remain available without JavaScript and in print.
+
 ## Independent projects
 
 Peepin on Papaw sources: `doorway-monitor/README.md`, Android pilot documentation, ultracompact enclosure documentation and AAA retrofit notes. Images show the motion sensor, magnetic door sensor with separate magnet pod, and OLED receiver. Current enclosure and battery-frame geometry is preserved. Electronic components use representative geometry based on the selected Amazon product photographs, with approximate small details as requested. These visualizations do not establish verified manufacturing fit. Source notes are in `scripts/papaw-hardware-audit.md`. No activity logs, household telemetry, private addresses, or credentials are included.

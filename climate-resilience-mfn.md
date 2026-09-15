@@ -3,6 +3,7 @@ layout: project
 title: Climate resilience modeling
 permalink: /climate-resilience-mfn.html
 group: research
+research_walkthrough: true
 order: 4
 category: Industrial ecology
 status: Published research · 2025
@@ -19,21 +20,30 @@ next_title: Peepin on Papaw
 
 I modeled how changes in crop growth affect supply and production across a soybean-to-biodiesel network.[^paper]
 
+## Why model the whole network
+
+A crop shortfall does not necessarily stop a plant immediately. Stored material can cover the gap, and imports can replace part of the missing supply. Looking only at annual production hides those dependencies. I wanted to follow the material through the network and see when inventories, processing capacity, and external supply became limiting.
+
+{% include research-walkthrough.html project="climate" %}
+
+<div class="research-equation">
+  <p class="equation" aria-label="The rate of change of soybean stock equals harvest plus imports minus plant feed minus losses">dS/dt = H + M − F − L</p>
+  <p>In this simplified soybean-stock balance, <strong>S</strong> is stored mass, <strong>H</strong> the incoming harvest rate, <strong>M</strong> imports, <strong>F</strong> withdrawal for processing, and <strong>L</strong> losses. All four flow rates have units of mass per time. Integrating the balance tracks the inventory available for later production.</p>
+</div>
+
+The stock balance connects processes operating on different time scales. Crop growth changes with weather and season; processing responds to feedstock and production targets. I used neural surrogate models to represent the individual processes, then coupled them through material stocks, flows, and controllers.[^dissertation]
+
 ## My contribution
 
 - Built neural surrogate models of agricultural and industrial processes using ASPEN and BioCro references.
 - Connected the models through material flows, inventories, and controllers.
 - Compared climate scenarios and farm-area configurations.
 
-<figure class="process-diagram">
-  <p class="eyebrow">Material-flow network</p>
-  <ol><li><strong>Soybean growth</strong><span>Climate-dependent crop production</span></li><li><strong>Soybean stock</strong><span>Harvest, storage, and imports</span></li><li><strong>Oil plant</strong><span>Extraction and processing</span></li><li><strong>Biodiesel plant</strong><span>Conversion and product output</span></li></ol>
-  <figcaption>Material flows from soybean production to biodiesel output.</figcaption>
-</figure>
-
 ## Results
 
 The simulations showed how climate inputs and farm area affected output, material stocks, waste, and imports across the network.[^paper] These are scenario results, not forecasts of actual plant operations.
+
+Read the output curves alongside the stock and import plots. Maintaining production by drawing down stored soybeans has a different implication from maintaining it with a steady supply. That is why resilience was evaluated across several network quantities rather than a single output total.
 
 {% include figure.html src="/D6.png" alt="Simulated oil and biodiesel output under two climate scenarios" caption="Industrial throughput under the modeled climate scenarios. Curves represent different farm-area configurations." %}
 
@@ -46,3 +56,5 @@ The simulations showed how climate inputs and farm area affected output, materia
 ## References and notes
 
 [^paper]: William Farlessyost and Shweta Singh. [“Modeling material flow dynamics in coupled natural-industrial ecosystems for resilience to climate change: A case study on a soybean-based industrial ecosystem.”](https://doi.org/10.1111/jiec.70087) *Journal of Industrial Ecology* 29, 1882 to 1896 (2025). Figures shown here come from the original research presentation.
+
+[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapter 5. Describes the process surrogates, material-flow coupling, and production controllers. The stock equation above summarizes one inventory balance; it is not the full network model.

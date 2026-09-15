@@ -16,12 +16,12 @@ description: William Farlessyost’s skills, engineering experience, education, 
     <div><h3>Simulation</h3><p>Simulink, ASPEN Plus/Dynamics, BioCro, material-flow modeling, life-cycle assessment.</p></div>
   </div></section>
   <section class="bio-section" aria-labelledby="experience"><h2 id="experience">Experience</h2><div>
-    <div class="entry"><p class="meta">Purdue University</p><h3>Doctoral research</h3><p>Developed dynamical models and neural observers for industrial and natural systems. Studied sensor selection, model accuracy, and climate effects on production networks.</p></div>
+    <div class="entry"><p class="meta">Purdue University</p><h3>Doctoral research</h3><p>My dissertation studied how to model connected industrial and natural systems when detailed simulations and measurements are difficult to obtain. The work covered four related questions: how to <a href="{{ '/surrogate-modeling-sindy.html' | relative_url }}">build compact dynamical models</a>, <a href="{{ '/hybrid-algae-growth.html' | relative_url }}">correct missing model dynamics</a>, <a href="{{ '/sensor-minimization-ltc.html' | relative_url }}">select measurements for state estimation</a>, and <a href="{{ '/climate-resilience-mfn.html' | relative_url }}">connect process models to study a production network</a>.</p></div>
     <div class="entry"><p class="meta">Independent projects</p><h3>Embedded sensing and robotics</h3><p>Developing Peepin on Papaw’s wireless sensors, event logging, and enclosures. Designing the XYZ robot’s cable mechanism, simulation, and embedded controls.</p></div>
     <div class="entry"><p class="meta">Earlier engineering work</p><h3>Robot control and autonomy</h3><p>Developed a quadrotor landing controller using ROS and Simulink, a UR3e robot sorter using apprenticeship learning, and autonomous mining robots for NASA Lunabotics.</p></div>
   </div></section>
   <section class="bio-section" aria-labelledby="education"><h2 id="education">Education</h2><div>
-    <div class="entry"><p class="meta">Purdue University / 2025</p><h3>Ph.D., Agricultural &amp; Biological Engineering</h3><p>Majors in Computational Science &amp; Engineering and Ecological Sciences &amp; Engineering. NSF Graduate Research Fellow, 2022 to 2025.</p></div>
+    <div class="entry"><p class="meta">Purdue University / 2025</p><h3>Ph.D., Agricultural &amp; Biological Engineering</h3><p>Majors in Computational Science &amp; Engineering and Ecological Sciences &amp; Engineering. NSF Graduate Research Fellow, 2022 to 2025.</p><p><a class="text-link" href="https://doi.org/10.25394/PGS.28904861">Read my dissertation at Purdue ↗</a></p></div>
     <div class="entry"><p class="meta">UNC Asheville + NC State / 2020</p><h3>B.S.E., Mechatronics Engineering</h3><p>Joint program. Summa cum laude.</p></div>
     <div class="entry"><p class="meta">UNC Asheville / 2020</p><h3>B.A., Applied Mathematics</h3><p>Summa cum laude.</p></div>
   </div></section>

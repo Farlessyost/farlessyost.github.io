@@ -16,6 +16,7 @@
   <link rel="preload" href="{{ '/assets/fonts/newsreader-latin.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% if page.placement_demo %}<link rel="stylesheet" href="{{ '/assets/css/papaw-placement.css' | relative_url }}?v={{ site.time | date: '%s' }}">{% endif %}
+  {% if page.research_walkthrough %}<link rel="stylesheet" href="{{ '/assets/css/research.css' | relative_url }}?v={{ site.time | date: '%s' }}">{% endif %}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -36,5 +37,6 @@
   </footer>
   {% if page.url == '/' or page.url == '/projects/' or page.group == 'build' %}<script src="{{ '/assets/js/turntables.js' | relative_url }}" defer></script>{% endif %}
   {% if page.placement_demo %}<script src="{{ '/assets/js/papaw-placement.js' | relative_url }}" defer></script>{% endif %}
+  {% if page.research_walkthrough %}<script src="{{ '/assets/js/research.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>{% endif %}
 </body>
 </html>

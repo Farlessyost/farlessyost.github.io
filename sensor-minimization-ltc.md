@@ -3,6 +3,7 @@ layout: project
 title: Sensor selection
 permalink: /sensor-minimization-ltc.html
 group: research
+research_walkthrough: true
 order: 3
 category: Sensing & machine learning
 status: Research preprint · 2025
@@ -19,6 +20,19 @@ next_title: Climate resilience modeling
 
 I studied which measurements a neural observer needs to estimate a system’s state, using liquid-time-constant (LTC) networks.[^paper]
 
+## Why select the inputs
+
+An observer estimates a quantity that is not directly measured, such as velocity from force and displacement histories. Feeding it every available signal adds complexity without necessarily adding useful information. I wanted to find which inputs actually affected the estimate and test whether the observer could work with fewer of them.
+
+{% include research-walkthrough.html project="sensors" %}
+
+<div class="research-equation">
+  <p class="equation" aria-label="Delta y hat for input j equals the observer applied to the perturbed input sequence minus the observer applied to the original sequence">Δŷ<sub>j</sub> = F<sub>θ</sub>(u + δe<sub>j</sub>) − F<sub>θ</sub>(u)</p>
+  <p><strong>F<sub>θ</sub></strong> is the fitted observer acting on an input sequence <strong>u</strong>. The offset <strong>δe<sub>j</sub></strong> changes only channel <strong>j</strong>. Comparing the resulting output trajectories measures sensitivity within the learned model. Retraining and validation determine whether removing that input is acceptable.</p>
+</div>
+
+This uses the observer’s response over time, rather than only the correlation between two signals. The distinction is also a limit on the interpretation: changing an input to a fitted model does not, by itself, establish a causal effect in the physical system.[^paper]
+
 ## My contribution
 
 - Trained observers using the full set of candidate measurements.
@@ -27,9 +41,13 @@ I studied which measurements a neural observer needs to estimate a system’s st
 
 {% include figure.html src="/C2.png" alt="Mechanical, ecological, and chemical testbeds with candidate measurements" caption="Three different kinds of dynamics provide test cases for the sensor-selection approach." %}
 
+In the mechanical case, the target is velocity. In the chemical case, it is concentration. In the ecological case, it is predator population. These testbeds provide known underlying dynamics, so the estimated states can be checked against simulation ground truth.[^dissertation]
+
 ## Results
 
 Smaller input sets met prediction-error targets in the synthetic test cases. Inputs containing only noise could be removed.[^paper] Hardware performance and behavior under real sensor drift have not been evaluated.
+
+The selected set is specific to the trained observer and the data used to evaluate it. A derived feature, such as the product of two measured signals, is also different from a separate physical sensor. Reducing input count therefore does not establish the same reduction in hardware.
 
 {% include figure.html src="/C5.png" alt="Comparison of the full observer and reduced sensor-network designs" caption="Observer designs before and after input selection." %}
 
@@ -43,3 +61,5 @@ Smaller input sets met prediction-error targets in the synthetic test cases. Inp
 ## References and notes
 
 [^paper]: William Farlessyost, Sebastian Oberst, and Shweta Singh. [“The power of dynamic causality in observer-based design for soft sensor applications.”](https://arxiv.org/abs/2509.11336) arXiv:2509.11336 (2025), preprint. Source for the perturbation-based pruning procedure and the three simulation testbeds.
+
+[^dissertation]: William Blake Farlessyost. [*Modeling Material Flow Dynamics in Industrial-Natural Systems: Machine Learning and Causal Analysis for Resilience Evaluation and Sensor Minimization.*](https://doi.org/10.25394/PGS.28904861) Ph.D. dissertation, Purdue University (2025), Chapter 4. Describes the mechanical, chemical, and ecological state-estimation examples shown in the research presentation.
