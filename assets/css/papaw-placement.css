@@ -1,4 +1,7 @@
 .papaw-placement { max-width: 1060px; margin: 30px auto 48px; }
+.placement-mounting { display: grid; grid-template-columns: minmax(0, 360px) 1fr; align-items: center; gap: 36px; margin-bottom: 20px; padding: 26px; border: 1px solid var(--line); }
+.placement-mounting svg { width: 100%; max-width: 360px; display: block; margin-inline: auto; }
+.placement-mounting figcaption p { margin-top: 14px; color: var(--muted); font-size: .9375rem; }
 .placement-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .placement-card { border: 1px solid var(--line); background: #f7f9fb; padding: 24px; display: flex; flex-direction: column; min-width: 0; }
 .placement-card-header { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 86px; }
@@ -42,7 +45,8 @@
   .placement-receiver { gap: 20px; grid-template-columns: minmax(0, 240px) 1fr; padding: 20px; }
 }
 @media (max-width: 680px) {
-  .placement-grid, .placement-receiver { grid-template-columns: 1fr; }
+  .placement-grid, .placement-receiver, .placement-mounting { grid-template-columns: 1fr; }
+  .placement-mounting { padding: 18px; gap: 18px; }
   .papaw-placement .scene-label { font-size: 18px; }
   .papaw-placement .scene-small { font-size: 15px; }
   .placement-card-header img { width: 100px; }

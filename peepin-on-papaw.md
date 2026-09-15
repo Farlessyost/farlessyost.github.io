@@ -34,7 +34,7 @@ The system has three modules: a motion sensor, a magnetic door sensor, and a rec
 
 ## Placement and detection
 
-The motion sensor faces across the doorway so it picks up someone passing through. The door contact has two parts: the sensor on the frame and a magnet on the door. Both report wirelessly to the receiver, which plugs into any wall outlet.
+The PIR mounts directly on the fixed door frame and faces across the opening. The magnetic door contact is a separate sensor, with its magnet attached to the moving door. Both report wirelessly to the receiver, which plugs into any wall outlet.
 
 {% include papaw-placement.html %}
 
