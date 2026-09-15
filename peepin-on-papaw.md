@@ -6,8 +6,8 @@ group: build
 order: 1
 category: Embedded systems
 status: In development
-description: Wireless motion and door sensors with local activity logging and a caregiver dashboard.
-summary: Wireless motion and door sensors with local logging and a caregiver dashboard.
+description: Camera-free home activity sensing for family caregivers.
+summary: Doorway and door sensors give family caregivers a local activity history, without cameras or wearables.
 card_methods: ESP32 · ESP-NOW · Python · SQLite · FreeCAD
 cover: /assets/images/papaw-family-sequence.gif
 cover_poster: /assets/images/papaw-family-sequence.png
@@ -16,8 +16,8 @@ focus: Camera-free activity sensing
 methods: Embedded firmware, event processing, enclosure CAD
 context: Independent engineering project
 placement_demo: true
-next_url: /projects/xyz-robot/
-next_title: XYZ robot
+next_url: /projects/skopeo/
+next_title: Skopeo
 ---
 ## Overview
 
@@ -25,9 +25,19 @@ Peepin on Papaw records activity around a home using motion sensors and door swi
 
 The system has three modules: a motion sensor, a magnetic door sensor, and a receiver with an OLED display that plugs into a wall outlet.
 
+## Why I’m building it
+
+I want to help families check in on an older relative who wants to stay at home. Has there been movement around the house? Was a door opened? Is there a change in routine worth a phone call or a visit?
+
+In AARP’s 2024 national survey, **75% of U.S. adults age 50 and older** wanted to remain in their current home for as long as possible.[^aging-at-home] Supporting that independence often falls to family. AARP and the National Alliance for Caregiving’s 2025 report estimated **63 million family caregivers** in the U.S., with seven in ten also employed.[^family-caregiving]
+
+Peepin on Papaw is my attempt to provide useful information between those check-ins. Doorway sensors record movement without looking into bedrooms or asking someone to remember a wearable. Door contacts add a record of openings and closings. A local dashboard brings those events together so a caregiver can review what was recorded.
+
+That is also why the app shows sensor connectivity and uncertainty. A quiet timeline could reflect a quiet house, a missed event, or a disconnected sensor. The caregiver needs that context when deciding whether to follow up.
+
 ## My work
 
-- **Firmware:** ESP32-C3 sensor nodes send events over ESP-NOW to the receiver.[^esp-now]
+- **Firmware:** ESP32-C3 sensor nodes send events over ESP-NOW to the receiver.
 - **Software:** Python and SQLite handle local logging. A browser dashboard displays the event history.
 - **Mechanical design:** FreeCAD enclosures house the sensors, electronics, and AAA batteries.
 - **Testing:** Scenario tools check missed packets, repeated triggers, visitors, and sensor outages. Uncertain movement estimates stay marked in the dashboard.
@@ -63,15 +73,15 @@ Combining complementary sensors provides additional constraints on possible hous
 
 ### Motion sensor
 
-The passive infrared sensor produces a binary motion signal from changes in infrared radiation.[^pir] The ESP32-C3 transmits state transitions and periodic heartbeats. Three AAA cells and a regulator supply the node, and the cover’s hood restricts its angular field of view.
+The passive infrared sensor produces a binary motion signal from changes in infrared radiation. The ESP32-C3 transmits state transitions and periodic heartbeats. Three AAA cells and a regulator supply the node, and the cover’s hood restricts its angular field of view.
 
-The hood is intended to improve spatial selectivity by associating triggers with a doorway. That introduces a coverage tradeoff: a narrower sensing region needs more careful placement. Event-driven reporting and radio duty cycling reduce communication energy demand.[^sleep] Heartbeats provide a separate indication of node availability.
+The hood is intended to improve spatial selectivity by associating triggers with a doorway. That introduces a coverage tradeoff: a narrower sensing region needs more careful placement. Event-driven reporting and radio duty cycling reduce communication energy demand. Heartbeats provide a separate indication of node availability.
 
 {% include figure.html src="/assets/images/papaw-sensor-sequence.gif" poster="/assets/images/papaw-sensor-sequence.png" alt="Motion sensor CAD assembly with a faceted PIR lens, ESP32-C3 board, power regulator, and three AAA cells" caption="Motion sensor. HC-SR501, ESP32-C3, and three AAA cells in a directional enclosure." %}
 
 ### Door sensor
 
-The magnetic contact represents the door as a two-state system: open or closed. Firmware debouncing requires the reed-switch signal to stabilize before accepting a state transition, suppressing spurious events from contact bounce.[^reed] GPIO wake-up lets the ESP32-C3 leave deep sleep when the door state changes and return to sleep after reporting.[^sleep]
+The magnetic contact represents the door as a two-state system: open or closed. Firmware debouncing requires the reed-switch signal to stabilize before accepting a state transition, suppressing spurious events from contact bounce. GPIO wake-up lets the ESP32-C3 leave deep sleep when the door state changes and return to sleep after reporting.
 
 A direct door-state observation adds information that a motion pulse alone cannot supply. Debouncing improves event integrity, and sleep between transitions reduces the processor’s duty cycle. The passive magnet keeps one side of the assembly small and avoids wiring across the moving door joint.
 
@@ -79,7 +89,7 @@ A direct door-state observation adds information that a motion pulse alone canno
 
 ### Receiver
 
-The receiver runs from a USB wall adapter and collects events from the sensor nodes. A bounded packet queue buffers incoming radio messages for processing. Device identifiers and sequence numbers support duplicate suppression.[^esp-now] The OLED reports node connectivity, activity, and error indicators.
+The receiver runs from a USB wall adapter and collects events from the sensor nodes. A bounded packet queue buffers incoming radio messages for processing. Device identifiers and sequence numbers support duplicate suppression. The OLED reports node connectivity, activity, and error indicators.
 
 Buffering helps handle short bursts of asynchronous events, although a finite queue can overflow. Duplicate suppression prevents retransmissions from inflating activity counts. Centralizing these functions simplifies the sensor nodes, and the local display provides a diagnostic path when the dashboard is unavailable.
 
@@ -89,10 +99,6 @@ Buffering helps handle short bursts of asynchronous events, although a finite qu
 
 ## References and notes
 
-[^esp-now]: Espressif Systems. [“ESP-NOW,” *ESP-IDF Programming Guide* for ESP32-C3.](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/api-reference/network/esp_now.html) Describes connectionless radio communication, application acknowledgments, sequence numbers for dropping duplicate packets, and queues for processing received messages.
+[^aging-at-home]: Joanne Binette and Fanni Farago, AARP Research. [*2024 Home and Community Preferences Survey.*](https://www.aarp.org/pri/topics/livable-communities/housing/2024-home-community-preferences/) Among U.S. adults age 50 and older, 75% wanted to remain in their current home for as long as possible. The national survey examines housing and community preferences as people age.
 
-[^pir]: Panasonic Industry. [“PIR Motion Sensors Technology for Low Power or Line Power Applications and Lens Options.”](https://na.industrial.panasonic.com/blog/pir-motion-sensors-technology-low-power-or-line-power-applications-and-lens-options) Background on pyroelectric sensing and optical detection zones. The HC-SR501 enclosure and hood shown here are part of this project’s design.
-
-[^sleep]: Espressif Systems. [“Sleep Modes,” *ESP-IDF Programming Guide* for ESP32-C3.](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/api-reference/system/sleep_modes.html) Documents power-down behavior and timer/GPIO wake-up sources. Battery life also depends on the sensor, regulator, and reporting frequency.
-
-[^reed]: Littelfuse. [“Reed Switch Terms,” application note (2016).](https://www.littelfuse.com/assetdocs/catalog-glossary-reed-switch-terms-application-note?assetguid=2adea4ee-15e1-4eae-9b2b-3615939ae15f) Explains magnetic actuation, operate/release thresholds, and contact bounce. Debouncing is handled by this project’s firmware.
+[^family-caregiving]: AARP and the National Alliance for Caregiving. [*Caregiving in the US 2025.*](https://www.aarp.org/pri/topics/ltss/family-caregiving/caregiving-in-the-us-2025/) The report estimates 63 million U.S. family caregivers and reports that seven in ten are employed. The survey includes caregivers for older adults, other adults, and children with complex conditions or disabilities.

@@ -1,17 +1,17 @@
 ---
 layout: project
-title: XYZ robot
-permalink: /projects/xyz-robot/
+title: Skopeo
+permalink: /projects/skopeo/
 group: build
 order: 2
 category: Robotics & control
 status: In development
-description: A cable-driven medical-scanner concept designed around 3D-printed parts and a frame made from locally available materials.
-summary: Medical-scanner concept using cable positioning, 3D-printed assemblies, and a timber frame.
+description: A medical-scanning concept designed for local fabrication and repair.
+summary: A medical-scanning concept designed for local fabrication and repair, using cable positioning, printed parts, and a timber frame.
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
 cover: /assets/images/xyz-robot-sequence.gif
 cover_poster: /assets/images/xyz-robot-sequence.png
-cover_alt: Current XYZ robot CAD assembly with timber frame, cable mechanism, and servo wrist
+cover_alt: Skopeo CAD assembly with timber frame, cable mechanism, and servo wrist
 focus: Medical-scanner positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
 context: Independent engineering project
@@ -20,13 +20,21 @@ next_title: Climate resilience modeling
 ---
 ## Overview
 
-XYZ uses four cables to move a carriage inside a frame. I’m developing the mechanical design, simulation, and embedded controls for a medical-scanner concept.
+Skopeo uses four cables to position a carriage and a two-axis wrist to orient the scanning tool. I’m developing the mechanism, simulation, and embedded controls for a medical-scanning platform that can be made and maintained locally.
+
+## Why I’m building it
+
+Access to diagnostics is still limited in much of the world. The 2021 Lancet Commission on diagnostics estimated that **47% of the global population** had little or no access to diagnostics.[^diagnostic-access] For medical imaging specifically, the World Health Assembly’s 2025 resolution calls for affordable equipment, better access in rural and remote areas, and sustained investment in maintenance and trained staff.[^imaging-access]
+
+I’m tackling one part of that problem: the mechanical platform that moves and orients a scanning tool. The aim is to reduce reliance on precision rails, custom-machined frames, and replacement parts that may be difficult to obtain. A frame made from local stock and smaller parts that can be printed or fabricated nearby could make the machine easier to build, repair, and adapt.
+
+I’m currently evaluating positioning, tool contact, and surface reconstruction in simulation. Medical use would require validation of the complete scanning system.
 
 ## Why this design
 
-The goal is a medical scanner that can be built locally without relying on precision rails or a machined metal frame. The larger structure can use wood or other readily available stock. Smaller parts can be 3D printed or fabricated locally, then fitted with standard motors, bearings, and electronics.
+The larger structure can use wood or other readily available stock. Smaller parts can be 3D printed or fabricated locally, then fitted with standard motors, bearings, and electronics.
 
-Cables separate the positioning mechanism from the frame that supports it. The idea is to measure the cable-anchor locations and calibrate the cable lengths, so the inverse-kinematics model uses the geometry of the assembled machine.[^calibration] This is how I intend to reduce dependence on building every frame member to an exact nominal dimension.
+Cables separate the positioning mechanism from the frame that supports it. The idea is to measure the cable-anchor locations and calibrate the cable lengths, so the inverse-kinematics model uses the geometry of the assembled machine. This is how I intend to reduce dependence on building every frame member to an exact nominal dimension.
 
 The parts still need to fit properly, and the frame needs to be stiff under load. Cable stretch, backlash, and frame deflection all contribute to positioning error. I’m working toward a design that can meet its accuracy requirements with parts people can make, check, and replace locally.
 
@@ -51,15 +59,15 @@ The parts still need to fit properly, and the frame needs to be stiff under load
 
 ## Complete robot
 
-Four motor-driven cables position the carriage with three translational degrees of freedom, expressed in Cartesian coordinates (x, y, z). Inverse kinematics maps a target carriage position to cable lengths. Because cables only pull, tension allocation must satisfy force equilibrium with positive cable tensions.[^cable-mechanics] The wrist adds two rotational degrees of freedom to orient the tool for scanning or marking.
+Four motor-driven cables position the carriage with three translational degrees of freedom, expressed in Cartesian coordinates (x, y, z). Inverse kinematics maps a target carriage position to cable lengths. Because cables only pull, tension allocation must satisfy force equilibrium with positive cable tensions. The wrist adds two rotational degrees of freedom to orient the tool for scanning or marking.
 
-Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.[^calibration]
+Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
-{% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the XYZ cable-driven robot" caption="Complete robot assembly." %}
+{% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the Skopeo cable-driven scanning platform" caption="Complete Skopeo assembly." %}
 
 ## Tool wrist
 
-Two servos control pitch and roll about orthogonal axes, giving the wrist two rotational degrees of freedom.[^joints] Each drives an antagonistic tendon pair: one tendon pulls while the other pays out. The drum radii set the transmission ratio between servo rotation and joint rotation. Bearing-supported joints carry the tool holder and stereo-camera mount, setting their orientation relative to the working surface.
+Two servos control pitch and roll about orthogonal axes, giving the wrist two rotational degrees of freedom. Each drives an antagonistic tendon pair: one tendon pulls while the other pays out. The drum radii set the transmission ratio between servo rotation and joint rotation. Bearing-supported joints carry the tool holder and stereo-camera mount, setting their orientation relative to the working surface.
 
 Local pitch and roll control lets the tool follow changes in the surface normal without requiring the entire carriage to rotate. Independently supported capstans carry tendon loads through bearings, reducing radial loading on the servo shafts.
 
@@ -75,7 +83,7 @@ Following the cable angle is intended to limit rubbing and off-axis paddle loadi
 
 ## Rod and counterweight
 
-The guide combines a prismatic joint for axial translation with a two-axis gimbal for angular motion. A square sleeve and fitted liners constrain rotation about the rod’s axis.[^joints] The counterweight applies gravitational preload through the rope and pulleys, helping maintain positive cable tensions. Sizing uses quasi-static force and moment equilibrium; the pulley geometry determines mechanical advantage and how the load varies with carriage position.
+The guide combines a prismatic joint for axial translation with a two-axis gimbal for angular motion. A square sleeve and fitted liners constrain rotation about the rod’s axis. The counterweight applies gravitational preload through the rope and pulleys, helping maintain positive cable tensions. Sizing uses quasi-static force and moment equilibrium; the pulley geometry determines mechanical advantage and how the load varies with carriage position.
 
 The keyed guide constrains an unwanted rotational degree of freedom, making tool orientation better defined. Gravity provides passive preload without an additional force actuator, at the cost of added moving inertia and position-dependent loading.
 
@@ -83,8 +91,6 @@ The keyed guide constrains an unwanted rotational degree of freedom, making tool
 
 ## References and notes
 
-[^calibration]: XueJun Jin et al. [“Geometric Parameter Calibration for a Cable-Driven Parallel Robot Based on a Single One-Dimensional Laser Distance Sensor Measurement and Experimental Modeling.”](https://doi.org/10.3390/s18072392) *Sensors* 18(7), 2392 (2018). Covers anchor geometry, pulley kinematics, and cable elongation. This is a reference for the calibration approach; local fabrication is a design goal for this project.
+[^diagnostic-access]: Kenneth A. Fleming et al. [“The Lancet Commission on diagnostics: transforming access to diagnostics.”](https://doi.org/10.1016/S0140-6736(21)00673-5) *The Lancet* 398, 1997 to 2050 (2021). The Commission estimates that 47% of the global population has little or no access to diagnostics. This concerns diagnostics overall, including laboratory testing.
 
-[^cable-mechanics]: Clément Gosselin. [“Cable-driven parallel mechanisms: state of the art and perspectives.”](https://www.jstage.jst.go.jp/article/mer/1/1/1_2014dsm0004/_article) *Mechanical Engineering Reviews* 1(1), DSM0004 (2014). Background on cable kinematics, force equilibrium, and the workspace in which the required cable tensions can be maintained.
-
-[^joints]: Kevin M. Lynch and Frank C. Park. [“Degrees of Freedom of a Robot,” Section 2.2 of *Modern Robotics*.](https://modernrobotics.northwestern.edu/nu-gm-book-resource/2-2-degrees-of-freedom-of-a-robot/) Explains revolute and prismatic joints and how mechanical constraints remove degrees of freedom. The assemblies shown here are my designs.
+[^imaging-access]: World Health Assembly. [*Strengthening medical imaging capacity*, resolution WHA78.13](https://apps.who.int/gb/ebwha/pdf_files/WHA78/A78_R13-en.pdf) (2025), especially paragraphs 1(2), 1(3), 1(5), and 1(7). Calls for sustainable investment in imaging equipment and maintenance, workforce training, access in rural and remote areas, and consideration of operating and maintenance costs before procurement.
