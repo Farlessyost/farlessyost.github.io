@@ -13,6 +13,7 @@
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  {% if page.placement_demo %}<link rel="stylesheet" href="{{ '/assets/css/papaw-placement.css' | relative_url }}">{% endif %}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -32,5 +33,6 @@
     <p class="copyright">© {{ site.time | date: '%Y' }} William Farlessyost</p>
   </footer>
   {% if page.url == '/' or page.url == '/projects/' or page.group == 'build' %}<script src="{{ '/assets/js/turntables.js' | relative_url }}" defer></script>{% endif %}
+  {% if page.placement_demo %}<script src="{{ '/assets/js/papaw-placement.js' | relative_url }}" defer></script>{% endif %}
 </body>
 </html>

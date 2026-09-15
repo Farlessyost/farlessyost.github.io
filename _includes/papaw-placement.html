@@ -1,0 +1,99 @@
+<div class="papaw-placement" data-papaw-placement>
+  <div class="placement-grid">
+    <section class="placement-card" aria-labelledby="placement-motion-title">
+      <header class="placement-card-header">
+        <div><span class="placement-number">01 / DOORWAY</span><h3 id="placement-motion-title">Motion across the opening</h3></div>
+        <img src="{{ '/assets/images/papaw-sensor-sequence.png' | relative_url }}" alt="Motion sensor enclosure" width="120" height="80" loading="lazy">
+      </header>
+      <svg class="placement-scene" viewBox="0 0 440 330" role="img" aria-labelledby="motion-scene-title motion-scene-desc">
+        <title id="motion-scene-title">Motion sensor mounted on the door jamb, viewed from above</title>
+        <desc id="motion-scene-desc">The sensor faces across the opening. A shaded sector represents its field of view, and a person crosses this area while walking between rooms.</desc>
+        <defs><marker id="placement-walk-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#70838d" stroke-width="1.5"/></marker></defs>
+        <text x="24" y="28" class="scene-overline">TOP VIEW</text>
+        <text x="265" y="76" class="scene-label">Room</text>
+        <text x="265" y="301" class="scene-label">Hallway</text>
+        <path d="M24 157H127V199H24M337 157H416V199H337" fill="#dce3e8" stroke="#adbcc6" stroke-width="1.5"/>
+        <path d="M127 148V208M337 148V208" stroke="#98aab5" stroke-width="6"/>
+        <path class="motion-field" d="M149 177L327 116Q355 177 327 238Z" fill="#dce5ff" stroke="#728ce0" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <path d="M252 267V98" stroke="#70838d" stroke-width="1.5" stroke-dasharray="4 5" marker-end="url(#placement-walk-arrow)"/>
+        <rect x="111" y="157" width="30" height="40" rx="5" fill="#263741"/>
+        <path d="M139 162L151 167V187L139 192Z" fill="#405865" stroke="#263741" stroke-width="2"/>
+        <ellipse cx="150" cy="177" rx="4" ry="9" fill="#e7ecef"/>
+        <path d="M125 154V87H35" class="scene-leader"/>
+        <text x="26" y="65" class="scene-label">PIR sensor</text>
+        <text x="26" y="81" class="scene-small">Fixed to the jamb</text>
+        <path d="M184 207L166 250H33" class="scene-leader"/>
+        <text x="26" y="270" class="scene-label">Hooded field of view</text>
+        <g class="placement-person">
+          <ellipse cx="252" cy="266" rx="19" ry="10" fill="#697f8d"/>
+          <circle cx="252" cy="264" r="11" fill="#263f4e" stroke="#fff" stroke-width="2"/>
+        </g>
+        <circle class="motion-indicator" cx="125" cy="166" r="3" fill="#8b9aa3"/>
+      </svg>
+      <p class="placement-state" data-motion-state aria-live="polite">No motion reported</p>
+      <p class="placement-explanation">Mount the sensor on the fixed jamb and aim the hood across the opening. A person crossing the field of view triggers a motion event. One PIR cannot tell which way they went.</p>
+      <button class="placement-button" type="button" data-walk-through hidden>Walk through doorway <span aria-hidden="true">↑</span></button>
+    </section>
+    <section class="placement-card" aria-labelledby="placement-door-title">
+      <header class="placement-card-header">
+        <div><span class="placement-number">02 / DOOR</span><h3 id="placement-door-title">Door open or closed</h3></div>
+        <img src="{{ '/assets/images/papaw-door-sequence.png' | relative_url }}" alt="Door sensor and separate magnet enclosure" width="120" height="80" loading="lazy">
+      </header>
+      <svg class="placement-scene" viewBox="0 0 440 330" role="img" aria-labelledby="door-scene-title door-scene-desc">
+        <title id="door-scene-title">Magnetic door contact mounted at the latch side, viewed from above</title>
+        <desc id="door-scene-desc">The powered sensor stays on the frame. The separate magnet follows the door as it swings on its hinge. Closing the door brings the magnet back alongside the sensor.</desc>
+        <text x="24" y="28" class="scene-overline">TOP VIEW</text>
+        <path d="M24 143H125V174H24M351 143H416V174H351" fill="#dce3e8" stroke="#adbcc6" stroke-width="1.5"/>
+        <path d="M125 135V181M351 135V181" stroke="#98aab5" stroke-width="6"/>
+        <path d="M341 164A206 206 0 0 1 281 310" fill="none" stroke="#c7d2d9" stroke-dasharray="5 5"/>
+        <rect x="351" y="125" width="28" height="40" rx="4" fill="#263741"/>
+        <circle class="door-indicator" cx="365" cy="134" r="3" fill="#27816e"/>
+        <path d="M365 124V70H293" class="scene-leader"/>
+        <text x="253" y="48" class="scene-label">Sensor on frame</text>
+        <text x="253" y="64" class="scene-small">Stays in place</text>
+        <g class="placement-door-leaf">
+          <rect x="135" y="158" width="204" height="12" rx="2" fill="#c8aa81" stroke="#967c58" stroke-width="1.5"/>
+          <rect x="322" y="143" width="17" height="13" rx="3" fill="#405865"/>
+          <line x1="315" y1="169" x2="315" y2="179" stroke="#77654e" stroke-width="3"/>
+        </g>
+        <circle cx="135" cy="164" r="5" fill="#77654e"/>
+        <path d="M130 167L81 211H34" class="scene-leader"/>
+        <text x="26" y="231" class="scene-label">Hinge</text>
+        <path class="magnet-leader" d="M330 141V107H169"/>
+        <text x="148" y="85" class="scene-label">Magnet on door</text>
+        <text x="148" y="101" class="scene-small">Moves with the door</text>
+        <text x="26" y="310" class="scene-small" data-gap-label>Magnet beside sensor</text>
+      </svg>
+      <p class="placement-state" data-door-state aria-live="polite">Door closed: magnet beside sensor</p>
+      <p class="placement-explanation">Fit the powered sensor to the frame on the latch side, with the magnet beside it on the door. Opening the door separates them and changes the reed-switch state.</p>
+      <button class="placement-button" type="button" data-toggle-door hidden>Open door <span aria-hidden="true">↗</span></button>
+    </section>
+  </div>
+  <section class="placement-receiver" aria-labelledby="placement-receiver-title">
+    <div class="receiver-illustration">
+      <svg viewBox="0 0 360 190" role="img" aria-labelledby="receiver-scene-title receiver-scene-desc">
+        <title id="receiver-scene-title">Receiver connected to the computer by USB</title>
+        <desc id="receiver-scene-desc">Wireless events arrive at the receiver. A USB cable connects it to the computer, which timestamps events, saves them in SQLite, and serves the dashboard.</desc>
+        <path class="receiver-waves" d="M31 69Q7 95 31 121M42 79Q29 95 42 111" fill="none" stroke="#8aa0b0" stroke-width="3" stroke-linecap="round"/>
+        <rect x="56" y="66" width="56" height="76" rx="8" fill="#263741"/>
+        <rect x="64" y="81" width="40" height="30" rx="2" fill="#142129" stroke="#68828e"/>
+        <path class="receiver-screen" d="M70 89H97M70 95H88M70 101H93" stroke="#8aa0b0" stroke-width="2"/>
+        <path d="M85 142V156Q85 166 98 166H145Q158 166 158 154V116H187" fill="none" stroke="#8aa0b0" stroke-width="3"/>
+        <text x="119" y="185" class="scene-small">USB</text>
+        <rect x="187" y="44" width="144" height="100" rx="5" fill="#526979"/>
+        <rect x="194" y="51" width="130" height="84" rx="2" fill="#fff"/>
+        <path d="M203 68H313M203 85H249M203 98H291M203 111H276" stroke="#cbd7df" stroke-width="5"/>
+        <path d="M178 145H340L349 154H169Z" fill="#a7b7c2"/>
+        <text x="198" y="29" class="scene-label">Receiver computer</text>
+      </svg>
+    </div>
+    <div class="receiver-copy">
+      <span class="placement-number">03 / AT THE COMPUTER</span>
+      <h3 id="placement-receiver-title">Receiver and activity log</h3>
+      <p>The receiver sits beside the computer and gets power through USB. It passes sensor events to the logger, which adds timestamps and saves them in SQLite. The OLED lets you check sensor activity at the receiver.</p>
+      <p class="placement-event" data-receiver-event aria-live="polite">Try either sensor above to follow an event.</p>
+      <span class="placement-flow-label">Illustrated event flow</span>
+    </div>
+  </section>
+  <p class="placement-note">Placement sketches, not to scale. The shaded field shows the intended sensing area; its actual reach depends on mounting and the PIR response. Align the door contact and check its switching gap during installation.</p>
+</div>

@@ -15,6 +15,7 @@ cover_alt: Receiver, door sensor, and motion sensor with fitted covers
 focus: Camera-free activity sensing
 methods: Embedded firmware, event processing, enclosure CAD
 context: Independent engineering project
+placement_demo: true
 next_url: /projects/xyz-robot/
 next_title: XYZ robot
 ---
@@ -30,6 +31,12 @@ The system has three modules: a motion sensor, a magnetic door sensor, and a USB
 - **Software:** Python and SQLite handle local logging. A browser dashboard displays the event history.
 - **Mechanical design:** FreeCAD enclosures house the sensors, electronics, and AAA batteries.
 - **Testing:** Scenario tools check missed packets, repeated triggers, visitors, and sensor outages. Uncertain movement estimates stay marked in the dashboard.
+
+## Placement and detection
+
+The motion sensor faces across the doorway so it picks up someone passing through. The door contact has two parts: the sensor on the frame and a magnet on the door. Both report to the receiver beside the computer.
+
+{% include papaw-placement.html %}
 
 ## App prototype
 

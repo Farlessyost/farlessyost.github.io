@@ -42,4 +42,6 @@ Source hashes, rendering parameters, and animation phase checks are recorded in 
 
 ## App prototype screenshots
 
+The placement diagrams use SVG to illustrate a jamb-mounted PIR, a frame-mounted magnetic contact with its magnet on the door, and the USB receiver at the computer. The field of view, door swing, and event timing explain operation rather than measured installation geometry. The diagrams use the existing module render thumbnails. Their buttons only animate the webpage; they do not connect to hardware or log household activity.
+
 The Papaw app screenshots capture the existing `doorway-monitor/dashboard` interface through a separate local preview server with synthetic SQLite events. No household database, real device identifiers, or activity logs were used. The scenario and room-estimation explanations follow the dashboard implementation and README; duty cycling, debouncing, queueing, and duplicate suppression follow the sensor and receiver firmware. The original prototype files remain unchanged. Screenshot preparation is saved in `C:/Users/wbfar/Portfolio Renders/papaw-app-preview`.
