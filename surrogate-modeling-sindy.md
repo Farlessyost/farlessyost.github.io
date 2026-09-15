@@ -17,7 +17,7 @@ next_title: Hybrid algae-growth modeling
 ---
 ## Overview
 
-I used Sparse Identification of Nonlinear Dynamics (SINDy) to build compact models of biodiesel production and watershed streamflow.
+I used Sparse Identification of Nonlinear Dynamics (SINDy) to build compact models of biodiesel production and watershed streamflow.[^paper]
 
 ## My contribution
 
@@ -29,7 +29,7 @@ I used Sparse Identification of Nonlinear Dynamics (SINDy) to build compact mode
 
 ## Results
 
-The industrial model captured process dynamics with a small set of equations. Watershed predictions were less accurate and required nonlinear, history-dependent terms.
+The industrial model captured process dynamics with a small set of equations. Watershed predictions were less accurate and required nonlinear, history-dependent terms.[^paper]
 
 {% include figure.html src="/A6.png" alt="Watershed surrogate equations and streamflow validation plot" caption="The watershed case exposes a harder modeling problem and the limits of the available surrogate." %}
 
@@ -39,4 +39,6 @@ The industrial model captured process dynamics with a small set of equations. Wa
 {% include figure.html src="/A3.png" alt="ASPEN Dynamics biodiesel process flowsheet" caption="The industrial process used as the detailed modeling reference." %}
 </details>
 
-<p class="source-note">William Farlessyost and Shweta Singh. “Reduced order dynamical models for complex dynamics in manufacturing and natural systems using machine learning.” <em>Nonlinear Dynamics</em> 110, 1613 to 1631 (2022). <a href="https://doi.org/10.1007/s11071-022-07695-x">Read the publication</a>.</p>
+## References and notes
+
+[^paper]: William Farlessyost and Shweta Singh. [“Reduced order dynamical models for complex dynamics in manufacturing and natural systems using machine learning.”](https://doi.org/10.1007/s11071-022-07695-x) *Nonlinear Dynamics* 110, 1613 to 1631 (2022). Source for the methods and results summarized on this page.

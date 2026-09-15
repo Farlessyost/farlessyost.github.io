@@ -17,7 +17,7 @@ next_title: Sensor selection
 ---
 ## Overview
 
-I combined a mechanistic model of *Chlorella vulgaris* growth with a learned correction for missing dynamics.
+I combined a mechanistic model of *Chlorella vulgaris* growth with a learned correction for missing dynamics.[^paper]
 
 ## My contribution
 
@@ -29,7 +29,7 @@ I combined a mechanistic model of *Chlorella vulgaris* growth with a learned cor
 
 ## Results
 
-The corrected predictions followed measured growth more closely in the validation examples. The evaluation used one cultivation batch; performance across other strains and reactors remains untested.
+The corrected predictions followed measured growth more closely in the validation examples.[^paper] The evaluation used one cultivation batch; performance across other strains and reactors remains untested.
 
 {% include figure.html src="/B6.png" alt="Observed, original, and corrected algae growth curves alongside the learned error equation" caption="Validation examples compare the original mechanistic predictions with the corrected model and observations." %}
 
@@ -38,4 +38,6 @@ The corrected predictions followed measured growth more closely in the validatio
 {% include figure.html src="/B4.png" alt="SINDy correction driven by temperature, light, and pH" caption="The physical drivers used to learn error dynamics." %}
 </details>
 
-<p class="source-note">William Farlessyost and Shweta Singh. “Improving Mechanistic Model Accuracy with Machine-Learning-Informed Physics.” <em>Systems and Control Transactions</em> 3, 275 to 282, FOCAPD (2024). <a href="https://doi.org/10.69997/sct.121371">Read the publication</a>.</p>
+## References and notes
+
+[^paper]: William Farlessyost and Shweta Singh. [“Improving Mechanistic Model Accuracy with Machine Learning Informed Physics.”](https://doi.org/10.69997/sct.121371) *Systems and Control Transactions* 3, 275 to 282, FOCAPD (2024). Source for the hybrid model, growth measurements, and validation results.

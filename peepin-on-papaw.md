@@ -27,7 +27,7 @@ The system has three modules: a motion sensor, a magnetic door sensor, and a rec
 
 ## My work
 
-- **Firmware:** ESP32-C3 sensor nodes send events over ESP-NOW to the receiver.
+- **Firmware:** ESP32-C3 sensor nodes send events over ESP-NOW to the receiver.[^esp-now]
 - **Software:** Python and SQLite handle local logging. A browser dashboard displays the event history.
 - **Mechanical design:** FreeCAD enclosures house the sensors, electronics, and AAA batteries.
 - **Testing:** Scenario tools check missed packets, repeated triggers, visitors, and sensor outages. Uncertain movement estimates stay marked in the dashboard.
@@ -63,15 +63,15 @@ Combining complementary sensors provides additional constraints on possible hous
 
 ### Motion sensor
 
-The passive infrared sensor produces a binary motion signal from changes in infrared radiation. The ESP32-C3 transmits state transitions and periodic heartbeats. Three AAA cells and a regulator supply the node, and the cover’s hood restricts its angular field of view.
+The passive infrared sensor produces a binary motion signal from changes in infrared radiation.[^pir] The ESP32-C3 transmits state transitions and periodic heartbeats. Three AAA cells and a regulator supply the node, and the cover’s hood restricts its angular field of view.
 
-The hood is intended to improve spatial selectivity by associating triggers with a doorway. That introduces a coverage tradeoff: a narrower sensing region needs more careful placement. Event-driven reporting and radio duty cycling reduce communication energy demand, while heartbeats provide a separate indication of node availability.
+The hood is intended to improve spatial selectivity by associating triggers with a doorway. That introduces a coverage tradeoff: a narrower sensing region needs more careful placement. Event-driven reporting and radio duty cycling reduce communication energy demand.[^sleep] Heartbeats provide a separate indication of node availability.
 
 {% include figure.html src="/assets/images/papaw-sensor-sequence.gif" poster="/assets/images/papaw-sensor-sequence.png" alt="Motion sensor CAD assembly with a faceted PIR lens, ESP32-C3 board, power regulator, and three AAA cells" caption="Motion sensor. HC-SR501, ESP32-C3, and three AAA cells in a directional enclosure." %}
 
 ### Door sensor
 
-The magnetic contact represents the door as a two-state system: open or closed. Firmware debouncing requires the reed-switch signal to stabilize before accepting a state transition, suppressing spurious events from contact bounce. GPIO wake-up lets the ESP32-C3 leave deep sleep when the door state changes and return to sleep after reporting.
+The magnetic contact represents the door as a two-state system: open or closed. Firmware debouncing requires the reed-switch signal to stabilize before accepting a state transition, suppressing spurious events from contact bounce.[^reed] GPIO wake-up lets the ESP32-C3 leave deep sleep when the door state changes and return to sleep after reporting.[^sleep]
 
 A direct door-state observation adds information that a motion pulse alone cannot supply. Debouncing improves event integrity, and sleep between transitions reduces the processor’s duty cycle. The passive magnet keeps one side of the assembly small and avoids wiring across the moving door joint.
 
@@ -79,10 +79,20 @@ A direct door-state observation adds information that a motion pulse alone canno
 
 ### Receiver
 
-The receiver runs from a USB wall adapter and collects events from the sensor nodes. A bounded packet queue buffers incoming radio messages for processing. Device identifiers and sequence numbers support duplicate suppression. The OLED reports node connectivity, activity, and error indicators.
+The receiver runs from a USB wall adapter and collects events from the sensor nodes. A bounded packet queue buffers incoming radio messages for processing. Device identifiers and sequence numbers support duplicate suppression.[^esp-now] The OLED reports node connectivity, activity, and error indicators.
 
 Buffering helps handle short bursts of asynchronous events, although a finite queue can overflow. Duplicate suppression prevents retransmissions from inflating activity counts. Centralizing these functions simplifies the sensor nodes, and the local display provides a diagnostic path when the dashboard is unavailable.
 
 {% include figure.html src="/assets/images/papaw-receiver-sequence.gif" poster="/assets/images/papaw-receiver-sequence.png" alt="USB-powered receiver CAD assembly with an ESP32-C3 board, four-wire connection, and 0.96 inch OLED display" caption="Receiver. An ESP32-C3 receives sensor events and drives a local OLED display." %}
 
 </details>
+
+## References and notes
+
+[^esp-now]: Espressif Systems. [“ESP-NOW,” *ESP-IDF Programming Guide* for ESP32-C3.](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/api-reference/network/esp_now.html) Describes connectionless radio communication, application acknowledgments, sequence numbers for dropping duplicate packets, and queues for processing received messages.
+
+[^pir]: Panasonic Industry. [“PIR Motion Sensors Technology for Low Power or Line Power Applications and Lens Options.”](https://na.industrial.panasonic.com/blog/pir-motion-sensors-technology-low-power-or-line-power-applications-and-lens-options) Background on pyroelectric sensing and optical detection zones. The HC-SR501 enclosure and hood shown here are part of this project’s design.
+
+[^sleep]: Espressif Systems. [“Sleep Modes,” *ESP-IDF Programming Guide* for ESP32-C3.](https://docs.espressif.com/projects/esp-idf/en/stable/esp32c3/api-reference/system/sleep_modes.html) Documents power-down behavior and timer/GPIO wake-up sources. Battery life also depends on the sensor, regulator, and reporting frequency.
+
+[^reed]: Littelfuse. [“Reed Switch Terms,” application note (2016).](https://www.littelfuse.com/assetdocs/catalog-glossary-reed-switch-terms-application-note?assetguid=2adea4ee-15e1-4eae-9b2b-3615939ae15f) Explains magnetic actuation, operate/release thresholds, and contact bounce. Debouncing is handled by this project’s firmware.

@@ -17,7 +17,7 @@ next_title: Climate resilience modeling
 ---
 ## Overview
 
-I studied which measurements a neural observer needs to estimate a system’s state, using liquid-time-constant (LTC) networks.
+I studied which measurements a neural observer needs to estimate a system’s state, using liquid-time-constant (LTC) networks.[^paper]
 
 ## My contribution
 
@@ -29,7 +29,7 @@ I studied which measurements a neural observer needs to estimate a system’s st
 
 ## Results
 
-Smaller input sets met prediction-error targets in the synthetic test cases. Inputs containing only noise could be removed. Hardware performance and behavior under real sensor drift have not been evaluated.
+Smaller input sets met prediction-error targets in the synthetic test cases. Inputs containing only noise could be removed.[^paper] Hardware performance and behavior under real sensor drift have not been evaluated.
 
 {% include figure.html src="/C5.png" alt="Comparison of the full observer and reduced sensor-network designs" caption="Observer designs before and after input selection." %}
 
@@ -40,4 +40,6 @@ Smaller input sets met prediction-error targets in the synthetic test cases. Inp
 {% include figure.html src="/C11.png" alt="Chemical concentration predictions after sensor pruning" caption="Chemical-system prediction results." %}
 </details>
 
-<p class="source-note">Research with Sebastian Oberst and Shweta Singh. <a href="https://arxiv.org/abs/2509.11336">Read the 2025 preprint</a>.</p>
+## References and notes
+
+[^paper]: William Farlessyost, Sebastian Oberst, and Shweta Singh. [“The power of dynamic causality in observer-based design for soft sensor applications.”](https://arxiv.org/abs/2509.11336) arXiv:2509.11336 (2025), preprint. Source for the perturbation-based pruning procedure and the three simulation testbeds.

@@ -176,6 +176,14 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outli
 .figure-details summary { cursor: pointer; color: var(--accent); font-size: 1rem; font-weight: 500; padding-block: 5px; }
 .figure-details .research-figure { margin-block: 30px; }
 .case-body .source-note { font-size: .875rem; padding-top: 28px; border-top: 1px solid var(--line); margin-top: 40px; overflow-wrap: anywhere; }
+.case-body sup[id^="fnref:"] { font-size: .72em; line-height: 0; scroll-margin-top: 3rem; }
+.case-body a.footnote { font-weight: 600; text-decoration: none; padding-inline: 2px; }
+.case-body .footnotes { max-width: 760px; margin: 20px auto 45px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: .875rem; line-height: 1.7; }
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { padding-left: 6px; margin-bottom: 20px; scroll-margin-top: 2rem; }
+.footnotes p { max-width: none; }
+.footnotes li:target { background: var(--soft); outline: 8px solid var(--soft); border-radius: 2px; }
+.footnotes .reversefootnote { white-space: nowrap; padding: 2px 4px; }
 .case-end { margin-block: 70px 85px; border-top: 1px solid var(--line); padding-top: 30px; }
 .next-project { display: flex; gap: 30px; justify-content: space-between; align-items: baseline; font-family: var(--serif); font-size: clamp(2rem,3.2vw,3rem); line-height: 1.15; margin-block: 20px 25px; letter-spacing: -.04em; }
 .next-project:hover, .next-project span { color: var(--accent); }

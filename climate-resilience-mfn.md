@@ -17,7 +17,7 @@ next_title: Peepin on Papaw
 ---
 ## Overview
 
-I modeled how changes in crop growth affect supply and production across a soybean-to-biodiesel network.
+I modeled how changes in crop growth affect supply and production across a soybean-to-biodiesel network.[^paper]
 
 ## My contribution
 
@@ -33,7 +33,7 @@ I modeled how changes in crop growth affect supply and production across a soybe
 
 ## Results
 
-The simulations showed how climate inputs and farm area affected output, material stocks, waste, and imports across the network. These are scenario results, not forecasts of actual plant operations.
+The simulations showed how climate inputs and farm area affected output, material stocks, waste, and imports across the network.[^paper] These are scenario results, not forecasts of actual plant operations.
 
 {% include figure.html src="/D6.png" alt="Simulated oil and biodiesel output under two climate scenarios" caption="Industrial throughput under the modeled climate scenarios. Curves represent different farm-area configurations." %}
 
@@ -43,4 +43,6 @@ The simulations showed how climate inputs and farm area affected output, materia
 {% include figure.html src="/D8.png" alt="Soybean import requirements under two climate scenarios" caption="Import requirements change with climate assumptions and farm area." %}
 </details>
 
-<p class="source-note">“Resilience dynamics in coupled natural-industrial systems: A surrogate modeling approach for assessing climate-change impacts on industrial ecosystems.” <em>Journal of Industrial Ecology</em> (2025). <a href="https://doi.org/10.1111/jiec.70087">Read the published article</a>. Figures shown here come from the original research presentation.</p>
+## References and notes
+
+[^paper]: William Farlessyost and Shweta Singh. [“Modeling material flow dynamics in coupled natural-industrial ecosystems for resilience to climate change: A case study on a soybean-based industrial ecosystem.”](https://doi.org/10.1111/jiec.70087) *Journal of Industrial Ecology* 29, 1882 to 1896 (2025). Figures shown here come from the original research presentation.

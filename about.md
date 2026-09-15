@@ -26,9 +26,9 @@ description: William Farlessyost’s skills, engineering experience, education, 
     <div class="entry"><p class="meta">UNC Asheville / 2020</p><h3>B.A., Applied Mathematics</h3><p>Summa cum laude.</p></div>
   </div></section>
   <section class="bio-section" aria-labelledby="publications"><h2 id="publications">Publications</h2><ol class="publications">
-    <li><p class="pub-year">2025 / Journal of Industrial Ecology</p><a href="https://doi.org/10.1111/jiec.70087">Resilience dynamics in coupled natural-industrial systems: A surrogate modeling approach for assessing climate-change impacts on industrial ecosystems <span aria-hidden="true">↗</span></a></li>
+    <li><p class="pub-year">2025 / Journal of Industrial Ecology</p><a href="https://doi.org/10.1111/jiec.70087">Modeling material flow dynamics in coupled natural-industrial ecosystems for resilience to climate change: A case study on a soybean-based industrial ecosystem <span aria-hidden="true">↗</span></a></li>
     <li><p class="pub-year">2025 / Preprint</p><a href="https://arxiv.org/abs/2509.11336">The power of dynamic causality in observer-based design for soft sensor applications <span aria-hidden="true">↗</span></a></li>
-    <li><p class="pub-year">2024 / Systems and Control Transactions</p><a href="https://doi.org/10.69997/sct.121371">Improving Mechanistic Model Accuracy with Machine-Learning-Informed Physics <span aria-hidden="true">↗</span></a></li>
+    <li><p class="pub-year">2024 / Systems and Control Transactions</p><a href="https://doi.org/10.69997/sct.121371">Improving Mechanistic Model Accuracy with Machine Learning Informed Physics <span aria-hidden="true">↗</span></a></li>
     <li><p class="pub-year">2022 / Nonlinear Dynamics</p><a href="https://doi.org/10.1007/s11071-022-07695-x">Reduced order dynamical models for complex dynamics in manufacturing and natural systems using machine learning <span aria-hidden="true">↗</span></a></li>
   </ol></section>
 </div>
