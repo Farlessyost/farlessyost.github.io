@@ -49,10 +49,10 @@ The modules form a distributed, discrete-event sensor network. Motion and magnet
 
 Combining complementary sensors provides additional constraints on possible household activity. Event-driven communication limits redundant transmissions, while local processing keeps the activity history on the receiver computer. The design prioritizes useful activity context with limited personal data collection.
 
-{% include figure.html src="/assets/images/papaw-family-sequence.gif" poster="/assets/images/papaw-family-sequence.png" alt="Peepin on Papaw receiver, door sensor, and motion sensor rotating, separating, and reassembling" caption="Three complementary modules: a hooded HC-SR501 PIR sensor detects motion at a doorway; a reed switch and separate magnet detect door opening and closing; and a USB-powered ESP32-C3 receiver collects wireless events and displays node activity on an OLED. The exploded view reveals the sensor boards, AAA battery packs, and enclosure parts. Together, motion and door-state observations constrain the possible paths between rooms." %}
+{% include figure.html src="/assets/images/papaw-family-sequence.gif" poster="/assets/images/papaw-family-sequence.png" alt="Peepin on Papaw receiver, door sensor, and motion sensor rotating, separating, and reassembling" caption="The PIR sensor detects motion at a doorway, and the magnetic switch records when a door opens or closes. Both send events wirelessly to the USB receiver for logging on the computer. The exploded view shows how the boards, batteries, and display fit inside the printed cases." %}
 
 <details class="figure-details" markdown="1">
-<summary>Motion sensor, door contact, and receiver: components and operating principles</summary>
+<summary>A closer look at each module</summary>
 
 ### Motion sensor
 
