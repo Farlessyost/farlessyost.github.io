@@ -16,8 +16,8 @@ focus: Camera-free activity sensing
 methods: Embedded firmware, event processing, enclosure CAD
 context: Independent engineering project
 placement_demo: true
-next_url: /projects/tetherframe/
-next_title: TetherFrame
+next_url: /projects/tetherxyz/
+next_title: TetherXYZ
 ---
 ## Overview
 

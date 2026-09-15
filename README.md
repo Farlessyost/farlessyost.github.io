@@ -24,7 +24,7 @@ Open http://127.0.0.1:4000. To build without a server, use `bundle exec jekyll b
 - `assets/images/`: turntable GIFs and still frames exported from the current engineering CAD models.
 - Existing root research figures, headshot, and résumé are retained.
 
-The four pre-existing research `.html` URLs, `/about/`, and `/projects/` are preserved. Project pages include `/projects/peepin-on-papaw/` and `/projects/tetherframe/`. The former `/projects/xyz-robot/` and `/projects/skopeo/` URLs redirect directly to TetherFrame, preserving query strings and section anchors when JavaScript is available. Engineering source and media filenames retain their existing names.
+The four pre-existing research `.html` URLs, `/about/`, and `/projects/` are preserved. Project pages include `/projects/peepin-on-papaw/` and `/projects/tetherxyz/`. The former `/projects/xyz-robot/`, `/projects/skopeo/`, and `/projects/tetherframe/` URLs redirect directly to TetherXYZ, preserving query strings and section anchors when JavaScript is available. Engineering source and media filenames retain their existing names.
 
 ## Publication
 

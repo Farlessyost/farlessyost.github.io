@@ -1,7 +1,7 @@
 ---
 layout: project
-title: TetherFrame
-permalink: /projects/tetherframe/
+title: TetherXYZ
+permalink: /projects/tetherxyz/
 group: build
 order: 2
 category: Robotics & control
@@ -11,7 +11,7 @@ summary: Cable-driven positioning for medical scanning, using printed parts and 
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
 cover: /assets/images/xyz-robot-sequence.gif
 cover_poster: /assets/images/xyz-robot-sequence.png
-cover_alt: TetherFrame CAD assembly with timber frame, cable mechanism, and servo wrist
+cover_alt: TetherXYZ CAD assembly with timber frame, cable mechanism, and servo wrist
 focus: Medical-scanner positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
 context: Independent engineering project
@@ -20,7 +20,7 @@ next_title: Climate resilience modeling
 ---
 ## Overview
 
-TetherFrame uses four cables to position a carriage and a two-axis wrist to orient the scanning tool. I’m developing the mechanism and embedded controls for a medical-scanning platform that can be made and maintained locally.
+TetherXYZ uses four cables to position a carriage and a two-axis wrist to orient the scanning tool. I’m developing the mechanism and embedded controls for a medical-scanning platform that can be made and maintained locally.
 
 ## Why I’m building it
 
@@ -39,7 +39,7 @@ Cable stretch, backlash, and frame deflection contribute to positioning error. T
 ## Motion and scanning {#simulation-demo}
 
 <figure class="project-video">
-  <video controls playsinline preload="none" width="1920" height="1080" poster="{{ '/assets/images/xyz-video-poster.jpg' | relative_url }}" aria-label="TetherFrame motion and scanning demonstration" aria-describedby="scanner-video-caption">
+  <video controls playsinline preload="none" width="1920" height="1080" poster="{{ '/assets/images/xyz-video-poster.jpg' | relative_url }}" aria-label="TetherXYZ motion and scanning demonstration" aria-describedby="scanner-video-caption">
     <source src="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}" type="video/mp4">
     <p>Your browser does not support embedded video. <a href="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}">Watch the demonstration as an MP4.</a></p>
   </video>
@@ -61,7 +61,7 @@ Four motor-driven cables position the carriage with three translational degrees 
 
 Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
-{% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the TetherFrame cable-driven scanning platform" caption="Complete TetherFrame assembly." %}
+{% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the TetherXYZ cable-driven scanning platform" caption="Complete TetherXYZ assembly." %}
 
 ## Tool wrist
 
