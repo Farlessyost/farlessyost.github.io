@@ -6,13 +6,13 @@ group: build
 order: 2
 category: Robotics & control
 status: In development
-description: A four-cable robot prototype for tool positioning, with a servo wrist and stereo-camera mount.
-summary: Cable-driven robot with motion simulation, embedded controls, and a two-servo wrist.
+description: A cable-driven medical-scanner concept designed around 3D-printed parts and a frame made from locally available materials.
+summary: Medical-scanner concept using cable positioning, 3D-printed assemblies, and a timber frame.
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
 cover: /assets/images/xyz-robot-sequence.gif
 cover_poster: /assets/images/xyz-robot-sequence.png
 cover_alt: Current XYZ robot CAD assembly with timber frame, cable mechanism, and servo wrist
-focus: Cable-driven motion and tool positioning
+focus: Medical-scanner positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
 context: Independent engineering project
 next_url: /climate-resilience-mfn.html
@@ -21,6 +21,14 @@ next_title: Climate resilience modeling
 ## Overview
 
 XYZ uses four cables to move a carriage inside a frame. I’m developing the mechanical design, simulation, and embedded controls for a medical-scanner concept.
+
+## Why this design
+
+The goal is a medical scanner that can be built locally without relying on precision rails or a machined metal frame. The larger structure can use wood or other readily available stock. Smaller parts can be 3D printed or fabricated locally, then fitted with standard motors, bearings, and electronics.
+
+Cables make this possible by separating the positioning mechanism from the frame that supports it. The idea is to measure the cable-anchor locations and calibrate the cable lengths, so the inverse-kinematics model uses the geometry of the assembled machine. This reduces dependence on building every frame member to an exact nominal dimension.
+
+The parts still need to fit properly, and the frame needs to be stiff under load. Cable stretch, backlash, and frame deflection all contribute to positioning error. I’m working toward a design that can meet its accuracy requirements with parts people can make, check, and replace locally.
 
 ## Simulation demo
 
@@ -45,7 +53,7 @@ XYZ uses four cables to move a carriage inside a frame. I’m developing the mec
 
 Four motor-driven cables position the carriage with three translational degrees of freedom, expressed in Cartesian coordinates (x, y, z). Inverse kinematics maps a target carriage position to cable lengths. Because cables only pull, tension allocation must satisfy force equilibrium with positive cable tensions. The wrist adds two rotational degrees of freedom to orient the tool for scanning or marking.
 
-Cable positioning reduces dependence on long precision rails, concentrating precision components into smaller assemblies. This shifts the design challenge toward cable-length calibration, cable compliance, and tension management.
+Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
 {% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the XYZ cable-driven robot" caption="Complete robot assembly." %}
 
