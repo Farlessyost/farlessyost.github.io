@@ -25,7 +25,7 @@
     window.setTimeout(() => {
       diagram.dataset.motionActive = 'true';
       motionState.textContent = 'Motion detected: direction is unknown';
-      receive('Doorway motion → ESP-NOW → USB receiver → timestamped activity log');
+      receive('Doorway motion → ESP-NOW → receiver → OLED activity display');
     }, reducedMotion.matches ? 0 : 1000);
     window.setTimeout(() => {
       person.classList.remove('is-walking');
@@ -42,6 +42,6 @@
     door.textContent = doorOpen ? 'Close door ↙' : 'Open door ↗';
     doorState.textContent = doorOpen ? 'Door open: magnet away from sensor' : 'Door closed: magnet beside sensor';
     diagram.querySelector('[data-gap-label]').textContent = doorOpen ? 'Magnet moves away' : 'Magnet beside sensor';
-    receive(`${doorOpen ? 'Door opened' : 'Door closed'} → ESP-NOW → USB receiver → timestamped activity log`);
+    receive(`${doorOpen ? 'Door opened' : 'Door closed'} → ESP-NOW → receiver → OLED activity display`);
   });
 })();

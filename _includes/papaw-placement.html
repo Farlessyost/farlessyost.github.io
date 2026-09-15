@@ -72,25 +72,30 @@
   <section class="placement-receiver" aria-labelledby="placement-receiver-title">
     <div class="receiver-illustration">
       <svg viewBox="0 0 360 190" role="img" aria-labelledby="receiver-scene-title receiver-scene-desc">
-        <title id="receiver-scene-title">Receiver connected to the computer by USB</title>
-        <desc id="receiver-scene-desc">Wireless events arrive at the receiver. A USB cable connects it to the computer, which timestamps events, saves them in SQLite, and serves the dashboard.</desc>
+        <title id="receiver-scene-title">Receiver powered from a wall outlet</title>
+        <desc id="receiver-scene-desc">Wireless events arrive at the receiver. A USB wall adapter supplies power from an outlet, and the receiver's OLED shows sensor activity.</desc>
         <path class="receiver-waves" d="M31 69Q7 95 31 121M42 79Q29 95 42 111" fill="none" stroke="#8aa0b0" stroke-width="3" stroke-linecap="round"/>
         <rect x="56" y="66" width="56" height="76" rx="8" fill="#263741"/>
         <rect x="64" y="81" width="40" height="30" rx="2" fill="#142129" stroke="#68828e"/>
         <path class="receiver-screen" d="M70 89H97M70 95H88M70 101H93" stroke="#8aa0b0" stroke-width="2"/>
-        <path d="M85 142V156Q85 166 98 166H145Q158 166 158 154V116H187" fill="none" stroke="#8aa0b0" stroke-width="3"/>
-        <text x="119" y="185" class="scene-small">USB</text>
-        <rect x="187" y="44" width="144" height="100" rx="5" fill="#526979"/>
-        <rect x="194" y="51" width="130" height="84" rx="2" fill="#fff"/>
-        <path d="M203 68H313M203 85H249M203 98H291M203 111H276" stroke="#cbd7df" stroke-width="5"/>
-        <path d="M178 145H340L349 154H169Z" fill="#a7b7c2"/>
-        <text x="198" y="29" class="scene-label">Receiver computer</text>
+        <rect x="230" y="36" width="82" height="120" rx="7" fill="#f7f9fb" stroke="#adbcc6" stroke-width="2"/>
+        <circle cx="271" cy="44" r="2" fill="#adbcc6"/>
+        <circle cx="271" cy="149" r="2" fill="#adbcc6"/>
+        <rect x="251" y="103" width="40" height="36" rx="10" fill="#fff" stroke="#adbcc6"/>
+        <path d="M262 111V120M279 109V120" stroke="#536979" stroke-width="3"/>
+        <path d="M268 132V128A3 3 0 0 1 274 128V132Z" fill="#536979"/>
+        <rect x="245" y="54" width="52" height="40" rx="5" fill="#dce3e8" stroke="#8498a6" stroke-width="1.5"/>
+        <rect x="262" y="83" width="18" height="5" rx="1" fill="#536979"/>
+        <path d="M85 142V156Q85 166 98 166H258Q271 166 271 153V88" fill="none" stroke="#8aa0b0" stroke-width="3"/>
+        <text x="145" y="185" class="scene-small">USB power</text>
+        <text x="46" y="29" class="scene-label">Receiver</text>
+        <text x="230" y="24" class="scene-label">Wall outlet</text>
       </svg>
     </div>
     <div class="receiver-copy">
-      <span class="placement-number">03 / AT THE COMPUTER</span>
-      <h3 id="placement-receiver-title">Receiver and activity log</h3>
-      <p>The receiver sits beside the computer and gets power through USB. It passes sensor events to the logger, which adds timestamps and saves them in SQLite. The OLED lets you check sensor activity at the receiver.</p>
+      <span class="placement-number">03 / WALL OUTLET</span>
+      <h3 id="placement-receiver-title">Receiver at any outlet</h3>
+      <p>Plug the receiver into any wall outlet using a USB power adapter. It receives the sensor events wirelessly, and the OLED shows sensor connections and recent activity.</p>
       <p class="placement-event" data-receiver-event aria-live="polite">Try either sensor above to follow an event.</p>
       <span class="placement-flow-label">Illustrated event flow</span>
     </div>

@@ -23,18 +23,18 @@ next_title: XYZ robot
 
 Peepin on Papaw records activity around a home using motion sensors and door switches. I’m developing the firmware, receiver, dashboard, and printed enclosures.
 
-The system has three modules: a motion sensor, a magnetic door sensor, and a USB-powered receiver with an OLED display.
+The system has three modules: a motion sensor, a magnetic door sensor, and a receiver with an OLED display that plugs into a wall outlet.
 
 ## My work
 
-- **Firmware:** ESP32-C3 sensor nodes send events over ESP-NOW to a USB receiver.
+- **Firmware:** ESP32-C3 sensor nodes send events over ESP-NOW to the receiver.
 - **Software:** Python and SQLite handle local logging. A browser dashboard displays the event history.
 - **Mechanical design:** FreeCAD enclosures house the sensors, electronics, and AAA batteries.
 - **Testing:** Scenario tools check missed packets, repeated triggers, visitors, and sensor outages. Uncertain movement estimates stay marked in the dashboard.
 
 ## Placement and detection
 
-The motion sensor faces across the doorway so it picks up someone passing through. The door contact has two parts: the sensor on the frame and a magnet on the door. Both report to the receiver beside the computer.
+The motion sensor faces across the doorway so it picks up someone passing through. The door contact has two parts: the sensor on the frame and a magnet on the door. Both report wirelessly to the receiver, which plugs into any wall outlet.
 
 {% include papaw-placement.html %}
 
@@ -52,11 +52,11 @@ Room estimation is a partially observed state-estimation problem. The home is mo
 
 ## How the modules work together
 
-The modules form a distributed, discrete-event sensor network. Motion and magnetic contacts supply binary observations, which the receiver forwards over USB for timestamped storage in SQLite. These observations support room-state estimation, with uncertainty retained when the available signals do not identify a unique state.
+The modules form a distributed, discrete-event sensor network. Motion and magnetic contacts supply binary observations, which the sensor nodes send to the receiver over ESP-NOW. These observations support room-state estimation, with uncertainty retained when the available signals do not identify a unique state.
 
-Combining complementary sensors provides additional constraints on possible household activity. Event-driven communication limits redundant transmissions, while local processing keeps the activity history on the receiver computer. The design prioritizes useful activity context with limited personal data collection.
+Combining complementary sensors provides additional constraints on possible household activity. Event-driven communication limits redundant transmissions, and the software keeps a local activity history for review. The design prioritizes useful activity context with limited personal data collection.
 
-{% include figure.html src="/assets/images/papaw-family-sequence.gif" poster="/assets/images/papaw-family-sequence.png" alt="Peepin on Papaw receiver, door sensor, and motion sensor rotating, separating, and reassembling" caption="The PIR sensor detects motion at a doorway, and the magnetic switch records when a door opens or closes. Both send events wirelessly to the USB receiver for logging on the computer. The exploded view shows how the boards, batteries, and display fit inside the printed cases." %}
+{% include figure.html src="/assets/images/papaw-family-sequence.gif" poster="/assets/images/papaw-family-sequence.png" alt="Peepin on Papaw receiver, door sensor, and motion sensor rotating, separating, and reassembling" caption="The PIR sensor detects motion at a doorway, and the magnetic switch records when a door opens or closes. Both send events wirelessly to the receiver plugged into a wall outlet. The exploded view shows how the boards, batteries, and display fit inside the printed cases." %}
 
 <details class="figure-details" markdown="1">
 <summary>A closer look at each module</summary>
@@ -79,7 +79,7 @@ A direct door-state observation adds information that a motion pulse alone canno
 
 ### Receiver
 
-The USB-powered receiver acts as a gateway between the sensor network and the computer. A bounded packet queue separates radio reception from USB processing. Device identifiers and sequence numbers support duplicate suppression, while the computer adds arrival timestamps for temporal analysis. The OLED reports node connectivity, activity, and error indicators.
+The receiver runs from a USB wall adapter and collects events from the sensor nodes. A bounded packet queue buffers incoming radio messages for processing. Device identifiers and sequence numbers support duplicate suppression. The OLED reports node connectivity, activity, and error indicators.
 
 Buffering helps handle short bursts of asynchronous events, although a finite queue can overflow. Duplicate suppression prevents retransmissions from inflating activity counts. Centralizing these functions simplifies the sensor nodes, and the local display provides a diagnostic path when the dashboard is unavailable.
 
