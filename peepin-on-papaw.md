@@ -33,13 +33,13 @@ The system has three modules: a motion sensor, a magnetic door sensor, and a USB
 
 ## App prototype
 
-The caregiver interface is a progressive web app (PWA) that can be installed on Android. These screens show the existing prototype with synthetic demo events. The overview brings activity, sensor availability, and visitor context together so a caregiver can assess the quality of the available information.
+The caregiver app runs in a browser and can be installed on Android as a progressive web app (PWA). Its overview shows recent activity, sensor connections, and visitor information in one place.
 
-{% include figure.html src="/assets/images/papaw-app-overview.png" alt="Papaw Care View prototype overview showing simulated recent activity, room estimate, sensor coverage, and visitor context" caption="App prototype overview with synthetic demo events." %}
+{% include figure.html src="/assets/images/papaw-app-overview.png" alt="Papaw Care View overview showing recent activity, room estimate, sensor coverage, and visitor context" caption="The app overview shows recent activity, room estimates, and sensor coverage." %}
 
 Room estimation is a partially observed state-estimation problem. The home is modeled as a graph: rooms are vertices and monitored doorways are edges. Temporal clustering merges repeated PIR triggers, and the order of adjacent doorway events constrains possible paths. Confidence labels summarize heuristic ambiguity; uncertain observations leave multiple rooms possible. The scenario lab tests this logic against known simulated trajectories, packet loss, and multiple occupants.
 
-{% include figure.html src="/assets/images/papaw-app-room-estimate.png" alt="Papaw Care View prototype showing a connected-room graph, a low-confidence room estimate, alternative possible rooms, and sensor details using synthetic events" caption="Room-estimation view showing uncertainty and the evidence behind an inferred path. Synthetic demo events." %}
+{% include figure.html src="/assets/images/papaw-app-room-estimate.png" alt="Papaw Care View showing a connected-room graph, a low-confidence room estimate, alternative possible rooms, and sensor details" caption="The room view shows the estimated location, other possible rooms, and the sensor events used to make the estimate." %}
 
 {% include turntable-controls.html %}
 
