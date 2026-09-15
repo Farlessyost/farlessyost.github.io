@@ -8,7 +8,7 @@ description: William Farlessyost, Ph.D. Engineering experience in robotics, embe
   <div class="hero-copy">
     <p class="eyebrow">William Farlessyost, Ph.D.</p>
     <h1 id="intro-title">Engineer &amp;<br>researcher.</h1>
-    <p class="hero-intro">I develop robots, embedded sensing systems, and machine learning models. My background is in mechatronics, applied mathematics, and doctoral research at Purdue.</p>
+    <p class="hero-intro">I develop robots, embedded sensing systems, and machine learning models. My background is in mechatronics and applied mathematics. I earned my Ph.D. in Agricultural and Biological Engineering at Purdue.</p>
     <div class="actions"><a class="button" href="{{ '/resume.pdf' | relative_url }}">View résumé <span aria-hidden="true">↗</span><span class="sr-only"> (PDF)</span></a><a class="text-link" href="{{ '/projects/' | relative_url }}">View projects</a></div>
   </div>
   <figure class="hero-portrait">
