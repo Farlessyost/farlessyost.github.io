@@ -6,8 +6,8 @@ group: build
 order: 2
 category: Robotics & control
 status: In development
-description: A medical-scanning concept designed for local fabrication and repair.
-summary: A medical-scanning concept designed for local fabrication and repair, using cable positioning, printed parts, and a timber frame.
+description: Cable-driven positioning for medical scanning, designed for local fabrication and repair.
+summary: Cable-driven positioning for medical scanning, using printed parts and a timber frame designed for local fabrication and repair.
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
 cover: /assets/images/xyz-robot-sequence.gif
 cover_poster: /assets/images/xyz-robot-sequence.png
@@ -20,7 +20,7 @@ next_title: Climate resilience modeling
 ---
 ## Overview
 
-TetherFrame uses four cables to position a carriage and a two-axis wrist to orient the scanning tool. I’m developing the mechanism, simulation, and embedded controls for a medical-scanning platform that can be made and maintained locally.
+TetherFrame uses four cables to position a carriage and a two-axis wrist to orient the scanning tool. I’m developing the mechanism and embedded controls for a medical-scanning platform that can be made and maintained locally.
 
 ## Why I’m building it
 
@@ -28,24 +28,22 @@ Access to diagnostics is still limited in much of the world. The 2021 Lancet Com
 
 I’m tackling one part of that problem: the mechanical platform that moves and orients a scanning tool. The aim is to reduce reliance on precision rails, custom-machined frames, and replacement parts that may be difficult to obtain. A frame made from local stock and smaller parts that can be printed or fabricated nearby could make the machine easier to build, repair, and adapt.
 
-I’m currently evaluating positioning, tool contact, and surface reconstruction in simulation. Medical use would require validation of the complete scanning system.
-
 ## Why this design
 
 The larger structure can use wood or other readily available stock. Smaller parts can be 3D printed or fabricated locally, then fitted with standard motors, bearings, and electronics.
 
 Cables separate the positioning mechanism from the frame that supports it. The idea is to measure the cable-anchor locations and calibrate the cable lengths, so the inverse-kinematics model uses the geometry of the assembled machine. This is how I intend to reduce dependence on building every frame member to an exact nominal dimension.
 
-The parts still need to fit properly, and the frame needs to be stiff under load. Cable stretch, backlash, and frame deflection all contribute to positioning error. I’m working toward a design that can meet its accuracy requirements with parts people can make, check, and replace locally.
+Cable stretch, backlash, and frame deflection contribute to positioning error. The design concentrates the critical fits in smaller parts that can be fabricated, checked, and replaced locally.
 
-## Simulation demo
+## Motion and scanning {#simulation-demo}
 
 <figure class="project-video">
-  <video controls playsinline preload="none" width="1920" height="1080" poster="{{ '/assets/images/xyz-video-poster.jpg' | relative_url }}" aria-label="Medical scanner simulation demonstration" aria-describedby="scanner-video-caption">
+  <video controls playsinline preload="none" width="1920" height="1080" poster="{{ '/assets/images/xyz-video-poster.jpg' | relative_url }}" aria-label="TetherFrame motion and scanning demonstration" aria-describedby="scanner-video-caption">
     <source src="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}" type="video/mp4">
     <p>Your browser does not support embedded video. <a href="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}">Watch the demonstration as an MP4.</a></p>
   </video>
-  <figcaption id="scanner-video-caption">Simulation showing robot motion, tool contact, stereo-camera views, and surface reconstruction. <span class="video-duration">5 min 43 sec.</span> <a href="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}">Open video</a></figcaption>
+  <figcaption id="scanner-video-caption">Robot motion, tool contact, stereo-camera views, and surface reconstruction in MuJoCo. <span class="video-duration">5 min 43 sec.</span> <a href="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}">Open video</a></figcaption>
 </figure>
 
 ## My work
