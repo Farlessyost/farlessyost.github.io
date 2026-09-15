@@ -1,7 +1,7 @@
 ---
 layout: project
-title: Skopeo
-permalink: /projects/skopeo/
+title: TetherFrame
+permalink: /projects/tetherframe/
 group: build
 order: 2
 category: Robotics & control
@@ -11,7 +11,7 @@ summary: A medical-scanning concept designed for local fabrication and repair, u
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
 cover: /assets/images/xyz-robot-sequence.gif
 cover_poster: /assets/images/xyz-robot-sequence.png
-cover_alt: Skopeo CAD assembly with timber frame, cable mechanism, and servo wrist
+cover_alt: TetherFrame CAD assembly with timber frame, cable mechanism, and servo wrist
 focus: Medical-scanner positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
 context: Independent engineering project
@@ -20,7 +20,7 @@ next_title: Climate resilience modeling
 ---
 ## Overview
 
-Skopeo uses four cables to position a carriage and a two-axis wrist to orient the scanning tool. I’m developing the mechanism, simulation, and embedded controls for a medical-scanning platform that can be made and maintained locally.
+TetherFrame uses four cables to position a carriage and a two-axis wrist to orient the scanning tool. I’m developing the mechanism, simulation, and embedded controls for a medical-scanning platform that can be made and maintained locally.
 
 ## Why I’m building it
 
@@ -63,7 +63,7 @@ Four motor-driven cables position the carriage with three translational degrees 
 
 Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
-{% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the Skopeo cable-driven scanning platform" caption="Complete Skopeo assembly." %}
+{% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the TetherFrame cable-driven scanning platform" caption="Complete TetherFrame assembly." %}
 
 ## Tool wrist
 
