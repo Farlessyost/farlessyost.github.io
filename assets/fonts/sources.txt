@@ -1,0 +1,5 @@
+IBM Plex Sans: https://fonts.gstatic.com/s/ibmplexsans/v23/zYXzKVElMYYaJe8bpLHnCwDKr932-G7dytD-Dmu1syxeKYY.woff2
+License: https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexsans/OFL.txt
+
+Newsreader: https://fonts.gstatic.com/s/newsreader/v26/cY9AfjOCX1hbuyalUrK4397yjA.woff2
+License: https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/OFL.txt
