@@ -24,6 +24,8 @@ TetherXYZ uses four cables to position a carriage and a two-axis wrist to orient
 
 **The winches can be positioned independently around the working area.** They do not need matching heights, equal spacing, or a perfectly square frame. Their installed positions and angles become inputs to the inverse-kinematics model, allowing the layout to fit the available structure and space.
 
+**The wonky mounting is intentional.** I placed the winches at different heights and tilted them in different directions to show that a neat, symmetric installation is unnecessary. The geometry changes the cable lengths needed for a move; the inverse-kinematics model accounts for those differences to produce the same tool path.
+
 ## Why I’m building it
 
 Access to diagnostics is still limited in much of the world. The 2021 Lancet Commission on diagnostics estimated that **47% of the global population** had little or no access to diagnostics.[^diagnostic-access] For medical imaging specifically, the World Health Assembly’s 2025 resolution calls for affordable equipment, better access in rural and remote areas, and sustained investment in maintenance and trained staff.[^imaging-access]
@@ -42,7 +44,7 @@ Cable stretch, backlash, and frame deflection contribute to positioning error. T
 
 ## Motion and surface tracking {#simulation-demo}
 
-The four winches mount to a braced timber frame at different heights and angles. Each pulley head swivels to follow its cable while the motor and backplate stay fixed. The animation follows the bead-homing sequence, then the wrist traces “Hello” across a curved reference surface.
+The four winches are deliberately mounted unevenly on the timber frame. Their cable feed heights are 440, 480, 510, and 470 mm, with mounting tilts of −6°, +5°, +7°, and −4°. Those differences are inputs to the positioning equations. Each pulley head swivels to follow its cable while the motor and backplate stay fixed. The animation follows the bead-homing sequence, then the wrist traces “Hello” across a curved reference surface.
 
 <figure class="project-video">
   <video controls playsinline preload="none" width="960" height="640" poster="{{ '/assets/images/tetherxyz-current-motion.png' | relative_url }}" aria-label="TetherXYZ homing and surface-tracking simulation">
@@ -74,7 +76,7 @@ Four motor-driven cables position the carriage with three translational degrees 
 
 Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
-{% include figure.html src="/assets/images/tetherxyz-studio-turntable.gif" poster="/assets/images/tetherxyz-studio-turntable.png" alt="Complete CAD assembly of the TetherXYZ cable-driven scanning platform" caption="Current TetherXYZ assembly: braced timber frame, four stationary winches with swivel pulley heads, overhead rod guide, and tool wrist." %}
+{% include figure.html src="/assets/images/tetherxyz-studio-turntable.gif" poster="/assets/images/tetherxyz-studio-turntable.png" alt="TetherXYZ assembly with four deliberately uneven and tilted winch mounts on a timber frame" caption="The winches are deliberately mounted at different heights and angles. The positioning model uses this irregular geometry to calculate the cable lengths for the tool path." %}
 
 ## Tool wrist
 
