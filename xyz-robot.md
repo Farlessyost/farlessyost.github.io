@@ -80,7 +80,7 @@ The calculations use measured mount coordinates and orientations. Homing establi
 ## My work
 
 - **Mechanical design:** FreeCAD assembly with a timber frame, keyed guide, two-servo wrist, and stereo-camera mount.
-- **Simulation:** Native-CAD motion playback, pulley-aware inverse kinematics, homing sequences, and surface tracking. Earlier MuJoCo work includes a ROS 2 interface for Cartesian target commands.
+- **Simulation:** Native-CAD motion playback, MuJoCo, pulley-aware inverse kinematics, homing sequences, and surface tracking. The current system integrates ROS 2 for Cartesian target commands.
 - **Controls:** ESP32-C3 firmware with motor-driver interfaces, acceleration limits, arming logic, and a watchdog.
 - **Verification:** CAD interference checks, fit gauges, load calculations, and trajectory studies.
 
