@@ -9,8 +9,8 @@ status: In development
 description: Cable-driven positioning for medical scanning, designed for local fabrication and repair.
 summary: Cable-driven positioning for medical scanning, using printed parts and a timber frame designed for local fabrication and repair.
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
-cover: /assets/images/xyz-robot-sequence.gif
-cover_poster: /assets/images/xyz-robot-sequence.png
+cover: /assets/images/tetherxyz-current-turntable.gif
+cover_poster: /assets/images/tetherxyz-current-turntable.png
 cover_alt: TetherXYZ CAD assembly with timber frame, cable mechanism, and servo wrist
 focus: Medical-scanner positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
@@ -36,20 +36,29 @@ Cables separate the positioning mechanism from the frame that supports it. The i
 
 Cable stretch, backlash, and frame deflection contribute to positioning error. The design concentrates the critical fits in smaller parts that can be fabricated, checked, and replaced locally.
 
-## Motion and scanning {#simulation-demo}
+## Motion and surface tracking {#simulation-demo}
+
+The four winches mount to a braced timber frame at different heights and angles. Each pulley head swivels to follow its cable while the motor and backplate stay fixed. The animation follows the bead-homing sequence, then the wrist traces “Hello” across a curved reference surface.
 
 <figure class="project-video">
-  <video controls playsinline preload="none" width="1920" height="1080" poster="{{ '/assets/images/xyz-video-poster.jpg' | relative_url }}" aria-label="TetherXYZ motion and scanning demonstration" aria-describedby="scanner-video-caption">
-    <source src="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}" type="video/mp4">
-    <p>Your browser does not support embedded video. <a href="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}">Watch the demonstration as an MP4.</a></p>
+  <video controls playsinline preload="none" width="960" height="640" poster="{{ '/assets/images/tetherxyz-current-motion.png' | relative_url }}" aria-label="TetherXYZ homing and surface-tracking simulation">
+    <source src="{{ '/assets/videos/tetherxyz-current-motion.mp4' | relative_url }}" type="video/mp4">
   </video>
-  <figcaption id="scanner-video-caption">Robot motion, tool contact, stereo-camera views, and surface reconstruction in MuJoCo. <span class="video-duration">5 min 43 sec.</span> <a href="{{ '/assets/videos/xyz-medical-scanner-demo.mp4' | relative_url }}">Open video</a></figcaption>
+  <figcaption>Homing at four times playback speed, followed by surface tracking at 24 times speed. The detail views show the tool path and the active swivel pulley. <a href="{{ '/assets/videos/tetherxyz-current-motion.mp4' | relative_url }}">Open video</a></figcaption>
 </figure>
+
+## Explore the math {#kinematics}
+
+Choose a module and an equation group, then pause or scrub through the motion. The diagram runs through three mounting layouts and the same tool path. It connects the requested tool pose to rod and wrist angles, pulley tangency, cable length, and motor payout.
+
+The calculations use measured mount coordinates and orientations. Homing establishes each cable’s length reference. Moving a mount changes the required cable lengths even when the tool follows the same path.
+
+{% include tetherxyz-math.html %}
 
 ## My work
 
 - **Mechanical design:** FreeCAD assembly with a timber frame, keyed guide, two-servo wrist, and stereo-camera mount.
-- **Simulation:** MuJoCo motion studies and a ROS 2 interface for Cartesian target commands.
+- **Simulation:** Native-CAD motion playback, pulley-aware inverse kinematics, homing sequences, and surface tracking. Earlier MuJoCo work includes a ROS 2 interface for Cartesian target commands.
 - **Controls:** ESP32-C3 firmware with motor-driver interfaces, acceleration limits, arming logic, and a watchdog.
 - **Verification:** CAD interference checks, fit gauges, load calculations, and trajectory studies.
 
@@ -61,7 +70,7 @@ Four motor-driven cables position the carriage with three translational degrees 
 
 Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
-{% include figure.html src="/assets/images/xyz-robot-sequence.gif" poster="/assets/images/xyz-robot-sequence.png" alt="Complete CAD assembly of the TetherXYZ cable-driven scanning platform" caption="Complete TetherXYZ assembly." %}
+{% include figure.html src="/assets/images/tetherxyz-current-turntable.gif" poster="/assets/images/tetherxyz-current-turntable.png" alt="Complete CAD assembly of the TetherXYZ cable-driven scanning platform" caption="Current TetherXYZ assembly: braced timber frame, four stationary winches with swivel pulley heads, overhead rod guide, and tool wrist." %}
 
 ## Tool wrist
 
@@ -69,23 +78,20 @@ Two servos control pitch and roll about orthogonal axes, giving the wrist two ro
 
 Local pitch and roll control lets the tool follow changes in the surface normal without requiring the entire carriage to rotate. Independently supported capstans carry tendon loads through bearings, reducing radial loading on the servo shafts.
 
-{% include figure.html src="/assets/images/xyz-wrist-sequence.gif" poster="/assets/images/xyz-wrist-sequence.png" alt="Two-servo wrist, bearing-supported capstans, tool holder, and stereo-camera mount" caption="Wrist assembly with two SG90-style servos, bearing-supported capstans, and the stereo-camera mount." %}
 
-## Corner receiver
+## Swivel winches and cable homing
 
-Two orthogonal revolute joints provide yaw and pitch so the head can follow the cable’s direction vector as the carriage moves. During homing, a bead fixed to the cable catches the orange paddle and actuates a microswitch. This discrete switching event is intended to establish a cable-length reference for position calibration.
+The motor and drum stay on a fixed backplate. A passive swivel head aligns the pulley with the outgoing cable, reducing side loading as the carriage moves. Each module sits against angled cleats on the timber frame; the model uses those mounting angles and heights directly.
 
-Following the cable angle is intended to limit rubbing and off-axis paddle loading. The mechanical homing reference provides a way to re-establish the cable-length zero after setup or loss of position.
+Cable length is the sum of the incoming segment, the pulley arc, and the outgoing tangent span. Treating the pulley as a point would miss the change in wrap as the tool moves. The math explorer shows the wrap angle θ, swivel angle ψ, and the resulting length for each module.
 
-{% include figure.html src="/assets/images/xyz-corner-sequence.gif" poster="/assets/images/xyz-corner-sequence.png" alt="Exploded view and rotation of the gimballed corner receiver, mounting bracket, switch, and fasteners" caption="Corner receiver with its gimbal, switch, and mounting hardware." %}
+During homing, a fixed bead approaches its receiver, trips the switch, backs off, and approaches again slowly to latch the reference. Subsequent motor payout is calculated relative to that reference: Δφ = (L − Lₕₒₘₑ) / Rᵈ, where Rᵈ is the drum radius.
 
-## Rod and counterweight
+## Overhead guide and keyed rod
 
-The guide combines a prismatic joint for axial translation with a two-axis gimbal for angular motion. A square sleeve and fitted liners constrain rotation about the rod’s axis. The counterweight applies gravitational preload through the rope and pulleys, helping maintain positive cable tensions. Sizing uses quasi-static force and moment equilibrium; the pulley geometry determines mechanical advantage and how the load varies with carriage position.
+The overhead guide lets the rod slide axially and tilt about two axes while constraining axial spin. This keeps the wrist orientation tied to a defined rod frame. Inverse kinematics accounts for the offsets between the cable collar, both wrist joints, and the tool tip, so a requested tip position is not treated as the collar position.
 
-The keyed guide constrains an unwanted rotational degree of freedom, making tool orientation better defined. Gravity provides passive preload without an additional force actuator, at the cost of added moving inertia and position-dependent loading.
-
-{% include figure.html src="/assets/images/xyz-rod-weight-sequence.gif" poster="/assets/images/xyz-rod-weight-sequence.png" alt="Exploded view and rotation of the keyed rod, guide, pulleys, and counterweight assembly" caption="Keyed rod, guide, pulleys, and counterweight assembly." %}
+The timber frame carries the winches and guide as one connected structure. Braces and cross rails provide a practical assembly from standard stock, while the measured mount geometry enters the positioning equations. Precision is concentrated in the smaller guides, pulleys, bearings, and wrist joints.
 
 ## References and notes
 
