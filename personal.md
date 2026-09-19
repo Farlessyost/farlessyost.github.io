@@ -9,6 +9,7 @@ description: Family and time outdoors.
   <div class="personal-gallery">
     <section aria-labelledby="family-waterfall">
       <h2 id="family-waterfall">Family waterfall</h2>
+      <p>My family owns this waterfall in western North Carolina. Getting there takes about an hour on dirt roads, but it’s absolutely beautiful and worth the drive.</p>
       <figure>
         <video controls playsinline preload="none" width="1920" height="1080" poster="{{ '/assets/images/family-waterfall-poster.jpg' | relative_url }}" aria-label="Family waterfall video">
           <source src="{{ '/assets/videos/family-waterfall.mp4' | relative_url }}" type="video/mp4">
@@ -19,6 +20,7 @@ description: Family and time outdoors.
     </section>
     <section aria-labelledby="ziplining">
       <h2 id="ziplining">Ziplining</h2>
+      <p>My dad and sister work at Navitat, so whenever we visit home, we get to go ziplining through the trees.</p>
       <figure class="personal-photo">
         <a href="{{ '/assets/images/ziplining.png' | relative_url }}" aria-label="Open full-size ziplining photo"><img src="{{ '/assets/images/ziplining.png' | relative_url }}" alt="William wearing a helmet and harness on a zipline among green trees." width="354" height="609" loading="lazy"></a>
         <figcaption>Ziplining through the trees.</figcaption>
