@@ -9,8 +9,8 @@ status: In development
 description: Cable-driven positioning for medical scanning, designed for local fabrication and repair.
 summary: Cable-driven positioning for medical scanning, with independently placed winches and a frame designed for local fabrication and repair.
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
-cover: /assets/images/tetherxyz-current-turntable.gif
-cover_poster: /assets/images/tetherxyz-current-turntable.png
+cover: /assets/images/tetherxyz-studio-turntable.gif
+cover_poster: /assets/images/tetherxyz-studio-turntable.png
 cover_alt: TetherXYZ CAD assembly with timber frame, cable mechanism, and servo wrist
 focus: Medical-scanner positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
@@ -74,7 +74,7 @@ Four motor-driven cables position the carriage with three translational degrees 
 
 Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
-{% include figure.html src="/assets/images/tetherxyz-current-turntable.gif" poster="/assets/images/tetherxyz-current-turntable.png" alt="Complete CAD assembly of the TetherXYZ cable-driven scanning platform" caption="Current TetherXYZ assembly: braced timber frame, four stationary winches with swivel pulley heads, overhead rod guide, and tool wrist." %}
+{% include figure.html src="/assets/images/tetherxyz-studio-turntable.gif" poster="/assets/images/tetherxyz-studio-turntable.png" alt="Complete CAD assembly of the TetherXYZ cable-driven scanning platform" caption="Current TetherXYZ assembly: braced timber frame, four stationary winches with swivel pulley heads, overhead rod guide, and tool wrist." %}
 
 ## Tool wrist
 

@@ -1,0 +1,28 @@
+{
+  "scene": "xyz-machine",
+  "engine": "PATHCPU",
+  "resolution": [
+    720,
+    480
+  ],
+  "samples": 32,
+  "frames": 48,
+  "loop_seconds": 9.6,
+  "mean_frame_seconds": 21.961895833333983,
+  "framing": {
+    "distance": 2.592749488353729,
+    "all_angle_required_distance": 2.4118599891662598,
+    "margin_factor": 1.075,
+    "angles": 48
+  },
+  "source_scene_sha256": "46d0647372730ad793487b0e011f22926460fd3530a253596b2892e1f1c95fb3",
+  "gif_encoding": {
+    "colors": 256,
+    "dither": "none",
+    "optimizer": "Gifsicle 1.93",
+    "lossy": 5
+  },
+  "poster_error": 1.1672926311728395,
+  "duration_ms": 9600,
+  "cad_sha256": "215db51340e0b418c6974e9967f60266d30128371951ac4b7a39efa332af376d"
+}
