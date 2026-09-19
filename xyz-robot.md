@@ -53,6 +53,22 @@ The four winches are deliberately mounted unevenly on the timber frame. Their ca
   <figcaption>Homing at four times playback speed, followed by surface tracking at 24 times speed. The detail views show the tool path and the active swivel pulley. <a href="{{ '/assets/videos/tetherxyz-current-motion.mp4' | relative_url }}">Open video</a></figcaption>
 </figure>
 
+## Temperature scanning {#temperature-scan}
+
+A temperature sensor gives the positioning platform a practical scanning task: build a surface-temperature map from a sequence of small thermal images. Moving the sensor extends coverage beyond a single image, while the robot’s tool pose gives each sample a location on the surface.
+
+This demonstration replaces the pen with an MLX90640 thermal sensor. It follows two lengthwise passes over the forearm, joined by a crosswise move, at 12 mm/s and 45 mm vertical clearance. The wrist keeps the sensor pointing downward as the carriage follows the curved surface.
+
+<figure class="project-video">
+  <video controls playsinline preload="none" width="1200" height="752" poster="{{ '/assets/images/tetherxyz-temperature-scan.png' | relative_url }}" aria-label="TetherXYZ temperature-scan simulation with an accumulating surface map and live thermal frame">
+    <source src="{{ '/assets/videos/tetherxyz-temperature-scan.mp4' | relative_url }}" type="video/mp4">
+    <p><a href="{{ '/assets/videos/tetherxyz-temperature-scan.mp4' | relative_url }}">Watch the temperature scan.</a></p>
+  </video>
+  <figcaption>The robot’s scan path, accumulated temperature map, and live 32 × 24 thermal frame. The sequence scans, holds the completed map, and returns to the start. Temperatures come from a modeled field with warm and cool patches. <a href="{{ '/assets/videos/tetherxyz-temperature-scan.mp4' | relative_url }}">Open video</a></figcaption>
+</figure>
+
+The sensor model uses a 55° × 35° field of view and acquires eight complete frames per second. Pixel-centre rays intersect the forearm surface to assign each reading a position. Overlapping samples are averaged into 2 mm XY bins, so the map fills only where the sensor has collected data. Both views use the same 30–37 °C colour scale; gray pixels miss the forearm. The 2 mm bins describe the map spacing, not the sensor’s optical resolution.
+
 ## Explore the math {#kinematics}
 
 Choose a module and an equation group, then pause or scrub through the motion. The diagram runs through three mounting layouts and the same tool path. It connects the requested tool pose to rod and wrist angles, pulley tangency, cable length, and motor payout.

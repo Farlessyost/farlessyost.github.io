@@ -1,0 +1,11 @@
+{
+  "source": "C:\\Users\\wbfar\\OneDrive\\Documents\\ChatGPT\\XYZ Universal Medical Scanner\\freecad\\thermal_scanner_v41",
+  "source_sha256": {
+    "viewer.py": "e6bdc7e258197cc50a2aded12b8e290d82bee64af19b1d736bf112f3eebe5fe4",
+    "thermal.py": "03e41e7514a158835cdec4d53256f746acb4d88fa25ac672aa98e5a96dbaef3b"
+  },
+  "frames": 430,
+  "fps": 16,
+  "duration_s": 26.875,
+  "temperature_data": "Modeled temperature field"
+}
