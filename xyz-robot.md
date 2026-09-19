@@ -7,7 +7,7 @@ order: 2
 category: Robotics & control
 status: In development
 description: Cable-driven positioning for medical scanning, designed for local fabrication and repair.
-summary: Cable-driven positioning for medical scanning, using printed parts and a timber frame designed for local fabrication and repair.
+summary: Cable-driven positioning for medical scanning, with independently placed winches and a frame designed for local fabrication and repair.
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
 cover: /assets/images/tetherxyz-current-turntable.gif
 cover_poster: /assets/images/tetherxyz-current-turntable.png
@@ -22,6 +22,8 @@ next_title: Climate resilience modeling
 
 TetherXYZ uses four cables to position a carriage and a two-axis wrist to orient the scanning tool. I’m developing the mechanism and embedded controls for a medical-scanning platform that can be made and maintained locally.
 
+**The winches can be positioned independently around the working area.** They do not need matching heights, equal spacing, or a perfectly square frame. Their installed positions and angles become inputs to the inverse-kinematics model, allowing the layout to fit the available structure and space.
+
 ## Why I’m building it
 
 Access to diagnostics is still limited in much of the world. The 2021 Lancet Commission on diagnostics estimated that **47% of the global population** had little or no access to diagnostics.[^diagnostic-access] For medical imaging specifically, the World Health Assembly’s 2025 resolution calls for affordable equipment, better access in rural and remote areas, and sustained investment in maintenance and trained staff.[^imaging-access]
@@ -33,6 +35,8 @@ I’m tackling one part of that problem: the mechanical platform that moves and 
 The larger structure can use wood or other readily available stock. Smaller parts can be 3D printed or fabricated locally, then fitted with standard motors, bearings, and electronics.
 
 Cables separate the positioning mechanism from the frame that supports it. The idea is to measure the cable-anchor locations and calibrate the cable lengths, so the inverse-kinematics model uses the geometry of the assembled machine. This is how I intend to reduce dependence on building every frame member to an exact nominal dimension.
+
+Flexible winch placement makes it easier to build around locally available materials and leave room for the patient, tool, and operator. Mount locations are chosen to give the cables clear paths and maintain tension throughout the intended workspace. When a winch is relocated, its position and orientation are updated in the model and its cable reference is re-established through homing.
 
 Cable stretch, backlash, and frame deflection contribute to positioning error. The design concentrates the critical fits in smaller parts that can be fabricated, checked, and replaced locally.
 
