@@ -1,0 +1,12 @@
+{
+  "source": "C:\\Users\\wbfar\\OneDrive\\Documents\\ChatGPT\\XYZ Universal Medical Scanner\\freecad\\laser_stereo_v43",
+  "source_sha256": {
+    "viewer.py": "b9fea0fb2b789778224bc29f4fcd5b9dd45d41d1a440e27f12bcc54fba783367",
+    "design.py": "f90c1b3575093cff8ee8b309ceeaff381995df198cff1adf5c338f5e9bf260b2",
+    "scan.py": "650ef9d770549b6cd600dc2b5289375c5101e9421ba7a3253d96fa4fee8bfad7"
+  },
+  "frames": 514,
+  "fps": 12,
+  "duration_s": 42.833333333333336,
+  "playback_speed": 3.0
+}

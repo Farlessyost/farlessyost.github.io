@@ -53,21 +53,23 @@ The four winches are deliberately mounted unevenly on the timber frame. Their ca
   <figcaption>Homing at four times playback speed, followed by surface tracking at 24 times speed. The detail views show the tool path and the active swivel pulley. <a href="{{ '/assets/videos/tetherxyz-current-motion.mp4' | relative_url }}">Open video</a></figcaption>
 </figure>
 
-## Temperature scanning {#temperature-scan}
+## Laser-line surface scanning {#laser-stereo-scan}
 
-A temperature sensor gives the positioning platform a practical scanning task: build a surface-temperature map from a sequence of small thermal images. Moving the sensor extends coverage beyond a single image, while the robot’s tool pose gives each sample a location on the surface.
+The laser gives both cameras a clear line to follow on a surface that may have little natural texture. As the head moves, stereo vision measures the line in three dimensions and builds a surface mesh. This gives TetherXYZ a way to measure surface shape without touching it, using a compact camera pair and line projector carried by the same positioning system.
 
-This demonstration replaces the pen with an MLX90640 thermal sensor. It follows two lengthwise passes over the forearm, joined by a crosswise move, at 12 mm/s and 45 mm vertical clearance. The wrist keeps the sensor pointing downward as the carriage follows the curved surface.
+The cameras sit 30 mm apart. The laser is mounted beside them and aimed toward their shared field of view. Eleven overlapping sweeps, spaced 7 mm apart, carry the line across the forearm at 6 mm/s. The views below show the robot, the projected line, the growing reconstruction, and the left and right camera images.
 
 <figure class="project-video">
-  <video controls playsinline preload="none" width="1200" height="752" poster="{{ '/assets/images/tetherxyz-temperature-scan.png' | relative_url }}" aria-label="TetherXYZ temperature-scan simulation with an accumulating surface map and live thermal frame">
-    <source src="{{ '/assets/videos/tetherxyz-temperature-scan.mp4' | relative_url }}" type="video/mp4">
-    <p><a href="{{ '/assets/videos/tetherxyz-temperature-scan.mp4' | relative_url }}">Watch the temperature scan.</a></p>
+  <video controls playsinline preload="none" width="1560" height="980" poster="{{ '/assets/images/tetherxyz-laser-stereo.png' | relative_url }}" aria-label="TetherXYZ laser-line and stereo simulation with two camera views and a reconstructed surface">
+    <source src="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}" type="video/mp4">
+    <p><a href="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}">Watch the laser and stereo scan.</a></p>
   </video>
-  <figcaption>The robot’s scan path, accumulated temperature map, and live 32 × 24 thermal frame. The sequence scans, holds the completed map, and returns to the start. Temperatures come from a modeled field with warm and cool patches. <a href="{{ '/assets/videos/tetherxyz-temperature-scan.mp4' | relative_url }}">Open video</a></figcaption>
+  <figcaption>Scanning, reconstruction, and return at three times playback speed. The modeled forearm includes a 10 mm raised area; the lower-left view shows its reconstructed shape. Color indicates height above the smooth reference arm, from blue to red. <a href="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}">Open video</a></figcaption>
 </figure>
 
-The sensor model uses a 55° × 35° field of view and acquires eight complete frames per second. Pixel-centre rays intersect the forearm surface to assign each reading a position. Overlapping samples are averaged into 2 mm XY bins, so the map fills only where the sensor has collected data. Both views use the same 30–37 °C colour scale; gray pixels miss the forearm. The 2 mm bins describe the map spacing, not the sensor’s optical resolution.
+For rectified stereo images, depth follows **Z = fB/d**, where **f** is focal length in pixels, **B** is the camera baseline, and **d** is the horizontal disparity between corresponding image points. The laser supplies the visible stripe; the two camera views supply the disparity. The head pose then transforms each reconstructed point into the robot’s coordinate system.
+
+The camera model uses 640 × 480 images and samples the stripe at 30 Hz. Observations accumulate in 1 mm surface bins, and nearby samples form a triangular mesh. Overlapping sweeps help fill the steep sides of the raised area. The bin spacing controls how samples are grouped; it is not a claim of measurement accuracy.
 
 ## Explore the math {#kinematics}
 
