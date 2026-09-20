@@ -9,9 +9,9 @@ status: In development
 description: Cable-driven positioning for medical scanning, designed for local fabrication and repair.
 summary: Cable-driven positioning for medical scanning, with independently placed winches and a frame designed for local fabrication and repair.
 card_methods: MuJoCo · ROS 2 · ESP32 · FreeCAD
-cover: /assets/images/tetherxyz-studio-turntable.gif
-cover_poster: /assets/images/tetherxyz-studio-turntable.png
-cover_alt: TetherXYZ CAD assembly with timber frame, cable mechanism, and servo wrist
+cover: /assets/images/tetherxyz-laser-stereo.png
+cover_poster: /assets/images/tetherxyz-laser-stereo.png
+cover_alt: TetherXYZ laser and stereo scan with a reconstructed surface
 focus: Medical-scanner positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
 context: Independent engineering project
@@ -24,7 +24,7 @@ TetherXYZ uses four cables to position a carriage and a two-axis wrist to orient
 
 **The winches can be positioned independently around the working area.** They do not need matching heights, equal spacing, or a perfectly square frame. Their installed positions and angles become inputs to the inverse-kinematics model, allowing the layout to fit the available structure and space.
 
-**The wonky mounting is intentional.** I placed the winches at different heights and tilted them in different directions to show that a neat, symmetric installation is unnecessary. The geometry changes the cable lengths needed for a move; the inverse-kinematics model accounts for those differences to produce the same tool path.
+**Uneven mounting is part of the design.** The math and homing demonstrations use different winch heights and tilts to show how the model handles an irregular installation. The current reinforced CAD uses a regular layout to simplify the frame and mounting hardware. In either case, the measured geometry determines the cable lengths needed for the tool path.
 
 ## Why I’m building it
 
@@ -44,7 +44,7 @@ Cable stretch, backlash, and frame deflection contribute to positioning error. T
 
 ## Motion and surface tracking {#simulation-demo}
 
-The four winches are deliberately mounted unevenly on the timber frame. Their cable feed heights are 440, 480, 510, and 470 mm, with mounting tilts of −6°, +5°, +7°, and −4°. Those differences are inputs to the positioning equations. Each pulley head swivels to follow its cable while the motor and backplate stay fixed. The animation follows the bead-homing sequence, then the wrist traces “Hello” across a curved reference surface.
+To demonstrate flexible placement, this homing sequence uses deliberately uneven winch mounts on the timber frame. Their cable feed heights are 440, 480, 510, and 470 mm, with mounting tilts of −6°, +5°, +7°, and −4°. Those differences are inputs to the positioning equations. Each pulley head swivels to follow its cable while the motor and backplate stay fixed. The animation follows the bead-homing sequence, then the wrist traces “Hello” across a curved reference surface.
 
 <figure class="project-video">
   <video controls playsinline preload="none" width="960" height="640" poster="{{ '/assets/images/tetherxyz-current-motion.png' | relative_url }}" aria-label="TetherXYZ homing and surface-tracking simulation">
@@ -57,19 +57,19 @@ The four winches are deliberately mounted unevenly on the timber frame. Their ca
 
 The laser gives both cameras a clear line to follow on a surface that may have little natural texture. As the head moves, stereo vision measures the line in three dimensions and builds a surface mesh. This gives TetherXYZ a way to measure surface shape without touching it, using a compact camera pair and line projector carried by the same positioning system.
 
-The cameras sit 30 mm apart. The laser is mounted beside them and aimed toward their shared field of view. Eleven overlapping sweeps, spaced 7 mm apart, carry the line across the forearm at 6 mm/s. The views below show the robot, the projected line, the growing reconstruction, and the left and right camera images.
+The cameras sit 30 mm apart. The laser sits on their centerline, with its aperture 24 mm behind the lens plane. Its beam passes through the gap between the camera boards and a slot in the reinforced saddle. Eleven overlapping sweeps, spaced 7 mm apart, carry the line across the forearm at 6 mm/s. The scan uses the current reinforced assemblies, matching winch pods, and 18 mm pulley pitch radius. The views below show the robot, the projected line, the growing reconstruction, and the left and right camera images.
 
 <figure class="project-video">
-  <video controls playsinline preload="none" width="1560" height="980" poster="{{ '/assets/images/tetherxyz-laser-stereo.png' | relative_url }}" aria-label="TetherXYZ laser-line and stereo simulation with two camera views and a reconstructed surface">
-    <source src="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}" type="video/mp4">
-    <p><a href="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}">Watch the laser and stereo scan.</a></p>
+  <video controls playsinline preload="none" width="1560" height="980" poster="{{ '/assets/images/tetherxyz-laser-stereo.png' | relative_url }}?v=structural" aria-label="TetherXYZ laser-line and stereo simulation with two camera views and a reconstructed surface">
+    <source src="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}?v=structural" type="video/mp4">
+    <p><a href="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}?v=structural">Watch the laser and stereo scan.</a></p>
   </video>
-  <figcaption>Scanning, reconstruction, and return at three times playback speed. The modeled forearm includes a 10 mm raised area; the lower-left view shows its reconstructed shape. Color indicates height above the smooth reference arm, from blue to red. <a href="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}">Open video</a></figcaption>
+  <figcaption>Scanning, reconstruction, and return at three times playback speed. The modeled forearm includes a 10 mm raised area; the lower-left view shows its reconstructed shape. Color indicates height above the smooth reference arm, from blue to red. <a href="{{ '/assets/videos/tetherxyz-laser-stereo.mp4' | relative_url }}?v=structural">Open video</a></figcaption>
 </figure>
 
 For rectified stereo images, depth follows **Z = fB/d**, where **f** is focal length in pixels, **B** is the camera baseline, and **d** is the horizontal disparity between corresponding image points. The laser supplies the visible stripe; the two camera views supply the disparity. The head pose then transforms each reconstructed point into the robot’s coordinate system.
 
-The camera model uses 640 × 480 images and samples the stripe at 30 Hz. Observations accumulate in 1 mm surface bins, and nearby samples form a triangular mesh. Overlapping sweeps help fill the steep sides of the raised area. The bin spacing controls how samples are grouped; it is not a claim of measurement accuracy.
+The camera model uses 640 × 480 images and samples the stripe at 30 Hz. Observations accumulate in 1 mm surface bins, and nearby samples form a triangular mesh. Overlapping sweeps help fill the steep sides of the raised area.
 
 ## Explore the math {#kinematics}
 
@@ -94,7 +94,21 @@ Four motor-driven cables position the carriage with three translational degrees 
 
 Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
-{% include figure.html src="/assets/images/tetherxyz-studio-turntable.gif" poster="/assets/images/tetherxyz-studio-turntable.png" alt="TetherXYZ assembly with four deliberately uneven and tilted winch mounts on a timber frame" caption="The winches are deliberately mounted at different heights and angles. The positioning model uses this irregular geometry to calculate the cable lengths for the tool path." %}
+## Assembly details {#assembly-details}
+
+Four assemblies show how the machine fits together: the winch, two-degree-of-freedom arm, rod and guide, and stereo/laser module. Each turns, separates into its parts, and reassembles. The views are scaled independently so the smaller mechanisms remain easy to see.
+
+{% include figure.html src="/assets/images/tetherxyz-assembly-grid.gif" poster="/assets/images/tetherxyz-assembly-grid.png" width="1280" height="1280" alt="Two by two grid of the winch, two-DOF arm, rod and guide, and stereo laser module rotating and exploding apart" caption="The four main assemblies, including their reinforcement and screw-access corrections. The winch shown here is repeated at the four cable anchors." %}
+
+| Assembly | What it does and why |
+| --- | --- |
+| Winch | Converts motor rotation into cable payout. Bearings support the drive shaft, while the passive swivel and grooved sheave align the outgoing cable with the carriage. |
+| Two-DOF arm | Controls pitch and roll to orient the scanning head. Tendon-driven capstans and bearing-supported drums carry the tendon loads without putting them directly on the servo shafts. |
+| Rod and guide | Allow axial travel and two-axis tilt while constraining spin. The nested guide axes let the carriage move while maintaining a defined orientation for the arm. |
+| Stereo/laser module | Holds the cameras at a 30 mm baseline and locates the laser between them. The reinforced saddle and retaining bar maintain the optical arrangement while leaving a clear path for the projected line. |
+
+[Watch the grid as a video]({{ '/assets/videos/tetherxyz-assembly-grid.mp4' | relative_url }}).
+
 
 ## Tool wrist
 
@@ -105,7 +119,7 @@ Local pitch and roll control lets the tool follow changes in the surface normal 
 
 ## Swivel winches and cable homing
 
-The motor and drum stay on a fixed backplate. A passive swivel head aligns the pulley with the outgoing cable, reducing side loading as the carriage moves. Each module sits against angled cleats on the timber frame; the model uses those mounting angles and heights directly.
+The motor and drum stay on a fixed backplate. A passive swivel head aligns the pulley with the outgoing cable, reducing side loading as the carriage moves. Each module bolts to the timber frame; the model uses its installed position and orientation directly.
 
 Cable length is the sum of the incoming segment, the pulley arc, and the outgoing tangent span. Treating the pulley as a point would miss the change in wrap as the tool moves. The math explorer shows the wrap angle θ, swivel angle ψ, and the resulting length for each module.
 

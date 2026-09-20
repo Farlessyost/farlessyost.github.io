@@ -1,9 +1,11 @@
 {
-  "source": "C:\\Users\\wbfar\\OneDrive\\Documents\\ChatGPT\\XYZ Universal Medical Scanner\\freecad\\laser_stereo_v43",
+  "source": "C:\\Users\\wbfar\\OneDrive\\Documents\\ChatGPT\\XYZ Universal Medical Scanner\\freecad\\laser_stereo_v53",
+  "cad": "C:\\Users\\wbfar\\OneDrive\\Documents\\ChatGPT\\XYZ Universal Medical Scanner\\freecad\\structural_v54\\output\\XYZ_V54_Serviceable_Scanner.FCStd",
+  "cad_sha256": "4acd04954a8698fe1a4e3da898f3cfce5be7e12555afe1b76edcbac5cd3e4106",
   "source_sha256": {
-    "viewer.py": "b9fea0fb2b789778224bc29f4fcd5b9dd45d41d1a440e27f12bcc54fba783367",
-    "design.py": "f90c1b3575093cff8ee8b309ceeaff381995df198cff1adf5c338f5e9bf260b2",
-    "scan.py": "650ef9d770549b6cd600dc2b5289375c5101e9421ba7a3253d96fa4fee8bfad7"
+    "viewer.py": "4a479cb492c664da67b60a5c7f7f7fe4da1359a00a0399c1e457b2be50438a8a",
+    "design.py": "5b5fd662ed0ec8922609d76d6a59c147d5a8911340927f611cce86227bae0dce",
+    "scan.py": "8e586160dc1997895fbca1f9ff0279d19e7764a2764f65531c32a41e1fc5c2f3"
   },
   "frames": 514,
   "fps": 12,
