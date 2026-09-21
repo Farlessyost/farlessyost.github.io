@@ -18,7 +18,7 @@ description: William Farlessyost, Ph.D. Engineering experience in robotics, embe
 </section>
 <div class="focus-strip shell" aria-label="Core skills"><span>Core skills</span><p>Python <span aria-hidden="true">/</span> C/C++ <span aria-hidden="true">/</span> ROS 2 <span aria-hidden="true">/</span> CAD <span aria-hidden="true">/</span> Simulation</p></div>
 <section class="work-section shell" aria-labelledby="work-title">
-  <div class="section-heading"><div><h2 id="work-title">Engineering projects</h2></div><p>Current work in embedded sensing and robotics.</p></div>
+  <div class="section-heading"><div><h2 id="work-title">Engineering projects</h2></div></div>
   {% include featured-builds.html %}
   <div class="research-heading"><h2>Research</h2></div>
   {% include work-list.html %}

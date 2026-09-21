@@ -35,14 +35,14 @@ sensors:
       summary: Use available signals to estimate an unmeasured state.
       detail: A liquid-time-constant network carries information through its internal dynamical state. In the mechanical example, force and displacement histories help it estimate velocity.
     - title: Perturb one input
-      summary: Change a channel and watch the estimated trajectory respond.
+      summary: Measure how the estimate changes when one input is perturbed.
       detail: Apply an offset to one input sequence while holding the fitted observer fixed. Compare its output trajectory with the unperturbed prediction to measure that channel’s influence on the model.
     - title: Rank the influence
       summary: Identify channels with little effect on the estimated state.
-      detail: Score the trajectory changes across candidate inputs. A low score suggests a channel may be removable; it does not yet establish that a newly trained reduced observer will work.
+      detail: Score the trajectory changes across candidate inputs. Low-scoring channels are candidates for removal, subject to retraining.
     - title: Retrain and check
       summary: Accept a removal only if validation error stays acceptable.
-      detail: Retrain with fewer inputs and compare validation performance. Continue when the error criterion is met; otherwise keep the previously accepted input set. Evaluate the reduced observer separately.
+      detail: Retrain with fewer inputs and compare validation performance. Keep the smaller input set only when it meets the error target.
 climate:
   title: Follow the material through the network
   steps:

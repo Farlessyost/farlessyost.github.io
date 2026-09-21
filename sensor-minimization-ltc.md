@@ -26,7 +26,7 @@ The method trains an observer, perturbs each candidate input, and measures how i
 
 Every physical measurement adds installation, calibration, maintenance, and data-handling work. In a distributed agricultural or industrial system, measuring every variable may be impractical. The design question is which measurements provide enough information to reconstruct the states needed for monitoring and control.[^dissertation]
 
-Two signals can be strongly correlated yet contribute different information about how a system evolves. I therefore examined the observer’s response to changes in each input over time, then tested the reduced input set through retraining. The aim was to give measurement selection a clear connection to estimation performance. Within my dissertation, this addressed the information needed to operate the models: which signals to collect, and which states to estimate from them.[^dissertation]
+Two signals can be strongly correlated yet contribute different information about how a system evolves. I therefore examined the observer’s response to changes in each input over time, then tested the reduced input set through retraining. I used estimation error to decide which signals to collect and which states could be inferred from them.[^dissertation]
 
 {% include research-walkthrough.html project="sensors" %}
 
@@ -35,7 +35,7 @@ Two signals can be strongly correlated yet contribute different information abou
   <p><strong>F<sub>θ</sub></strong> is the fitted observer acting on an input sequence <strong>u</strong>. The offset <strong>δe<sub>j</sub></strong> changes only channel <strong>j</strong>. Comparing the resulting output trajectories measures sensitivity within the learned model. Retraining and validation determine whether removing that input is acceptable.</p>
 </div>
 
-This uses the observer’s response over time, rather than only the correlation between two signals. The distinction is also a limit on the interpretation: changing an input to a fitted model does not, by itself, establish a causal effect in the physical system.[^paper]
+The perturbations measure sensitivity within the fitted observer; they do not establish physical causality.[^paper]
 
 ## My contribution
 
@@ -43,7 +43,7 @@ This uses the observer’s response over time, rather than only the correlation 
 - Perturbed inputs to measure their effect on predictions, then removed less useful inputs.
 - Evaluated reduced input sets on spring-mass-damper, reactor, and predator-prey simulations.
 
-{% include figure.html src="/C2.png" alt="Mechanical, ecological, and chemical testbeds with candidate measurements" caption="Three different kinds of dynamics provide test cases for the sensor-selection approach." %}
+{% include figure.html src="/C2.png" alt="Mechanical, ecological, and chemical testbeds with candidate measurements" caption="Velocity, concentration, and population estimation test cases." %}
 
 In the mechanical case, the target is velocity. In the chemical case, it is concentration. In the ecological case, it is predator population. These testbeds provide known underlying dynamics, so the estimated states can be checked against simulation ground truth.[^dissertation]
 
@@ -53,13 +53,13 @@ Smaller input sets met prediction-error targets in the synthetic test cases. Inp
 
 The selected set is specific to the trained observer and the data used to evaluate it. A derived feature, such as the product of two measured signals, is also different from a separate physical sensor. Reducing input count therefore does not establish the same reduction in hardware.
 
-{% include figure.html src="/C5.png" alt="Comparison of the full observer and reduced sensor-network designs" caption="Observer designs before and after input selection." %}
+{% include figure.html src="/C5.png" alt="Comparison of the full observer and reduced sensor-network designs" caption="Reduced input sets met the prediction-error targets in the test systems." %}
 
 <details class="figure-details"><summary>Method and prediction results</summary>
-{% include figure.html src="/C4.png" alt="Iterative perturbation, scoring, and input-pruning algorithm" caption="The input-pruning loop." %}
-{% include figure.html src="/C9.png" alt="Mechanical-system state predictions after sensor pruning compared with ground truth" caption="Mechanical-system prediction results using the reduced input set." %}
-{% include figure.html src="/C10.png" alt="Predator-prey prediction results after sensor pruning" caption="Ecological-system prediction results." %}
-{% include figure.html src="/C11.png" alt="Chemical concentration predictions after sensor pruning" caption="Chemical-system prediction results." %}
+{% include figure.html src="/C4.png" alt="Iterative perturbation, scoring, and input-pruning algorithm" %}
+{% include figure.html src="/C9.png" alt="Mechanical-system state predictions after sensor pruning compared with ground truth" caption="Velocity estimation with the reduced input set." %}
+{% include figure.html src="/C10.png" alt="Predator-prey prediction results after sensor pruning" caption="Predator-population estimation with the reduced input set." %}
+{% include figure.html src="/C11.png" alt="Chemical concentration predictions after sensor pruning" caption="Concentration estimation with the reduced input set." %}
 </details>
 
 ## References and notes

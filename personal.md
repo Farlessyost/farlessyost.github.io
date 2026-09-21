@@ -23,7 +23,6 @@ description: Family and time outdoors.
       <p>My dad and sister work at Navitat, so whenever we visit home, we get to go ziplining through the trees.</p>
       <figure class="personal-photo">
         <a href="{{ '/assets/images/ziplining.png' | relative_url }}" aria-label="Open full-size ziplining photo"><img src="{{ '/assets/images/ziplining.png' | relative_url }}" alt="William wearing a helmet and harness on a zipline among green trees." width="354" height="609" loading="lazy"></a>
-        <figcaption>Ziplining through the trees.</figcaption>
       </figure>
     </section>
   </div>

@@ -28,7 +28,7 @@ A processing plant depends on both the amount and timing of its feedstock supply
 
 A crop shortfall does not necessarily stop a plant immediately. Stored material can cover the gap, and imports can replace part of the missing supply. Annual production totals can hide that dependence: the same output may come from a steady harvest, depleted reserves, or increased imports. Tracking stocks and flows over time makes those differences visible and supports comparisons of land area, supply dependence, and production continuity.
 
-This was the network-level application of my doctoral research. It brought the emphasis on compact process models into a coupled system, where resilience depends on the interactions between agriculture, storage, and manufacturing.[^dissertation]
+Coupling the process models let me study resilience across agriculture, storage, and manufacturing.[^dissertation]
 
 {% include research-walkthrough.html project="climate" %}
 
@@ -49,13 +49,13 @@ The stock balance connects processes operating on different time scales. Crop gr
 
 The simulations showed how climate inputs and farm area affected output, material stocks, waste, and imports across the network.[^paper] These are scenario results, not forecasts of actual plant operations.
 
-Read the output curves alongside the stock and import plots. Maintaining production by drawing down stored soybeans has a different implication from maintaining it with a steady supply. That is why resilience was evaluated across several network quantities rather than a single output total.
+Maintaining output by depleting soybean reserves creates a different supply risk from maintaining it through a steady harvest. I evaluated production alongside inventories and imports to capture that dependence.
 
 {% include figure.html src="/D6.png" alt="Simulated oil and biodiesel output under two climate scenarios" caption="Industrial throughput under the modeled climate scenarios. Curves represent different farm-area configurations." %}
 
 <details class="figure-details"><summary>Model verification and material-flow results</summary>
-{% include figure.html src="/D5.png" alt="Surrogate predictions compared with reference process and crop-growth trajectories" caption="Checking the surrogate trajectories against the detailed reference models." %}
-{% include figure.html src="/D7.png" alt="Simulated cumulative waste and material stock under climate scenarios" caption="Stocks and waste reveal additional network constraints." %}
+{% include figure.html src="/D5.png" alt="Surrogate predictions compared with reference process and crop-growth trajectories" caption="Surrogate-model verification against ASPEN and BioCro." %}
+{% include figure.html src="/D7.png" alt="Simulated cumulative waste and material stock under climate scenarios" caption="Material accumulation and waste under the climate scenarios." %}
 {% include figure.html src="/D8.png" alt="Soybean import requirements under two climate scenarios" caption="Import requirements change with climate assumptions and farm area." %}
 </details>
 

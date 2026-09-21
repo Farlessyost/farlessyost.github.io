@@ -62,7 +62,6 @@
     }
     figure.classList.add('is-enhanced');
     figure.querySelector('.walkthrough-reading').hidden = false;
-    figure.querySelector('[data-controls-help]').hidden = false;
     play.hidden = false;
     show(0);
   });

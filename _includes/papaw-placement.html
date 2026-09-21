@@ -23,7 +23,6 @@
     <figcaption>
       <h3>Mounted directly on the doorway</h3>
       <p>The PIR attaches to the fixed side of the door frame. Its hood faces across the opening, putting the sensing area where someone walks between rooms.</p>
-      <p>Use “Walk through doorway” below to see it detect someone passing.</p>
     </figcaption>
   </figure>
   <div class="placement-grid">
@@ -58,7 +57,7 @@
         <circle class="motion-indicator" cx="125" cy="166" r="3" fill="#8b9aa3"/>
       </svg>
       <p class="placement-state" data-motion-state aria-live="polite">No motion reported</p>
-      <p class="placement-explanation">Mount the sensor on the fixed jamb and aim the hood across the opening. A person crossing the field of view triggers a motion event. One PIR cannot tell which way they went.</p>
+      <p class="placement-explanation">A single PIR reports motion across the doorway but cannot determine direction.</p>
       <button class="placement-button" type="button" data-walk-through hidden>Walk through doorway <span aria-hidden="true">↑</span></button>
     </section>
     <section class="placement-card" aria-labelledby="placement-door-title">
@@ -123,9 +122,9 @@
       <span class="placement-number">03 / WALL OUTLET</span>
       <h3 id="placement-receiver-title">Receiver at any outlet</h3>
       <p>Plug the receiver into any wall outlet using a USB power adapter. It receives the sensor events wirelessly, and the OLED shows sensor connections and recent activity.</p>
-      <p class="placement-event" data-receiver-event aria-live="polite">Try either sensor above to follow an event.</p>
+      <p class="placement-event" data-receiver-event aria-live="polite">Waiting for a sensor event.</p>
       <span class="placement-flow-label">Illustrated event flow</span>
     </div>
   </section>
-  <p class="placement-note">Placement sketches, not to scale. The shaded field shows the intended sensing area; its actual reach depends on mounting and the PIR response. Align the door contact and check its switching gap during installation.</p>
+  <p class="placement-note">Check the PIR’s detection coverage and the door contact’s switching gap during installation.</p>
 </div>

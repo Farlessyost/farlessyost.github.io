@@ -26,7 +26,7 @@ I compared predicted culture density with measurements, identified an equation f
 
 Growth predictions inform how a cultivation process is sized and operated. A model that captures the general biological response can still miss the behavior of a particular culture or reactor, especially when moving between operating scales. Those errors affect estimates of how much biomass will be available and when.[^dissertation]
 
-The existing model already contained useful knowledge about temperature and light. I wanted to keep that structure and use measurements to identify what was missing. A sparse correction gives an explicit equation that can be examined alongside the mechanistic model. In my dissertation, this addressed a different problem from building a surrogate from scratch: how to improve an existing process model with the data available from its operation.[^dissertation]
+The existing model already contained useful knowledge about temperature and light. I wanted to keep that structure and use measurements to identify what was missing. A sparse correction gives an explicit equation that can be examined alongside the mechanistic model. This let me improve the existing model using operating data.[^dissertation]
 
 {% include research-walkthrough.html project="algae" %}
 
@@ -35,7 +35,7 @@ The existing model already contained useful knowledge about temperature and ligh
   <p><strong>x</strong> is relative culture density, <strong>T</strong> is temperature, and <strong>I</strong> is light intensity. The mechanistic function gives the base growth rate. SINDy learns <strong>g</strong> from the rate of change of the prediction error. The two rates are added before integration to obtain a corrected density trajectory.</p>
 </div>
 
-That distinction is important: the correction changes how the model evolves, rather than shifting every prediction by a fixed offset. Its explicit equation also lets me inspect which environmental terms were retained.[^paper]
+The correction changes the growth rate over time. Its explicit equation also lets me inspect which environmental terms were retained.[^paper]
 
 ## My contribution
 
@@ -47,14 +47,14 @@ That distinction is important: the correction changes how the model evolves, rat
 
 The corrected predictions followed measured growth more closely in the validation examples.[^paper] The evaluation used one cultivation batch; performance across other strains and reactors remains untested.
 
-The dissertation results also show why validation matters here. Some learned corrections became unstable when integrated, particularly with limited training data. An improvement in selected growth curves does not mean the correction worked across every validation fold.[^dissertation]
+Some corrections became unstable when integrated, particularly with limited training data. Performance varied across validation folds.[^dissertation]
 
-{% include figure.html src="/B6.png" alt="Observed, original, and corrected algae growth curves alongside the learned error equation" caption="Compare the corrected curve with both the measurements and the original model. These examples show the effect of learning a changing growth-rate correction." %}
+{% include figure.html src="/B6.png" alt="Observed, original, and corrected algae growth curves alongside the learned error equation" caption="Sequential validation within one cultivation batch." %}
 
 <details class="figure-details"><summary>Experiment and model details</summary>
-{% include figure.html src="/B1.png" alt="Original four-step hybrid modeling workflow" caption="The workflow from the research presentation: mechanistic prediction, residual calculation, sparse error dynamics, and model update." %}
+{% include figure.html src="/B1.png" alt="Original four-step hybrid modeling workflow" %}
 {% include figure.html src="/B3.png" alt="Photobioreactor used to collect the algae growth measurements" caption="The 60-liter photobioreactor used for data collection." %}
-{% include figure.html src="/B4.png" alt="SINDy correction driven by temperature, light, and pH" caption="The physical drivers used to learn error dynamics." %}
+{% include figure.html src="/B4.png" alt="SINDy correction driven by temperature, light, and pH" %}
 </details>
 
 ## References and notes

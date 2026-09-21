@@ -50,32 +50,32 @@ The PIR mounts directly on the fixed door frame and faces across the opening. Th
 
 ## App prototype
 
-The caregiver app runs in a browser and can be installed on Android as a progressive web app (PWA). Its overview shows recent activity, sensor connections, and visitor information in one place.
+The caregiver app runs in a browser and can be installed on Android as a progressive web app (PWA).
 
-{% include figure.html src="/assets/images/papaw-app-overview.png" alt="Papaw Care View overview showing recent activity, room estimate, sensor coverage, and visitor context" caption="The app overview shows recent activity, room estimates, and sensor coverage." %}
+{% include figure.html src="/assets/images/papaw-app-overview.png" alt="Papaw Care View overview showing recent activity, room estimate, sensor coverage, and visitor context" caption="Sensor connectivity helps distinguish a quiet house from a gap in reporting." %}
 
 Room estimation is a partially observed state-estimation problem. The home is modeled as a graph: rooms are vertices and monitored doorways are edges. Temporal clustering merges repeated PIR triggers, and the order of adjacent doorway events constrains possible paths. Confidence labels summarize heuristic ambiguity; uncertain observations leave multiple rooms possible. The scenario lab tests this logic against known simulated trajectories, packet loss, and multiple occupants.
 
-{% include figure.html src="/assets/images/papaw-app-room-estimate.png" alt="Papaw Care View showing a connected-room graph, a low-confidence room estimate, alternative possible rooms, and sensor details" caption="The room view shows the estimated location, other possible rooms, and the sensor events used to make the estimate." %}
+{% include figure.html src="/assets/images/papaw-app-room-estimate.png" alt="Papaw Care View showing a connected-room graph, a low-confidence room estimate, alternative possible rooms, and sensor details" caption="Ambiguous event sequences leave more than one room possible." %}
 
 {% include turntable-controls.html %}
 
 ## How the modules work together
 
-The modules form a distributed, discrete-event sensor network. Motion and magnetic contacts supply binary observations, which the sensor nodes send to the receiver over ESP-NOW. These observations support room-state estimation, with uncertainty retained when the available signals do not identify a unique state.
+A motion pulse indicates activity at a doorway; a door contact records an opening or closing. Neither identifies a person or their destination on its own. The receiver combines these discrete events into a local activity history, giving the room estimator more constraints than either sensor could provide alone.
 
-Combining complementary sensors provides additional constraints on possible household activity. Event-driven communication limits redundant transmissions, and the software keeps a local activity history for review. The design prioritizes useful activity context with limited personal data collection.
+Nodes transmit state changes over ESP-NOW and send periodic heartbeats. This keeps radio traffic low while allowing the receiver to distinguish an inactive sensor from one that has stopped reporting.
 
-{% include figure.html src="/assets/images/papaw-family-sequence.gif" poster="/assets/images/papaw-family-sequence.png" alt="Peepin on Papaw receiver, door sensor, and motion sensor rotating, separating, and reassembling" caption="The PIR sensor detects motion at a doorway, and the magnetic switch records when a door opens or closes. Both send events wirelessly to the receiver plugged into a wall outlet. The exploded view shows how the boards, batteries, and display fit inside the printed cases." %}
+{% include figure.html src="/assets/images/papaw-family-sequence.gif" poster="/assets/images/papaw-family-sequence.png" alt="Peepin on Papaw receiver, door sensor, and motion sensor rotating, separating, and reassembling" caption="Battery-powered sensor nodes report to a receiver powered from any wall outlet." %}
 
 <details class="figure-details" markdown="1">
-<summary>A closer look at each module</summary>
+<summary>Sensor electronics and firmware</summary>
 
 ### Motion sensor
 
 The passive infrared sensor produces a binary motion signal from changes in infrared radiation. The ESP32-C3 transmits state transitions and periodic heartbeats. Three AAA cells and a regulator supply the node, and the cover’s hood restricts its angular field of view.
 
-The hood is intended to improve spatial selectivity by associating triggers with a doorway. That introduces a coverage tradeoff: a narrower sensing region needs more careful placement. Event-driven reporting and radio duty cycling reduce communication energy demand. Heartbeats provide a separate indication of node availability.
+The hood narrows the sensing region to the doorway, making placement important: it needs to catch a crossing without reacting to nearby room activity. Radio duty cycling reduces battery use.
 
 {% include figure.html src="/assets/images/papaw-sensor-sequence.gif" poster="/assets/images/papaw-sensor-sequence.png" alt="Motion sensor CAD assembly with a faceted PIR lens, ESP32-C3 board, power regulator, and three AAA cells" caption="Motion sensor. HC-SR501, ESP32-C3, and three AAA cells in a directional enclosure." %}
 
@@ -83,7 +83,7 @@ The hood is intended to improve spatial selectivity by associating triggers with
 
 The magnetic contact represents the door as a two-state system: open or closed. Firmware debouncing requires the reed-switch signal to stabilize before accepting a state transition, suppressing spurious events from contact bounce. GPIO wake-up lets the ESP32-C3 leave deep sleep when the door state changes and return to sleep after reporting.
 
-A direct door-state observation adds information that a motion pulse alone cannot supply. Debouncing improves event integrity, and sleep between transitions reduces the processor’s duty cycle. The passive magnet keeps one side of the assembly small and avoids wiring across the moving door joint.
+The passive magnet keeps the moving side small and avoids wiring across the door joint. Sleeping between transitions reduces battery use.
 
 {% include figure.html src="/assets/images/papaw-door-sequence.gif" poster="/assets/images/papaw-door-sequence.png" alt="Magnetic door sensor CAD assembly with an ESP32-C3, reed switch, three AAA cells, and a separate magnet pod" caption="Door sensor. A reed switch detects the separate magnet, and an ESP32-C3 reports door activity." %}
 
@@ -91,7 +91,7 @@ A direct door-state observation adds information that a motion pulse alone canno
 
 The receiver runs from a USB wall adapter and collects events from the sensor nodes. A bounded packet queue buffers incoming radio messages for processing. Device identifiers and sequence numbers support duplicate suppression. The OLED reports node connectivity, activity, and error indicators.
 
-Buffering helps handle short bursts of asynchronous events, although a finite queue can overflow. Duplicate suppression prevents retransmissions from inflating activity counts. Centralizing these functions simplifies the sensor nodes, and the local display provides a diagnostic path when the dashboard is unavailable.
+The queue absorbs short bursts of events, and duplicate suppression keeps retransmissions from inflating activity counts. The OLED lets me check the system without opening the dashboard.
 
 {% include figure.html src="/assets/images/papaw-receiver-sequence.gif" poster="/assets/images/papaw-receiver-sequence.png" alt="USB-powered receiver CAD assembly with an ESP32-C3 board, four-wire connection, and 0.96 inch OLED display" caption="Receiver. An ESP32-C3 receives sensor events and drives a local OLED display." %}
 
