@@ -71,28 +71,7 @@ For rectified stereo images, depth follows **Z = fB/d**, where **f** is focal le
 
 The camera model uses 640 × 480 images and samples the stripe at 30 Hz. Observations accumulate in 1 mm surface bins, and nearby samples form a triangular mesh. Overlapping sweeps help fill the steep sides of the raised area.
 
-## Explore the math {#kinematics}
-
-Choose a module and an equation group, then pause or scrub through the motion. The diagram runs through three mounting layouts and the same tool path. It connects the requested tool pose to rod and wrist angles, pulley tangency, cable length, and motor payout.
-
-The calculations use measured mount coordinates and orientations. Homing establishes each cable’s length reference. Moving a mount changes the required cable lengths even when the tool follows the same path.
-
-{% include tetherxyz-math.html %}
-
-## My work
-
-- **Mechanical design:** FreeCAD assembly with a timber frame, keyed guide, two-servo wrist, and stereo-camera mount.
-- **Simulation:** Native-CAD motion playback, MuJoCo, pulley-aware inverse kinematics, homing sequences, and surface tracking. The current system integrates ROS 2 for Cartesian target commands.
-- **Controls:** ESP32-C3 firmware with motor-driver interfaces, acceleration limits, arming logic, and a watchdog.
-- **Verification:** CAD interference checks, fit gauges, load calculations, and trajectory studies.
-
 {% include turntable-controls.html %}
-
-## Complete robot
-
-Four motor-driven cables position the carriage with three translational degrees of freedom, expressed in Cartesian coordinates (x, y, z). Inverse kinematics maps a target carriage position to cable lengths. Because cables only pull, tension allocation must satisfy force equilibrium with positive cable tensions. The wrist adds two rotational degrees of freedom to orient the tool for scanning or marking.
-
-Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
 ## Assembly details {#assembly-details}
 
@@ -109,6 +88,26 @@ Four assemblies show how the machine fits together: the winch, two-degree-of-fre
 
 [Watch the grid as a video]({{ '/assets/videos/tetherxyz-assembly-grid.mp4' | relative_url }}).
 
+## Explore the math {#kinematics}
+
+Choose a module and an equation group, then pause or scrub through the motion. The diagram runs through three mounting layouts and the same tool path. It connects the requested tool pose to rod and wrist angles, pulley tangency, cable length, and motor payout.
+
+The calculations use measured mount coordinates and orientations. Homing establishes each cable’s length reference. Moving a mount changes the required cable lengths even when the tool follows the same path.
+
+{% include tetherxyz-math.html %}
+
+## My work
+
+- **Mechanical design:** FreeCAD assembly with a timber frame, keyed guide, two-servo wrist, and stereo-camera mount.
+- **Simulation:** Native-CAD motion playback, MuJoCo, pulley-aware inverse kinematics, homing sequences, and surface tracking. The current system integrates ROS 2 for Cartesian target commands.
+- **Controls:** ESP32-C3 firmware with motor-driver interfaces, acceleration limits, arming logic, and a watchdog.
+- **Verification:** CAD interference checks, fit gauges, load calculations, and trajectory studies.
+
+## Complete robot
+
+Four motor-driven cables position the carriage with three translational degrees of freedom, expressed in Cartesian coordinates (x, y, z). Inverse kinematics maps a target carriage position to cable lengths. Because cables only pull, tension allocation must satisfy force equilibrium with positive cable tensions. The wrist adds two rotational degrees of freedom to orient the tool for scanning or marking.
+
+Cable positioning reduces dependence on long precision rails. The guides, wrist, and cable-routing parts concentrate the important fits into smaller assemblies that can be fabricated and checked locally. The remaining positioning problem depends on cable-length calibration, cable compliance, and tension management.
 
 ## Tool wrist
 
