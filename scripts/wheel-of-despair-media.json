@@ -1,0 +1,45 @@
+{
+  "source_sha256": "75227301ab51e8c54f6673539b56e835c2d6af1bbf983a17da4f784ed8c99fbc",
+  "figures": [
+    {
+      "path": "assets/images/wheel-of-despair-apparatus.png",
+      "pdf_page": 3,
+      "figure": "1",
+      "width": 568,
+      "height": 599,
+      "sha256": "b1d550d26854738be4bf00d19431a37c7f026241707768bb51ceb502177b5e1f"
+    },
+    {
+      "path": "assets/images/wheel-of-despair-free-body.png",
+      "pdf_page": 5,
+      "figure": "2",
+      "width": 312,
+      "height": 261,
+      "sha256": "96cd7241b0c950ed7a9a0d9d4d01ba465e2e70cab76c4dc46a596b946b8e8619"
+    },
+    {
+      "path": "assets/images/wheel-of-despair-response.png",
+      "pdf_page": 8,
+      "figure": "3",
+      "width": 1339,
+      "height": 420,
+      "sha256": "b6e7b24a62da15c573a24904dc9c0f0d3eebad25dc7ab97892fb820c4f52b920"
+    },
+    {
+      "path": "assets/images/wheel-of-despair-root-locus.png",
+      "pdf_page": 12,
+      "figure": "6b",
+      "width": 1006,
+      "height": 501,
+      "sha256": "38f900a558bf4c6c8ffac57948a7c455afcc40ac02dda0bb1b825cfc537ff92e"
+    },
+    {
+      "path": "assets/images/wheel-of-despair-simulink.png",
+      "pdf_page": 15,
+      "figure": "7",
+      "width": 1135,
+      "height": 345,
+      "sha256": "41aac884e10030024569b78264925fad9f50fa2f2b18cce715c9a276adc28e3d"
+    }
+  ]
+}

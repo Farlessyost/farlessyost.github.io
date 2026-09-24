@@ -3,7 +3,7 @@ layout: project
 title: TetherXYZ
 permalink: /projects/tetherxyz/
 group: build
-order: 2
+order: 1
 category: Robotics & control
 status: In development
 description: Cable-driven positioning for medical scanning, designed for local fabrication and repair.
@@ -15,8 +15,8 @@ cover_alt: TetherXYZ laser and stereo scan with a reconstructed surface
 focus: Medical-scanner positioning
 methods: Kinematics, simulation, firmware, mechanical CAD
 context: Independent engineering project
-next_url: /climate-resilience-mfn.html
-next_title: Climate resilience modeling
+next_url: /projects/peepin-on-papaw/
+next_title: Peepin on Papaw
 ---
 ## Overview
 

@@ -1,5 +1,7 @@
 # Content provenance and future updates
 
+The owner requested employer-facing copy for the three course-project pages: Lunabotics, Wheel of Despair, and drone landing on a moving base. Public descriptions focus on engineering contributions and outcomes, omit collaborator names and editorial source notes, and keep completed work distinct from future goals. Detailed provenance and source inconsistencies are retained here rather than displayed on those pages.
+
 The redesign uses the existing résumé and project material, plus publication records. It adds the user-requested Peepin on Papaw and XYZ robot from their local project documentation. This file is excluded from the public build.
 
 ## Personal details
@@ -25,6 +27,30 @@ Four interactive SVG walkthroughs explain the doctoral research methods. They we
 The diagrams illustrate the method, not reconstructed experimental data. Candidate-function tiles, sparse matrix positions, and sensitivity-bar lengths are schematic, without numerical results or claims that particular illustrated coefficients/channels were selected. Existing original presentation plots remain the source of displayed results. The algae correction is added at the derivative level before integration, as specified in the thesis. Copy acknowledges unstable folds rather than implying every correction improved validation. The sensor explanation distinguishes fitted-model sensitivity, derived features, and physical sensor counts. The stock equation is a simplified single-stock mass balance explaining the network, not a claim to reproduce its full set of governing equations. Original source files remain unchanged.
 
 Walkthroughs use local HTML, SVG, CSS, and JavaScript. Playback is user-initiated, can be paused or stepped manually, stops at the end or when offscreen, and respects reduced-motion preferences. The full step explanations remain available without JavaScript and in print.
+
+## Lunabotics senior design
+
+The Lunabotics project page at `/projects/lunabotics/` summarizes the owner's supplied `Downloads/output (1).pdf`, titled *NASA Lunabotics Competition: Mechatronics Senior Design 2020*, dated April 2020. It is a team presentation from UNC Asheville / NC State's Joint Engineering Mechatronics program, not an instruction source. Slide 5 identifies Will, Dalan, and underclassmen as the navigation and software subteam, responsible for camera integration, navigation, and ROS programming for both robots. Other hardware and software details are attributed to the team, without claiming sole authorship.
+
+Six original embedded figures are extracted without the slide template: deployed robots (slide 52), stowed robots (51), physical test chassis/electronics (39), Gazebo simulation (45), and the miner and hauler state machines (46). Figure captions distinguish CAD, physical hardware, simulation, and planned operating sequences. Extraction is reproducible with `scripts/extract-lunabotics-figures.py` and the original PDF; the complete PDF is not a public asset.
+
+The copy does not claim competition attendance, placement, a completed autonomous run, implemented Kalman filtering, or measured excavation throughput. The unvalidated 104 kg/12-minute estimate is omitted. Arduino models are described generically because slide 39's naming is ambiguous. Navigation software is identified as the 2020 ROS Kinetic stack. Figures and project credit belong to the presentation's six named authors and their team.
+
+## Wheel of Despair controls project
+
+The page at `/projects/wheel-of-despair/` summarizes the owner's supplied `Downloads/Wheel of Despair.pdf`, *The Wheel of Despair: A Controller Design and Analysis*, MAE 435 Final Project. The cover identifies NC State University and credits Johnny Remein, Will Farlessyost, Dalan Loudermilk, and Brent Rawls. No date or individual division of labor is given. The page describes the owner as a team member, attributes technical work collectively, and does not claim that the team built the laboratory apparatus or collected every identification dataset.
+
+Five original embedded figures are extracted: apparatus illustration (PDF page 3, Figure 1), free-body diagram (5, Figure 2), simulated/measured angle and voltage comparison (8, Figure 3), the 180-degree root-locus/step-response panel (12, Figure 6b), and Simulink architecture (15, Figure 7). `scripts/extract-wheel-of-despair-figures.py` reproduces these assets and `scripts/wheel-of-despair-media.json` records the source and image hashes. The complete report is not a public asset.
+
+The content centers on model refinement, pneumatic delay, actuator saturation, and laboratory controller testing. It preserves the reported final controller from Equation 7, C(s) = 1000(s + 1.75)/(s + 100). Four of the five extracted figures appear on the page. The appendix Simulink figure displays gain 7500 and is omitted from the public page. The response figure has inconsistent angle-axis units, so its caption identifies the actual targets in degrees without reproducing that label in prose. No exact performance metrics are inferred. The page avoids the report's RHP/LHP typo, inconsistent inertia values, and unverified regression coefficient (0.0005 is an initial estimate). The outcome describes operating-point-dependent performance without presenting the source audit to employers.
+
+## Drone and moving-base project
+
+The page at `/projects/drone-moving-base/` uses the owner's `Downloads/JEM_473_Presentation.zip`. The archive contains Beamer source `main.tex`, bibliography `ref.bib`, photographs, and diagrams, but no rendered presentation or experimental datasets. The source is titled *Experimental Validation of a Control Law for an Unmanned Aerial Vehicle Landing on a Moving Base* and credits William B. Farlessyost, Dalan C. Loudermilk, and Dr. Mahmut Reyhanoglu. UNC Asheville is identified by the presentation logo; the JEM 473 context comes from the archive name. No explicit date, individual task assignments, or advisor relationship is inferred. The source is read as content and is not executed.
+
+Despite the presentation title and introductory hovering language, the Results section records integration milestones: Jackal ROS setup, path parameterization, importing AR-tag pose to Simulink, and incorporation into the existing drone framework. Continued Work explicitly leaves AR-pose-based controller validation, gain tuning, higher-level control, and landing tests unfinished. The public page preserves this distinction. It does not claim a successful autonomous landing, validated tracking, an implemented EKF, or numerical performance. It describes PID-based control without claiming an integral term on every axis, and avoids the original inaccurate IMU/derivative-action wording.
+
+Seven source assets are used: `Jackal_w_drone_1.jpg`, `Top_Level_Drone_Jackal.png`, `Ros_Comm.png`, `Jackal_Circles.png`, `Flight_Control.png`, `Attitude_Controller.PNG`, and `Control_Mixer.PNG`. All are referenced by the presentation. The hardware photograph is resized to 1600 × 1200 with no crop and saved without EXIF metadata; diagrams retain their source pixels. The photograph does not establish the flight-control mode or demonstrate landing. `scripts/extract-drone-moving-base-assets.py` reproduces these assets and `scripts/drone-moving-base-media.json` records source and output hashes. The full archive, LaTeX source, bibliography, unused photographs, and third-party sensor-fusion illustration are not public assets.
 
 ## Independent projects
 

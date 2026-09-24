@@ -1,0 +1,110 @@
+{
+  "source_sha256": "aea93a17d6a1619682738e539a8e429f1abda64b12abc802fb07f02e2d40efc0",
+  "assets": [
+    {
+      "member": "Jackal_w_drone_1.jpg",
+      "source_sha256": "d384950d9cf91e933b44c213a9e8f5c727b4fd54192958e60e7dc6338317e4d1",
+      "source_dimensions": [
+        4032,
+        3024
+      ],
+      "path": "assets/images/drone-moving-base-platform.jpg",
+      "dimensions": [
+        1600,
+        1200
+      ],
+      "sha256": "27677f549291735b59b19490129cb36697dd86dcb76d16fd09107b8db29e68eb",
+      "processing": "resized JPEG, no crop, EXIF omitted"
+    },
+    {
+      "member": "Top_Level_Drone_Jackal.png",
+      "source_sha256": "d9d3ec3aae68b3e41accdd6f90e5776746e33e58f7a3d3b8a4be3fbce075447c",
+      "source_dimensions": [
+        406,
+        311
+      ],
+      "path": "assets/images/drone-moving-base-architecture.png",
+      "dimensions": [
+        406,
+        311
+      ],
+      "sha256": "d9d3ec3aae68b3e41accdd6f90e5776746e33e58f7a3d3b8a4be3fbce075447c",
+      "processing": "original bytes"
+    },
+    {
+      "member": "Ros_Comm.png",
+      "source_sha256": "458431476c4f56f0c8dbb4b3eb383c8fdb12e85fbbe4f73e4537ec83a65514c5",
+      "source_dimensions": [
+        1426,
+        644
+      ],
+      "path": "assets/images/drone-moving-base-ros.png",
+      "dimensions": [
+        1426,
+        644
+      ],
+      "sha256": "458431476c4f56f0c8dbb4b3eb383c8fdb12e85fbbe4f73e4537ec83a65514c5",
+      "processing": "original bytes"
+    },
+    {
+      "member": "Jackal_Circles.png",
+      "source_sha256": "5da70f6b24b8b28915a04725cf457e5abca19d10321266b79ff772c5a55847d4",
+      "source_dimensions": [
+        366,
+        85
+      ],
+      "path": "assets/images/drone-moving-base-path.png",
+      "dimensions": [
+        366,
+        85
+      ],
+      "sha256": "5da70f6b24b8b28915a04725cf457e5abca19d10321266b79ff772c5a55847d4",
+      "processing": "original bytes"
+    },
+    {
+      "member": "Flight_Control.png",
+      "source_sha256": "fd2a39b8a121a3877a7420c9d0250bde75f8b7ca9e7d3a921be6b5502adf44ab",
+      "source_dimensions": [
+        1161,
+        596
+      ],
+      "path": "assets/images/drone-moving-base-flight-control.png",
+      "dimensions": [
+        1161,
+        596
+      ],
+      "sha256": "fd2a39b8a121a3877a7420c9d0250bde75f8b7ca9e7d3a921be6b5502adf44ab",
+      "processing": "original bytes"
+    },
+    {
+      "member": "Attitude_Controller.PNG",
+      "source_sha256": "754661fa58afe181e687b146d9d3d247e08ec095c839024cc20c6c0d8eb55054",
+      "source_dimensions": [
+        1267,
+        448
+      ],
+      "path": "assets/images/drone-moving-base-attitude.png",
+      "dimensions": [
+        1267,
+        448
+      ],
+      "sha256": "754661fa58afe181e687b146d9d3d247e08ec095c839024cc20c6c0d8eb55054",
+      "processing": "original bytes"
+    },
+    {
+      "member": "Control_Mixer.PNG",
+      "source_sha256": "da8dcb2c64a4276bc45e96d168115a2e41bb55f119ab03d61254c65831e46758",
+      "source_dimensions": [
+        817,
+        340
+      ],
+      "path": "assets/images/drone-moving-base-mixer.png",
+      "dimensions": [
+        817,
+        340
+      ],
+      "sha256": "da8dcb2c64a4276bc45e96d168115a2e41bb55f119ab03d61254c65831e46758",
+      "processing": "original bytes"
+    }
+  ]
+}

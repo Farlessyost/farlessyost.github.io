@@ -61,6 +61,10 @@ a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outli
 .build-card { background: var(--surface); min-width: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; transition: border-color .18s, box-shadow .18s; }
 .build-image { aspect-ratio: 3/2; background: #1f1f1f; overflow: hidden; }
 .build-image img { width: 100%; height: 100%; object-fit: contain; }
+.build-image-static { background: var(--surface); }
+@media (min-width: 801px) {
+  .build-card:last-child:nth-child(odd):not(:first-child) { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+}
 .build-copy { padding: 26px 28px 28px; }
 .build-copy .eyebrow { font-size: .75rem; }
 .build-copy h3 { display: flex; justify-content: space-between; gap: 20px; font-family: var(--serif); font-size: 2rem; font-weight: 500; letter-spacing: -.025em; margin-block: 12px; }

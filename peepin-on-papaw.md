@@ -3,7 +3,7 @@ layout: project
 title: Peepin on Papaw
 permalink: /projects/peepin-on-papaw/
 group: build
-order: 1
+order: 2
 category: Embedded systems
 status: In development
 description: Camera-free home activity sensing for family caregivers.
@@ -16,8 +16,8 @@ focus: Camera-free activity sensing
 methods: Embedded firmware, event processing, enclosure CAD
 context: Independent engineering project
 placement_demo: true
-next_url: /projects/tetherxyz/
-next_title: TetherXYZ
+next_url: /projects/lunabotics/
+next_title: NASA Lunabotics
 ---
 ## Overview
 

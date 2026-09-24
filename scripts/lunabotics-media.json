@@ -1,0 +1,47 @@
+{
+  "source_sha256": "c6285f947e62b9f20c2aba48578bd9c519d227a5738bb1702d6560b2220e0d09",
+  "figures": [
+    {
+      "path": "assets/images/lunabotics-robots-deployed.jpg",
+      "slide": 52,
+      "width": 1526,
+      "height": 861,
+      "sha256": "70140e413e032bfe5a49d133b2feddda1d6a9bc2e7f58589770dd7f0cf51c879"
+    },
+    {
+      "path": "assets/images/lunabotics-robots-stowed.jpg",
+      "slide": 51,
+      "width": 1526,
+      "height": 861,
+      "sha256": "103468b8958cac53380882518bfaede6ebcb9b765bc1c08c0f5e94b6cf9f72c9"
+    },
+    {
+      "path": "assets/images/lunabotics-test-chassis.jpg",
+      "slide": 39,
+      "width": 1200,
+      "height": 1600,
+      "sha256": "814d8d7ba69deebb48c4e98f08400755d75ca8eee6a82b791b0329ad41982b17"
+    },
+    {
+      "path": "assets/images/lunabotics-gazebo.png",
+      "slide": 45,
+      "width": 1116,
+      "height": 650,
+      "sha256": "3b87321d8cb9b9bf850eafe8ae6f560ef0c858c479cab0fd085c1c1b4eaf55e6"
+    },
+    {
+      "path": "assets/images/lunabotics-miner-states.png",
+      "slide": 46,
+      "width": 1187,
+      "height": 417,
+      "sha256": "c47f7ef59a449006a2ec6c9d51cdbb3235daff16cf49aa1e4641323015dcecbd"
+    },
+    {
+      "path": "assets/images/lunabotics-hauler-states.png",
+      "slide": 46,
+      "width": 1176,
+      "height": 385,
+      "sha256": "076bb293d317f73af114de2a956aa64343506db212e83a40f7cd9ccfc732c670"
+    }
+  ]
+}

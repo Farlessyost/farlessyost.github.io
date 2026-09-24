@@ -17,12 +17,18 @@ Open http://127.0.0.1:4000. To build without a server, use `bundle exec jekyll b
 
 - `index.md`: homepage.
 - `about.md`, `contact.md`, `projects.md`: main pages.
-- Project Markdown files: case-study content and metadata. `group: build` features independent engineering; `group: research` displays the research list. `order` controls position.
+- Project Markdown files: case-study content and metadata. `group: build` features engineering projects; `group: research` displays the research list. `order` controls position.
 - `_layouts/` and `_includes/`: shared page structure.
 - `assets/css/site.css`: typography, layout, responsive styles, and print styles.
 - `_config.yml`: contact links and site metadata.
 - `assets/images/`: turntable GIFs and still frames exported from the current engineering CAD models.
 - Existing root research figures, headshot, and résumé are retained.
+
+The Lunabotics senior-design page is at `/projects/lunabotics/`. Its six original presentation figures can be extracted again with `python scripts/extract-lunabotics-figures.py path/to/presentation.pdf` (requires PyMuPDF). Source slides and image hashes are recorded in `scripts/lunabotics-media.json`.
+
+The Wheel of Despair controls page is at `/projects/wheel-of-despair/`. Its report figures can be extracted with `python scripts/extract-wheel-of-despair-figures.py path/to/report.pdf` (requires PyMuPDF). The page uses four of the five extracted figures. Source pages and image hashes are recorded in `scripts/wheel-of-despair-media.json`.
+
+The drone and moving-base project is at `/projects/drone-moving-base/`. Extract its seven presentation assets with `python scripts/extract-drone-moving-base-assets.py path/to/JEM_473_Presentation.zip` (requires Pillow). The photograph is resized for the web and the diagrams retain their original pixels. Provenance and hashes are recorded in `scripts/drone-moving-base-media.json`.
 
 The four pre-existing research `.html` URLs, `/about/`, and `/projects/` are preserved. Project pages include `/projects/peepin-on-papaw/` and `/projects/tetherxyz/`. The former `/projects/xyz-robot/`, `/projects/skopeo/`, and `/projects/tetherframe/` URLs redirect directly to TetherXYZ, preserving query strings and section anchors when JavaScript is available. Engineering source and media filenames retain their existing names.
 
