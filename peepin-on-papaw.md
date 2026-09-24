@@ -16,8 +16,8 @@ focus: Camera-free activity sensing
 methods: Embedded firmware, event processing, enclosure CAD
 context: Independent engineering project
 placement_demo: true
-next_url: /projects/lunabotics/
-next_title: NASA Lunabotics
+next_url: /projects/robotic-arm-experience/
+next_title: Robotic arm experience
 ---
 ## Overview
 

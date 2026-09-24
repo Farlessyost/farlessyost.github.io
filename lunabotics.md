@@ -3,7 +3,7 @@ layout: project
 title: NASA Lunabotics
 permalink: /projects/lunabotics/
 group: build
-order: 3
+order: 4
 category: Mobile robotics
 status: Senior design · 2020
 description: Navigation, stereo vision, and ROS integration for a two-robot lunar mining design.

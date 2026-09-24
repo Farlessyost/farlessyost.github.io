@@ -3,7 +3,7 @@ layout: project
 title: Drone landing on a moving base
 permalink: /projects/drone-moving-base/
 group: build
-order: 5
+order: 6
 category: Aerial & ground robotics
 status: Research project
 description: ROS and Simulink integration toward landing a Parrot Mambo drone on a moving Clearpath Jackal.

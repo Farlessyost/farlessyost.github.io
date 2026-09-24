@@ -32,6 +32,8 @@ The drone and moving-base project is at `/projects/drone-moving-base/`. Extract 
 
 The four pre-existing research `.html` URLs, `/about/`, and `/projects/` are preserved. Project pages include `/projects/peepin-on-papaw/` and `/projects/tetherxyz/`. The former `/projects/xyz-robot/`, `/projects/skopeo/`, and `/projects/tetherframe/` URLs redirect directly to TetherXYZ, preserving query strings and section anchors when JavaScript is available. Engineering source and media filenames retain their existing names.
 
+The shared robotic arm page is at `/projects/robotic-arm-experience/`, with separate undergraduate research sections for the UR3e/RG2 (`#ur3e-rg2`) and Jenga (`#jenga-robot`) projects. Edit `robotic-arm-experience.md` to update both. It attributes the owner's work to ROS, Gazebo, and MoveIt integration; learning algorithms belong to the wider research teams. The two native video players use reconstructed Gazebo demonstrations recorded in September 2026, with H.264 MP4 files in `assets/videos/` and matching JPEG posters in `assets/images/`. Media hashes and simulation assumptions are recorded in `scripts/robotic-arm-media.json`. Original research sources and attribution notes are in `CONTENT_NOTES.md`.
+
 ## Publication
 
 This remains compatible with GitHub Pages’ Jekyll build from the repository root. Updating the live site requires publishing the reviewed changes to the branch configured in repository Settings → Pages. Work in the redesign branch does not change the live site.

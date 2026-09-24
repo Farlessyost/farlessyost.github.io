@@ -1,0 +1,64 @@
+{
+  "recorded": "2026-09-24",
+  "context": "Reconstructed Gazebo demonstrations based on original robot models. Illustrative integration demonstrations, not original research footage or learning-policy evaluations.",
+  "ur3e": "MoveIt trajectories; simplified RG2 jaws; temporary fixed-joint grasp attachment; dynamic ball released into tray.",
+  "jenga": "Scripted joint trajectories; temporary fixed-joint grasp attachments; dynamic blocks; legacy robot self-contact disabled because its visual meshes overlap. Six blocks build two perpendicular three-block layers. Original research platform used MoveIt; reconstructed stack-building trajectory does not.",
+  "assets": [
+    {
+      "source": "UR3e-RG2-ball-pick-and-drop.mp4",
+      "source_sha256": "bc19526660a4534ac9b056968ef6dbee518fc2c961f2534a9b8b633b56525cc9",
+      "path": "assets/videos/ur3e-rg2-ball-pick-and-drop.mp4",
+      "sha256": "bc19526660a4534ac9b056968ef6dbee518fc2c961f2534a9b8b633b56525cc9",
+      "bytes": 723374,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "processing": "original bytes",
+      "duration_seconds": 31,
+      "codec": "H.264",
+      "frame_rate": 20,
+      "audio": false
+    },
+    {
+      "source": "Jenga-stack-build.mp4",
+      "source_sha256": "53013df22e35271e3e8f97bd4cd03639eb0b71aaad8841c4befec30e7d64c11e",
+      "path": "assets/videos/jenga-stack-build.mp4",
+      "sha256": "53013df22e35271e3e8f97bd4cd03639eb0b71aaad8841c4befec30e7d64c11e",
+      "bytes": 2800398,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "processing": "original bytes",
+      "duration_seconds": 166,
+      "codec": "H.264",
+      "frame_rate": 20,
+      "audio": false
+    },
+    {
+      "source": "UR3e-RG2-thumbnail.jpg",
+      "source_sha256": "d6274095c286c4ef7ada61c766ad02eddc84f0091122b5e97dc23cbf8db15b30",
+      "path": "assets/images/ur3e-rg2-simulation.jpg",
+      "sha256": "d6274095c286c4ef7ada61c766ad02eddc84f0091122b5e97dc23cbf8db15b30",
+      "bytes": 18048,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "processing": "original bytes"
+    },
+    {
+      "source": "jenga-progress.png",
+      "source_sha256": "37f1a9a3f8b2b1b37125e71d678ff18586e33fbbd35fab5c711d45d1e5231a43",
+      "path": "assets/images/jenga-robot-simulation.jpg",
+      "sha256": "cc8a7b4e822dbb47d03bac9e634a239819efc8d0cc77620e7ce657f64f9c61e3",
+      "bytes": 58561,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "processing": "PNG converted to JPEG; original dimensions; no crop"
+    }
+  ]
+}

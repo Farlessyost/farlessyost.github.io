@@ -3,7 +3,7 @@ layout: project
 title: Wheel of Despair
 permalink: /projects/wheel-of-despair/
 group: build
-order: 4
+order: 5
 category: Feedback control
 status: Controls lab project
 description: Modeling, simulation, and laboratory testing of a controller for a pneumatically actuated pointer.
