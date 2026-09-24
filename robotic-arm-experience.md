@@ -7,7 +7,7 @@ order: 3
 category: Robotics
 status: Undergraduate research · 2017–2020
 description: ROS, Gazebo, and MoveIt integration for two undergraduate research projects in robotic manipulation.
-summary: Brought a UR3e arm with an RG2 gripper into operation and integrated a Jenga robot with simulation and motion planning.
+summary: Robotic manipulation research with a UR3e arm and a Jenga robot, supported by ROS, Gazebo simulation, and MoveIt motion planning.
 card_methods: ROS · Gazebo · MoveIt · Arm & gripper integration
 cover: /assets/images/ur3e-rg2-simulation.jpg
 cover_width: 1280

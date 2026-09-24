@@ -7,7 +7,7 @@ order: 6
 category: Aerial & ground robotics
 status: Research project
 description: ROS and Simulink integration toward landing a Parrot Mambo drone on a moving Clearpath Jackal.
-summary: Connected visual pose data from a ground robot to a drone control framework as a foundation for tracking and landing on a moving platform.
+summary: A drone and ground-robot system for studying moving-platform landings, combining visual localization, ROS, and Simulink flight control.
 card_methods: ROS · Simulink · AR tags · Flight control
 cover: /assets/images/drone-moving-base-platform.jpg
 cover_width: 1600

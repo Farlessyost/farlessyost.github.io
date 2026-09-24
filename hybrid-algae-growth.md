@@ -8,7 +8,7 @@ order: 2
 category: Scientific machine learning
 status: Conference proceedings · 2024
 description: Improved algae-growth predictions by adding a learned correction to a mechanistic model.
-summary: Used machine learning to correct an algae-growth model while keeping temperature, light, and pH explicit.
+summary: Algae-growth prediction with a mechanistic model and a learned correction driven by temperature, light, and pH.
 card_methods: Hybrid modeling · SINDy · Biological dynamics
 focus: Chlorella vulgaris growth
 methods: Mechanistic modeling and sparse residual dynamics

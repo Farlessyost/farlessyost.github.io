@@ -6,8 +6,8 @@ group: build
 order: 4
 category: Mobile robotics
 status: Senior design · 2020
-description: I developed the ROS software, computer vision, navigation, and motion control for a two-robot lunar mining design.
-summary: I developed the ROS software, computer vision, and motion control for a two-robot mining and hauling system.
+description: A two-robot lunar mining design combining stereo vision, ROS navigation, and motion control.
+summary: A two-robot lunar mining design combining stereo vision, ROS navigation, and coordinated mining and hauling.
 card_methods: ROS · Stereo vision · Gazebo · Arduino
 cover: /assets/images/lunabotics-robots-deployed.jpg
 cover_width: 1526
@@ -21,9 +21,9 @@ next_title: Wheel of Despair
 ---
 ## Overview
 
-Our senior-design team designed a two-robot system for NASA's Lunabotics competition: a mining robot to excavate simulated lunar material and a dump truck to carry it to a collection bin. The project connected mechanical design, embedded electronics, perception, and motion control.
+We designed a two-robot system for NASA's Lunabotics competition: a mining robot to excavate simulated lunar material and a dump truck to carry it to a collection bin. Our senior-design project connected mechanical design, embedded electronics, perception, and motion control.
 
-**I was responsible for all ROS development, computer vision, navigation, and motion control for both robots.** I integrated the stereo cameras, configured the navigation stack, and developed the controllers that translated planned motion into wheel speeds and steering angles, working with the mechanical and electrical teams to connect the software to the hardware.
+**I was responsible for all ROS development, computer vision, navigation, and motion control for both robots.** This covered stereo-camera integration, navigation-stack configuration, and the controllers that translated planned motion into wheel speeds and steering angles. We worked across software, mechanical, and electrical design to connect these capabilities to the hardware.
 
 {% include figure.html src="/assets/images/lunabotics-robots-deployed.jpg" alt="CAD view of the conveyor mining robot on the left and the dump truck with a receiving hopper on the right" caption="CAD design of the mining robot and dump truck in their deployed configuration." %}
 
@@ -33,7 +33,7 @@ The competition task was to navigate an arena with obstacles, excavate material,
 
 Separating excavation from transport was intended to keep the miner working while the dump truck made delivery trips. The design paired a cup conveyor and temporary hopper with a separate hauling robot. Their coordination required navigation, docking, material transfer, and signals to begin the next cycle.
 
-The team designed the pair to fit within a shared 1 × 1 × 0.5 m envelope before deployment.
+We designed the pair to fit within a shared 1 × 1 × 0.5 m envelope before deployment.
 
 <details class="figure-details"><summary>See the stowed robot layout</summary>
 {% include figure.html src="/assets/images/lunabotics-robots-stowed.jpg" alt="CAD view of the two robots nested together with the mining conveyor folded horizontally" caption="Stowed CAD configuration for the team's 1 × 1 × 0.5 m packaging requirement." %}
@@ -41,29 +41,29 @@ The team designed the pair to fit within a shared 1 × 1 × 0.5 m envelope befor
 
 ## From perception to wheel commands
 
-I built the software architecture around **ROS Kinetic on an NVIDIA Jetson TX2**, with Arduino microcontrollers connecting the high-level software to wheel control. I used ROS nodes and topics to connect sensing, planning, and actuation across both robots.
+The software architecture used **ROS Kinetic on an NVIDIA Jetson TX2**, with Arduino microcontrollers connecting the high-level software to wheel control. ROS nodes and topics connected sensing, planning, and actuation across both robots.
 
 ### Stereo perception
 
-I integrated the stereo cameras and computer-vision processing to provide point clouds representing the space around the robots. These spatial measurements supported obstacle mapping and navigation through the arena.
+The stereo-vision pipeline provided point clouds representing the space around the robots. These spatial measurements supported obstacle mapping and navigation through the arena.
 
 ### Planning a path
 
-I configured the ROS navigation stack to use obstacle maps, point clouds, odometry, and a destination to plan motion. The stack produced a global route, local paths around newly detected obstacles, and velocity commands through `move_base`, with recovery behaviors for situations in which the robot became stuck.
+The ROS navigation stack used obstacle maps, point clouds, odometry, and a destination to plan motion. It produced a global route, local paths around newly detected obstacles, and velocity commands through `move_base`, with recovery behaviors for situations in which the robot became stuck.
 
 ### Turning commands into motion
 
-I developed the ROS controller that translated those velocity commands into drive-motor speeds and steering-servo angles for **double-Ackermann steering**. Both front and rear wheels were independently steered, connecting my navigation and control software to the team's custom wheel assemblies.
+I developed the ROS controller that translated those velocity commands into drive-motor speeds and steering-servo angles for **double-Ackermann steering**. Both front and rear wheels were independently steered, connecting the navigation and control software to our custom wheel assemblies.
 
 {% include figure.html src="/assets/images/lunabotics-test-chassis.jpg" alt="Physical test chassis with a Jetson TX2, Arduino boards, wiring, drive wheels, and steering servos" caption="Test chassis integrating Jetson and Arduino electronics with independently steered wheels." %}
 
 ## Simulation and robot coordination
 
-I brought the team's SolidWorks geometry into a Universal Robot Description Format (URDF) model for Gazebo simulation. Its links and joints described the chassis components and their motion, connecting the mechanical design to the software test platform.
+A Universal Robot Description Format (URDF) model brought our SolidWorks geometry into Gazebo simulation. Its links and joints described the chassis components and their motion, connecting the mechanical design to the software test platform.
 
 {% include figure.html src="/assets/images/lunabotics-gazebo.png" alt="Gazebo simulation of the four-wheel test chassis on uneven terrain" caption="Gazebo simulation of the four-wheel test chassis." %}
 
-I designed separate state machines to coordinate the two robots' operating sequences. The miner would locate the mining zone, position itself, deploy the conveyor, and transfer material when the truck docked. The truck would travel to the miner, receive material, return to the collector, and deposit its load before repeating the cycle.
+Separate state-machine designs coordinated the two robots' operating sequences. The miner would locate the mining zone, position itself, deploy the conveyor, and transfer material when the truck docked. The truck would travel to the miner, receive material, return to the collector, and deposit its load before repeating the cycle.
 
 <details class="figure-details"><summary>View the robot state-machine designs</summary>
 {% include figure.html src="/assets/images/lunabotics-miner-states.png" alt="Mining sequence: acquire an AR tag, plan and drive to the mining zone, position and deploy the apparatus, continue until the truck docks, empty the hopper, and wait for the truck to disengage" caption="Mining-robot state-machine design." %}
@@ -72,6 +72,6 @@ I designed separate state machines to coordinate the two robots' operating seque
 
 ## Project outcomes
 
-The project produced paired robot designs, a physical test chassis, a Gazebo model, and a navigation and control architecture. Component testing covered drive motors, steering servos, the mining mechanism, and the truck's lift, including steering tests in a pulverized-limestone bed.
+We produced paired robot designs, a physical test chassis, a Gazebo model, and a navigation and control architecture. Component testing covered drive motors, steering servos, the mining mechanism, and the truck's lift, including steering tests in a pulverized-limestone bed.
 
-My contribution covered the complete software path from stereo-camera data through navigation to wheel control, along with the Gazebo model and robot-coordination logic. This connected the team's mechanical and electrical designs into a shared robotics system.
+Together, the software, mechanical, and electrical work established a robotics platform spanning stereo perception, motion planning, wheel control, and coordination between the two robots.

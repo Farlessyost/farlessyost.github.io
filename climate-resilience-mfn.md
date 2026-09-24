@@ -8,7 +8,7 @@ order: 4
 category: Industrial ecology
 status: Published research · 2025
 description: Simulated climate effects on a soybean-to-biodiesel production network.
-summary: Connected crop and industrial models to evaluate production, inventories, and imports under climate scenarios.
+summary: Climate-scenario modeling for a soybean-to-biodiesel network, tracking production, inventories, and imports.
 card_methods: Neural surrogates · Material-flow networks · Climate scenarios
 focus: Agricultural and industrial systems
 methods: LTC surrogates and dynamic material-flow simulation

@@ -8,7 +8,7 @@ order: 3
 category: Sensing & machine learning
 status: Research preprint · 2025
 description: Neural observers that estimate system states using fewer measurement inputs.
-summary: Reduced measurement inputs while meeting prediction-error targets in mechanical, chemical, and ecological simulations.
+summary: Neural state estimation with fewer measurement inputs, evaluated in mechanical, chemical, and ecological simulations.
 card_methods: Liquid-time-constant networks · Observers · Causal analysis
 focus: Sensor selection for state estimation
 methods: Neural observers and perturbation-based pruning

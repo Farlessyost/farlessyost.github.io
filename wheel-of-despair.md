@@ -7,7 +7,7 @@ order: 5
 category: Feedback control
 status: Controls lab project
 description: Modeling, simulation, and laboratory testing of a controller for a pneumatically actuated pointer.
-summary: Used nonlinear models and laboratory tests to tune a lead-compensator controller for pneumatic positioning.
+summary: Feedback control for a pneumatically actuated pointer, combining nonlinear modeling, simulation, and laboratory testing.
 card_methods: MATLAB · Simulink · Root locus · R
 cover: /assets/images/wheel-of-despair-apparatus.png
 cover_width: 568

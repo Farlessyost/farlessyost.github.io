@@ -2,6 +2,8 @@
 
 The owner requested employer-facing copy for the three course-project pages: Lunabotics, Wheel of Despair, and drone landing on a moving base. Public descriptions focus on engineering contributions and outcomes, omit collaborator names and editorial source notes, and keep completed work distinct from future goals. Detailed provenance and source inconsistencies are retained here rather than displayed on those pages.
 
+Project-card summaries consistently describe what each project is and its purpose or methods. Individual responsibilities belong in the project pages. On Lunabotics, the owner's software responsibility is stated explicitly in the introduction, with “we” for shared team work and direct technical descriptions elsewhere to avoid repetitive first-person phrasing.
+
 The redesign uses the existing résumé and project material, plus publication records. It adds the user-requested Peepin on Papaw and XYZ robot from their local project documentation. This file is excluded from the public build.
 
 ## Personal details

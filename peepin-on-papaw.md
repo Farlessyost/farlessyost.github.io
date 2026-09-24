@@ -7,7 +7,7 @@ order: 2
 category: Embedded systems
 status: In development
 description: Camera-free home activity sensing for family caregivers.
-summary: Doorway and door sensors give family caregivers a local activity history, without cameras or wearables.
+summary: Home activity sensing for family caregivers, using doorway and door sensors without cameras or wearables.
 card_methods: ESP32 · ESP-NOW · Python · SQLite · FreeCAD
 cover: /assets/images/papaw-family-sequence.gif
 cover_poster: /assets/images/papaw-family-sequence.png

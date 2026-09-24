@@ -8,7 +8,7 @@ order: 1
 category: System identification
 status: Published research · 2022
 description: Compact dynamical models for a biodiesel process and watershed streamflow.
-summary: Built sparse equation models and evaluated their accuracy against process simulations and watershed data.
+summary: Compact dynamical models for biodiesel production and watershed streamflow, with sparse equations learned from time-series data.
 card_methods: SINDy · Differential equations · ASPEN Dynamics
 focus: Reduced-order dynamical models
 methods: Sparse regression and constrained optimization
