@@ -45,10 +45,8 @@ The arm and gripper needed a consistent robot description, joint configuration, 
     <source src="{{ '/assets/videos/ur3e-rg2-ball-pick-and-drop.mp4' | relative_url }}" type="video/mp4">
     <p><a href="{{ '/assets/videos/ur3e-rg2-ball-pick-and-drop.mp4' | relative_url }}">Watch the UR3e ball pickup and release video</a>.</p>
   </video>
-  <figcaption id="ur3e-video-caption">Gazebo demonstration: the arm grasps the ball on the blue pad, lifts it, carries it to the green tray, releases it, and withdraws. <span class="video-duration">31 seconds · no audio.</span></figcaption>
+  <figcaption id="ur3e-video-caption">The UR3e grasps the ball, lifts it from the blue pad, and releases it into the green tray.</figcaption>
 </figure>
-
-This scripted demonstration uses MoveIt trajectories, simplified RG2 jaws, and simulated grasp attachments to illustrate the arm–gripper workflow. It does not evaluate a learned sorting policy.
 
 ## Jenga robot
 {: #jenga-robot }
@@ -72,7 +70,5 @@ The platform combined the arm, gripper, and turntable within one manipulation sy
     <source src="{{ '/assets/videos/jenga-stack-build.mp4' | relative_url }}" type="video/mp4">
     <p><a href="{{ '/assets/videos/jenga-stack-build.mp4' | relative_url }}">Watch the Jenga stack-building video</a>.</p>
   </video>
-  <figcaption id="jenga-video-caption">Gazebo demonstration: the robot takes six blocks from the supply on the right and builds two perpendicular three-block layers on the empty platform to the left. Each block is released and settles before the next placement. <span class="video-duration">2 minutes 46 seconds · no audio.</span></figcaption>
+  <figcaption id="jenga-video-caption">The Jenga robot transfers six blocks from the supply stack to the building platform, placing them in two perpendicular layers of three.</figcaption>
 </figure>
-
-This recording uses scripted joint trajectories and simplified grasp attachments with dynamic blocks. It demonstrates stack construction. The original research platform also integrated MoveIt for motion planning.
